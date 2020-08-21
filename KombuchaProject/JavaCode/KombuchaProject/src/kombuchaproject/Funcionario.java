@@ -4,10 +4,16 @@ package kombuchaproject;
  * @author deive
  */
 
-public class FuncionarioClass {
+public class Funcionario {
     private int idFuncionario;
     private String nomeFuncionario;
     private String cargo;
+
+    public Funcionario(int idFuncionario, String nomeFuncionario, String cargo) {
+        this.idFuncionario = idFuncionario;
+        this.nomeFuncionario = nomeFuncionario;
+        this.cargo = cargo;
+    }
 
     public int getIdFuncionario() {
         return idFuncionario;
