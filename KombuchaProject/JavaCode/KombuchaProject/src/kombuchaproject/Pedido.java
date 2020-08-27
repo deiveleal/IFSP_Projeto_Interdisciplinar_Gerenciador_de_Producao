@@ -5,12 +5,16 @@ package kombuchaproject;
  *
  * @author Deive
  */
+import java.util.Date;
+
 public class Pedido {
     private int id_Pedido;
     private int id_Sabor;
     private int qtd_Producao;
     private int id_Fermentador;
     private int id_Funcionario;
+    private Date data_Pedido;
+
 
     public Pedido(int id_Pedido, int id_Sabor, int qtd_Producao, int id_Fermentador, int id_Funcionario) {
         this.id_Pedido = id_Pedido;
@@ -59,9 +63,40 @@ public class Pedido {
     public void setId_Funcionario(int id_Funcionario) {
         this.id_Funcionario = id_Funcionario;
     }
+   
+    public Date getData_Pedido() {
+        return data_Pedido;
+    }
+
+    public void setData_Pedido(Date data_Pedido) {
+        this.data_Pedido = data_Pedido;
+    }
+    
+    
+    
+    public void inserir_Data_Lote(){
+    
+    }
+    
+    public void perda_Producao(){
+    
+    }
+    
+    //Se pedido retornar true pedido realizado com sucesso
+    public boolean inserir_Pedido(){
+        return true;
+    }
+    
+    //Se pedido cancelado com sucesso retorna true
+    public boolean cancelar_Pedido(){
+        return true;
+    }
     
     
 }
+
+
+
 
 
 

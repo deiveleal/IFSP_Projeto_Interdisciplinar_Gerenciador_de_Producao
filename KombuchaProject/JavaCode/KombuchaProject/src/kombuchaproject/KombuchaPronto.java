@@ -5,14 +5,15 @@ import java.util.Date;
  *
  * @author Deive
  */
-public class KombuchaPronto {
+public class KombuchaPronto extends ItemEstoque {
     private int id_Kombuhca_Pronto;
     private int id_Item_Estoque;
     private int id_Sabor;
     private String nome_Produto;
     private Date data_Fabricacao;
 
-    public KombuchaPronto(int id_Kombuhca_Pronto, int id_Item_Estoque, int id_Sabor, String nome_Produto, Date data_Fabricacao) {
+    public KombuchaPronto(int id_Kombuhca_Pronto, int id_Item_Estoque, int id_Sabor, String nome_Produto, Date data_Fabricacao, int id_Item, String tipo_Item) {
+        super(id_Item, tipo_Item);
         this.id_Kombuhca_Pronto = id_Kombuhca_Pronto;
         this.id_Item_Estoque = id_Item_Estoque;
         this.id_Sabor = id_Sabor;
@@ -59,9 +60,11 @@ public class KombuchaPronto {
     public void setData_Fabricacao(Date data_Fabricacao) {
         this.data_Fabricacao = data_Fabricacao;
     }
-    
+
     
 }
+
+
 
 
 

@@ -8,19 +8,19 @@ public class SaborKombucha {
     private int id_kombucha;
     private String nome_kombucha;
     private String cha_base;
-    private double qtd_cha_base;
-    private double pre_preparo_qtd_cha;
-    private double pre_preparo_qtd_agua;
+    private double qtd_cha;
+    private double qtd_agua;
     private int id_embalagem;
+    private int id_cha_base;
 
-    public SaborKombucha(int id_kombucha, String nome_kombucha, String cha_base, double qtd_cha_base, double pre_preparo_qtd_cha, double pre_preparo_qtd_agua, int id_embalagem) {
+    public SaborKombucha(int id_kombucha, String nome_kombucha, String cha_base, double qtd_cha, double qtd_agua, int id_embalagem, int id_cha_base) {
         this.id_kombucha = id_kombucha;
         this.nome_kombucha = nome_kombucha;
         this.cha_base = cha_base;
-        this.qtd_cha_base = qtd_cha_base;
-        this.pre_preparo_qtd_cha = pre_preparo_qtd_cha;
-        this.pre_preparo_qtd_agua = pre_preparo_qtd_agua;
+        this.qtd_cha = qtd_cha;
+        this.qtd_agua = qtd_agua;
         this.id_embalagem = id_embalagem;
+        this.id_cha_base = id_cha_base;
     }
 
     public int getId_kombucha() {
@@ -47,28 +47,20 @@ public class SaborKombucha {
         this.cha_base = cha_base;
     }
 
-    public double getQtd_cha_base() {
-        return qtd_cha_base;
+    public double getQtd_cha() {
+        return qtd_cha;
     }
 
-    public void setQtd_cha_base(double qtd_cha_base) {
-        this.qtd_cha_base = qtd_cha_base;
+    public void setQtd_cha(double qtd_cha) {
+        this.qtd_cha = qtd_cha;
     }
 
-    public double getPre_preparo_qtd_cha() {
-        return pre_preparo_qtd_cha;
+    public double getQtd_agua() {
+        return qtd_agua;
     }
 
-    public void setPre_preparo_qtd_cha(double pre_preparo_qtd_cha) {
-        this.pre_preparo_qtd_cha = pre_preparo_qtd_cha;
-    }
-
-    public double getPre_preparo_qtd_agua() {
-        return pre_preparo_qtd_agua;
-    }
-
-    public void setPre_preparo_qtd_agua(double pre_preparo_qtd_agua) {
-        this.pre_preparo_qtd_agua = pre_preparo_qtd_agua;
+    public void setQtd_agua(double qtd_agua) {
+        this.qtd_agua = qtd_agua;
     }
 
     public int getId_embalagem() {
@@ -78,9 +70,21 @@ public class SaborKombucha {
     public void setId_embalagem(int id_embalagem) {
         this.id_embalagem = id_embalagem;
     }
+
+    public int getId_cha_base() {
+        return id_cha_base;
+    }
+
+    public void setId_cha_base(int id_cha_base) {
+        this.id_cha_base = id_cha_base;
+    }
     
+    
+
     
 }
+
+
 
 
 
