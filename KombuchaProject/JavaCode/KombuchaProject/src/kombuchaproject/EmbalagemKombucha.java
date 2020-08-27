@@ -3,7 +3,7 @@ package kombuchaproject;
 
 /**
  *
- * @author Deive
+ * @author Deive + Carol + Bianca
  */
 public class EmbalagemKombucha {
     private int id_Embalagem;
