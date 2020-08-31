@@ -1,9 +1,14 @@
-package kombuchaproject;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package kombucha_bean;
+
 /**
  *
- * @author deive
+ * @author Deive
  */
-
 public class Funcionario {
     private int idFuncionario;
     private String nomeFuncionario;
@@ -43,5 +48,6 @@ public class Funcionario {
         
     return true;
     }
-        
 }
+
+

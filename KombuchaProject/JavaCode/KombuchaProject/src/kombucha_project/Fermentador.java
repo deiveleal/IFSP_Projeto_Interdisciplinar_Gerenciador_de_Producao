@@ -1,5 +1,5 @@
 
-package kombuchaproject;
+package kombucha_project;
 
 /**
  *
