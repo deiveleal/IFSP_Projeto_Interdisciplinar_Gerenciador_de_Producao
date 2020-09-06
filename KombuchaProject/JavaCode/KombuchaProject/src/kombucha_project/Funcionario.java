@@ -9,11 +9,11 @@ public class Funcionario {
     private String nomeFuncionario;
     private String cargo;
 
-    public Funcionario(int idFuncionario, String nomeFuncionario, String cargo) {
+ /*   public Funcionario(int idFuncionario, String nomeFuncionario, String cargo) {
         this.idFuncionario = idFuncionario;
         this.nomeFuncionario = nomeFuncionario;
         this.cargo = cargo;
-    }
+    }*/
 
     public int getIdFuncionario() {
         return idFuncionario;
