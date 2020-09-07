@@ -1,7 +1,9 @@
-package kombucha_project;
+package kombuchaProject;
 /**
  *
- * @author Deive
+ * @author carolina
+ * @author deive
+ * 
  */
 public class Insumo extends ItemEstoque{
     private int id_Insumo;

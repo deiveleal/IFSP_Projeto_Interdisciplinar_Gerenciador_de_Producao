@@ -1,9 +1,11 @@
-package kombucha_project;
+package kombuchaProject;
 
 import java.util.Date;
 /**
  *
- * @author Deive
+ * @author carolina
+ * @author deive
+ * 
  */
 public class KombuchaPronto extends ItemEstoque {
     private int id_Kombuhca_Pronto;

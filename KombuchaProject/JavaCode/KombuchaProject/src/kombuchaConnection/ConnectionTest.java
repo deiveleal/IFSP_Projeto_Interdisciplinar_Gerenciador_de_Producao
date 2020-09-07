@@ -1,4 +1,4 @@
-package kombucha_connection;
+package kombuchaConnection;
 
 
 import java.sql.Connection;
@@ -13,6 +13,7 @@ import java.sql.SQLException;
 
 /**
  *
+ * @author carolina
  * @author deive
  * 
  */

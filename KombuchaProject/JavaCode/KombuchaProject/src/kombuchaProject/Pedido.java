@@ -1,9 +1,11 @@
 
-package kombucha_project;
+package kombuchaProject;
 
 /**
  *
- * @author Deive
+ * @author carolina
+ * @author deive
+ * 
  */
 import java.util.Date;
 

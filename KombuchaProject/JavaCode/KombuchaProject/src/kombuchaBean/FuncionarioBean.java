@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kombucha_bean;
+package kombuchaBean;
 
 /**
  *
+ * @author Carolina
  * @author Deive
+ * 
  */
-public class Funcionario {
+public class FuncionarioBean {
     private int idFuncionario;
     private String nomeFuncionario;
     private String cargo;

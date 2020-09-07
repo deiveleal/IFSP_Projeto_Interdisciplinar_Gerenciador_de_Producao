@@ -1,9 +1,11 @@
 
-package kombucha_project;
+package kombuchaProject;
 
 /**
  *
- * @author Deive + Carol + Bianca
+ * @author carolina
+ * @author deive
+ * 
  */
 public class EmbalagemKombucha {
     private int id_Embalagem;

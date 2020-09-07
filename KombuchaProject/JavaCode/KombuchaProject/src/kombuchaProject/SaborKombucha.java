@@ -1,8 +1,10 @@
-package kombucha_project;
+package kombuchaProject;
 
 /**
  *
- * @author Deive
+ * @author carolina
+ * @author deive
+ * 
  */
 public class SaborKombucha {
     private int id_kombucha;

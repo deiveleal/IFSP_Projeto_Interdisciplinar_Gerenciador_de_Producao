@@ -1,5 +1,5 @@
 
-package kombucha_project;
+package kombuchaProject;
 
 
 public class KombuchaProject {

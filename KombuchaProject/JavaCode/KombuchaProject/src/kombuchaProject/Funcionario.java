@@ -1,7 +1,9 @@
-package kombucha_project;
+package kombuchaProject;
 /**
  *
+ * @author carolina
  * @author deive
+ * 
  */
 
 public class Funcionario {
