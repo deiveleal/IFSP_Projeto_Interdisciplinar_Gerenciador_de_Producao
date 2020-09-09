@@ -1,9 +1,7 @@
-package 
 
-
-import java.sql.SQLException;
 import java.sql.Connection;
-
+import java.sql.SQLException;
+import kombuchaConnection.ConnectionFactory;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,17 +10,13 @@ import java.sql.Connection;
  */
 
 /**
- *
- * @author carolina
- * @author deive
- * 
+ * @author Carolina
+ * @author Deive
  */
-public class ConnectionTest {
+public class TesteConexao {
     public static void main(String[] args) throws SQLException{
         try (Connection con = new ConnectionFactory().getConnection()) {
             System.out.println("Conexão aberta!");
-        }
-            
-    }
-        
+        }            
+    }        
 }
