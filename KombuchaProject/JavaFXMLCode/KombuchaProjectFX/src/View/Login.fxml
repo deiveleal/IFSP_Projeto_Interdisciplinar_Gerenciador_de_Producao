@@ -7,32 +7,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
-      <Label layoutX="184.0" layoutY="50.0" text="Tribos Kombucha">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <TextField fx:id="tfLogin" alignment="CENTER" layoutX="193.0" layoutY="152.0" promptText="Login">
+      <TextField fx:id="tfLogin" alignment="CENTER" layoutX="296.0" layoutY="268.0" promptText="Login">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="tfpSenha" alignment="CENTER" layoutX="193.0" layoutY="212.0" promptText="Senha">
+      <PasswordField fx:id="pfSenha" alignment="CENTER" layoutX="296.0" layoutY="340.0" promptText="Senha">
          <font>
             <Font size="16.0" />
          </font>
       </PasswordField>
-      <Button fx:id="btEntrar" layoutX="123.0" layoutY="292.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Entrar">
+      <Button fx:id="btSair" layoutX="259.0" layoutY="405.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Sair" AnchorPane.rightAnchor="466.0">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btSair" layoutX="393.0" layoutY="292.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Sair">
+      <Button fx:id="btEntrar" layoutX="469.0" layoutY="405.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Entrar">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="129.0" text="Tribos Kumbucha">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="359.0" layoutY="188.0" text="Login">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

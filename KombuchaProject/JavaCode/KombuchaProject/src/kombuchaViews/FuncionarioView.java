@@ -6,7 +6,7 @@
 package kombuchaViews;
 
 import kombuchaProject.Funcionario;
-import kombuchaDAO.FuncionarioDAO;
+import DAO.FuncionarioDAO;
 import javax.swing.JOptionPane;
 /**
  *

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.GerenciaEstoqueController">
+   <children>
+      <Button fx:id="btCadastrarItem" layoutX="166.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="171.0" text="Cadastrar Item" />
+      <TableView fx:id="tableEstoque" layoutX="56.0" layoutY="173.0" prefHeight="364.0" prefWidth="688.0">
+        <columns>
+          <TableColumn prefWidth="115.0" text="Item" />
+          <TableColumn prefWidth="196.0" text="Nome" />
+            <TableColumn prefWidth="279.0" text="Descrição" />
+            <TableColumn prefWidth="97.0" text="Quantidade" />
+        </columns>
+      </TableView>
+      <Label layoutX="195.0" layoutY="48.0" text="Gerenciamento de Estoque">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="btVoltar" layoutX="57.0" layoutY="551.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Voltar">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btSair" layoutX="674.0" layoutY="551.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Sair">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <TextField fx:id="tfBusca" alignment="CENTER" layoutX="57.0" layoutY="143.0" prefHeight="30.0" prefWidth="171.0" promptText="Buscar Item" />
+      <Button fx:id="btAlterarQtd" layoutX="463.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="171.0" text="Alterar Quantidade" />
+   </children>
+</AnchorPane>
