@@ -4,21 +4,32 @@ USE  tribos_kombucha;
 -- Criação das tabelas
 
 CREATE TABLE Funcionario(
+<<<<<<< HEAD
 	idFuncionario VARCHAR (15) PRIMARY KEY,
     nomeFuncionario CHAR(60) NOT NULL,
     cargo VARCHAR(40),
     senha VARCHAR(20)
+=======
+	idFuncionario VARCHAR(16) PRIMARY KEY,
+    nomeFuncionario VARCHAR(70) NOT NULL,
+    cargo VARCHAR(70),
+    senha VARCHAR(30)
+>>>>>>> origin
 );
 
 CREATE TABLE ItemDeEstoque (
 	idItem INT PRIMARY KEY,
-    tipoItem VARCHAR(20) NOT NULL
+    tipoItem VARCHAR(70) NOT NULL
 );
 
 CREATE TABLE Estoque(
 	idItem INT,
 	idItemEstoque INT,
+<<<<<<< HEAD
     nomeItem VARCHAR(60),
+=======
+    nomeItem VARCHAR(70),
+>>>>>>> origin
     quantItem DOUBLE,
     
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem),
@@ -28,7 +39,7 @@ CREATE TABLE Estoque(
 CREATE TABLE Insumo(
     idInsumo INT PRIMARY KEY,
     idItemEstoque INT,
-    nomeInsumo VARCHAR (50),
+    nomeInsumo VARCHAR (70),
 	descInsumo VARCHAR (100),
     
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem)
@@ -47,16 +58,16 @@ CREATE TABLE Fermentador(
 CREATE TABLE EmbalagemKombucha(
     idEmbalagem INT PRIMARY KEY,
     idItemEstoque INT,
-    corEmbalagem VARCHAR(20),
-    nomeEmbalagem VARCHAR(20),
+    corEmbalagem VARCHAR(30),
+    nomeEmbalagem VARCHAR(70),
     
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem)
 );
 
 CREATE TABLE SaborKombucha(
     idKombucha  INT PRIMARY KEY,
-    nomeKombucha VARCHAR(50) NOT NULL,
-    chaBase VARCHAR(50) NOT NULL,
+    nomeKombucha VARCHAR(70) NOT NULL,
+    chaBase VARCHAR(70) NOT NULL,
     idChaBase INT,
     prePreparoQuantCha DOUBLE NOT NULL,
 	prePreparoQuantAgua DOUBLE NOT NULL,
@@ -72,7 +83,11 @@ CREATE TABLE Pedido(
     idSabor INT,
     quantidadeProducao INT,
     idFermentador INT NOT NULL,
+<<<<<<< HEAD
     idFuncionario VARCHAR (15),
+=======
+    idFuncionario VARCHAR(16),
+>>>>>>> origin
 	quantidadeCha  DOUBLE,
 	quantidadeAgua  DOUBLE,
     quantidadeEmbalagem  INT,
@@ -87,7 +102,7 @@ CREATE TABLE KombuchaPronto(
     idKombuchaPronto INT PRIMARY KEY ,
     idItemEstoque INT,
     idSabor INT,
-	nomeProduto VARCHAR(20),
+	nomeProduto VARCHAR(70),
     dataFabricacao DATE,
 
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem),

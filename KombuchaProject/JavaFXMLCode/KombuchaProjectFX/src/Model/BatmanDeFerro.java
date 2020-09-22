@@ -9,8 +9,12 @@ package Model;
  * @author Carolina
  * @author Deive
  */
+
+
+// Classe com atributos e métodos úteis para utilização geral
+
 public class BatmanDeFerro {
-    private double idFuncionario;
+    private String idFuncionarioAtivo;
     
     
     
@@ -19,11 +23,14 @@ public class BatmanDeFerro {
     
     
 
-    public double getIdFuncionario() {
-        return idFuncionario;
+    public String getIdFuncionarioAtivo() {
+        return idFuncionarioAtivo;
     }
 
-    public void setIdFuncionario(double idFuncionario) {
-        this.idFuncionario = idFuncionario;
-    }    
+    public void setIdFuncionarioAtivo(String idFuncionario) {
+        this.idFuncionarioAtivo = idFuncionario;
+    }  
+    public void printaUsuario(){
+        System.out.println("Usuário Logado: "+getIdFuncionarioAtivo());    
+    }
 }
