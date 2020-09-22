@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  */
 public class Login extends Application{
     
-    private long idFuncionarioAtivo;    
+    private String idFuncionarioAtivo;    
     private static Stage stage;//Uma janela1
     
     public static void main(String[] args){
@@ -43,11 +43,11 @@ public class Login extends Application{
         Login.stage = stage;
     }
 
-    public double getIdFuncionarioAtivo() {
+    public String getIdFuncionarioAtivo() {
         return idFuncionarioAtivo;
     }
 
-    public void setIdFuncionarioAtivo(long idFuncionarioAtivo) {
+    public void setIdFuncionarioAtivo(String idFuncionarioAtivo) {
         this.idFuncionarioAtivo = idFuncionarioAtivo;
     }
 

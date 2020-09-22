@@ -7,7 +7,7 @@ package Controller;
 
 import Model.AlterarExcluirUser;
 import Model.GerenciaUsuario;
-import Model.MenuPrincipal;
+import Model.Login;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -39,7 +39,7 @@ public class AlterarExcluirUserController implements Initializable {
     private Button btVoltar;
 
     @FXML
-    private Button btSair;
+    private Button btFinalizarSessao;
 
     @FXML
     private TextField tfBusca;
@@ -79,17 +79,27 @@ public class AlterarExcluirUserController implements Initializable {
         });
         
         
-        btSair.setOnMouseClicked((MouseEvent e)->{
-            fechaJanela();
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+            voltaTelaLogin();
         });
-        btSair.setOnKeyPressed((KeyEvent e)->{
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
-                fechaJanela();
+                voltaTelaLogin();
             }
         });
     }
     public void fechaJanela(){
         AlterarExcluirUser.getStage().close();
-    }      
+    } 
+    
+    private void voltaTelaLogin(){
+        Login login = new Login();
+        try {
+            login.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fechaJanela();
+    }
     
 }

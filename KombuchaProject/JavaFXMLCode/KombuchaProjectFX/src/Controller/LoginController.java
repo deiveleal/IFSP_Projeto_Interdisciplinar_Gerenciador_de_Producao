@@ -83,9 +83,9 @@ public class LoginController implements Initializable {
     public void logar(){
         LoginDAO dao = new LoginDAO();
         try {
-            if(dao.login(Double.parseDouble(tfLogin.getText()), pfSenha.getText())){
+            if(dao.login(tfLogin.getText(), pfSenha.getText())){
                 MenuPrincipal menu = new MenuPrincipal();
-                login.setIdFuncionarioAtivo(Long.parseLong(tfLogin.getText()));
+                login.setIdFuncionarioAtivo(tfLogin.getText());
                 fechaJanela();
                 try {
                     menu.start(new Stage());

@@ -57,12 +57,11 @@
          </children>
       </GridPane>
       <Button fx:id="btVoltar" layoutX="90.0" layoutY="496.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="111.0" text="Voltar" />
-      <Button fx:id="btCadastrar" layoutX="366.0" layoutY="496.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="111.0" text="Cadastrar">
+      <Button fx:id="btCadastrar" layoutX="309.0" layoutY="496.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="111.0" text="Cadastrar">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btSair" layoutX="628.0" layoutY="496.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="111.0" text="Sair" />
       <GridPane layoutX="218.0" layoutY="179.0" prefHeight="229.0" prefWidth="426.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -82,5 +81,10 @@
             <PasswordField fx:id="pfConfirm" prefHeight="30.0" GridPane.rowIndex="4" />
          </children>
       </GridPane>
+      <Button fx:id="btFinalizarSessao" layoutX="523.0" layoutY="493.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" text="Finalizar Sessão">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

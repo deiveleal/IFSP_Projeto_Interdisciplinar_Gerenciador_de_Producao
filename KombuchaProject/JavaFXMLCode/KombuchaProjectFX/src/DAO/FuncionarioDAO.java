@@ -32,7 +32,7 @@ public class FuncionarioDAO extends Funcionario{
         String sql = "INSERT INTO Funcionario(idFuncionario,nomeFuncionario,cargo,senha) VALUES(?,?,?,?)";
         try { 
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setDouble(1, func.getIdFuncionario());            
+            stmt.setString(1, func.getIdFuncionario());            
             stmt.setString(2, func.getNomeFuncionario());
             stmt.setString(3, func.getCargo());
             stmt.setString(4, func.getSenha());
@@ -57,7 +57,7 @@ public class FuncionarioDAO extends Funcionario{
             stmt.setString(1, func.getNomeFuncionario());
             stmt.setString(2, func.getCargo());
             stmt.setString(3, func.getSenha());
-            stmt.setDouble(4, func.getIdFuncionario());
+            stmt.setString(4, func.getIdFuncionario());
             
             stmt.execute();
             stmt.close();
@@ -76,7 +76,7 @@ public class FuncionarioDAO extends Funcionario{
         try { 
             PreparedStatement stmt = con.prepareStatement(sql);
            
-            stmt.setDouble(1, func.getIdFuncionario());
+            stmt.setString(1, func.getIdFuncionario());
             
             stmt.execute();
             stmt.close();
@@ -98,7 +98,7 @@ public class FuncionarioDAO extends Funcionario{
             ResultSet ResSet = stmt.executeQuery();
             while(ResSet.next()){
                 Funcionario funcionario = new Funcionario();
-                funcionario.setIdFuncionario((int) ResSet.getDouble("idFuncionario"));
+                funcionario.setIdFuncionario(ResSet.getString("idFuncionario"));
                 funcionario.setNomeFuncionario(ResSet.getString("nomeFuncionario"));
                 funcionario.setCargo(ResSet.getString("cargo"));
                 

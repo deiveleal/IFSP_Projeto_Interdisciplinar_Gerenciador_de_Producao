@@ -45,12 +45,12 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btSair" layoutX="674.0" layoutY="551.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Sair">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
       <TextField fx:id="tfBusca" alignment="CENTER" layoutX="57.0" layoutY="256.0" prefHeight="30.0" prefWidth="171.0" promptText="Buscar Pedido" />
       <Button fx:id="btAlterarPedido" layoutX="486.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Alterar Pedido" />
+      <Button fx:id="btFinalizarSessao" layoutX="530.0" layoutY="547.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" text="Finalizar Sessão">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

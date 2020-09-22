@@ -7,10 +7,9 @@ package Controller;
 
 import Model.AlterarExcluirUser;
 import Model.CadastrarFuncionario;
-import Model.GerenciaEstoque;
 import Model.GerenciaUsuario;
+import Model.Login;
 import Model.MenuPrincipal;
-import Model.GerenciaPedido;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -35,7 +34,7 @@ public class GerenciaUsuarioController implements Initializable {
     private Button btVoltar;
 
     @FXML
-    private Button btSair;
+    private Button btFinalizarSessao;
 
     @FXML
     private Button btCadastFunc;
@@ -90,10 +89,10 @@ public class GerenciaUsuarioController implements Initializable {
         });
         
         
-        btSair.setOnMouseClicked((MouseEvent e)->{
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
             fechaJanela();
         });
-        btSair.setOnKeyPressed((KeyEvent e)->{
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 fechaJanela();
             }
@@ -101,6 +100,16 @@ public class GerenciaUsuarioController implements Initializable {
     }
     public void fechaJanela(){
         GerenciaUsuario.getStage().close();
-    }    
+    }  
+    
+    private void voltaTelaLogin(){
+        Login login = new Login();
+        try {
+            login.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fechaJanela();
+    }
     
 }

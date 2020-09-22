@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.GerenciaEstoqueController">
+<AnchorPane id="AnchorPane" fx:id="btFinalizarSessao" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GerenciaEstoqueController">
    <children>
-      <Button fx:id="btCadastrarItem" layoutX="166.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="171.0" text="Cadastrar Item" />
+      <Button fx:id="btCadastrarItem" layoutX="148.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="171.0" text="Cadastrar Item" />
       <TableView fx:id="tableEstoque" layoutX="56.0" layoutY="173.0" prefHeight="364.0" prefWidth="688.0">
         <columns>
           <TableColumn prefWidth="115.0" text="Item" />
@@ -29,12 +29,12 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btSair" layoutX="674.0" layoutY="551.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Sair">
+      <TextField fx:id="tfBusca" alignment="CENTER" layoutX="57.0" layoutY="143.0" prefHeight="30.0" prefWidth="171.0" promptText="Buscar Item" />
+      <Button fx:id="btAlterarQtd" layoutX="338.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="171.0" text="Alterar Quantidade" />
+      <Button fx:id="btSair" layoutX="530.0" layoutY="547.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" text="Finalizar Sessão">
          <font>
-            <Font size="16.0" />
+            <Font size="21.0" />
          </font>
       </Button>
-      <TextField fx:id="tfBusca" alignment="CENTER" layoutX="57.0" layoutY="143.0" prefHeight="30.0" prefWidth="171.0" promptText="Buscar Item" />
-      <Button fx:id="btAlterarQtd" layoutX="463.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="171.0" text="Alterar Quantidade" />
    </children>
 </AnchorPane>

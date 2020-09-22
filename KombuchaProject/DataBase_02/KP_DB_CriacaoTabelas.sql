@@ -1,10 +1,10 @@
-CREATE SCHEMA tribos_kombucha;
+-- CREATE SCHEMA tribos_kombucha;
 USE  tribos_kombucha;
 
 -- Criação das tabelas
 
 CREATE TABLE Funcionario(
-	idFuncionario BIGINT PRIMARY KEY,
+	idFuncionario VARCHAR (15) PRIMARY KEY,
     nomeFuncionario CHAR(60) NOT NULL,
     cargo VARCHAR(40),
     senha VARCHAR(20)
@@ -18,7 +18,7 @@ CREATE TABLE ItemDeEstoque (
 CREATE TABLE Estoque(
 	idItem INT,
 	idItemEstoque INT,
-    nomeItem VARCHAR(20),
+    nomeItem VARCHAR(60),
     quantItem DOUBLE,
     
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem),
@@ -72,7 +72,7 @@ CREATE TABLE Pedido(
     idSabor INT,
     quantidadeProducao INT,
     idFermentador INT NOT NULL,
-    idFuncionario BIGINT,
+    idFuncionario VARCHAR (15),
 	quantidadeCha  DOUBLE,
 	quantidadeAgua  DOUBLE,
     quantidadeEmbalagem  INT,

@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.GerenciaEstoque;
-import Model.GerenciaPedido;
+import Model.Login;
 import Model.MenuPrincipal;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,7 +38,7 @@ public class GerenciaEstoqueController implements Initializable {
     private Button btVoltar;
 
     @FXML
-    private Button btSair;
+    private Button btFinalizarSessao;
 
     @FXML
     private TextField tfBusca;
@@ -75,10 +75,10 @@ public class GerenciaEstoqueController implements Initializable {
             }
         });
         
-        btSair.setOnMouseClicked((MouseEvent e)->{
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
             fechaJanela();
         });
-        btSair.setOnKeyPressed((KeyEvent e)->{
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 fechaJanela();
             }
@@ -88,6 +88,16 @@ public class GerenciaEstoqueController implements Initializable {
 
     public void fechaJanela(){
         GerenciaEstoque.getStage().close();
-    }    
+    } 
+    
+    private void voltaTelaLogin(){
+        Login login = new Login();
+        try {
+            login.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fechaJanela();
+    }
     
 }

@@ -5,9 +5,9 @@
  */
 package Controller;
 
-import Model.CadastrarFuncionario;
+
 import Model.GerenciaPedido;
-import Model.GerenciaUsuario;
+import Model.Login;
 import Model.MenuPrincipal;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -68,7 +68,7 @@ public class GerenciaPedidoController implements Initializable {
     private Button btVoltar;
 
     @FXML
-    private Button btSair;
+    private Button btFinalizarSessao;
 
     @FXML
     private TextField tfBusca;
@@ -101,10 +101,10 @@ public class GerenciaPedidoController implements Initializable {
             }
         });
         
-        btSair.setOnMouseClicked((MouseEvent e)->{
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
             fechaJanela();
         });
-        btSair.setOnKeyPressed((KeyEvent e)->{
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 fechaJanela();
             }
@@ -114,6 +114,16 @@ public class GerenciaPedidoController implements Initializable {
 
     public void fechaJanela(){
         GerenciaPedido.getStage().close();
+    }
+    
+    private void voltaTelaLogin(){
+        Login login = new Login();
+        try {
+            login.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fechaJanela();
     }
     
 }

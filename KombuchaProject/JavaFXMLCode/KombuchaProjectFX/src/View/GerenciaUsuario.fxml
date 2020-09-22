@@ -5,14 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GerenciaUsuarioController">
+<AnchorPane id="AnchorPane" fx:id="btFinalizarSessao" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GerenciaUsuarioController">
    <children>
       <Button fx:id="btVoltar" layoutX="70.0" layoutY="492.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Voltar">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="btSair" layoutX="658.0" layoutY="492.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Sair">
          <font>
             <Font size="16.0" />
          </font>
@@ -32,5 +27,10 @@
             <Font size="30.0" />
          </font>
       </Label>
+      <Button fx:id="btSair1" layoutX="522.0" layoutY="488.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" text="Finalizar Sessão">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -13,7 +13,7 @@ package Model;
  */
 
 public class Funcionario {
-    private double idFuncionario;
+    private String idFuncionario;
     private String nomeFuncionario;
     private String cargo;
     private String senha;
@@ -22,7 +22,7 @@ public class Funcionario {
     public Funcionario(){
     }
     
-    public Funcionario(double idFuncionario, String nomeFuncionario, String cargo, String senha) {
+    public Funcionario(String idFuncionario, String nomeFuncionario, String cargo, String senha) {
         this.idFuncionario = idFuncionario;
         this.nomeFuncionario = nomeFuncionario;
         this.cargo = cargo;
@@ -39,11 +39,11 @@ public class Funcionario {
     }
 
 
-    public double getIdFuncionario() {
+    public String getIdFuncionario() {
         return idFuncionario;
     }
 
-    public void setIdFuncionario(int idFuncionario) {
+    public void setIdFuncionario(String idFuncionario) {
         this.idFuncionario = idFuncionario;
     }
 

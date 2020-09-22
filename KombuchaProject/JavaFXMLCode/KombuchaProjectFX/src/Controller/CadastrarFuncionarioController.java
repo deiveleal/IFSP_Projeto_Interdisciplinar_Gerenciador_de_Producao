@@ -9,6 +9,7 @@ import DAO.FuncionarioDAO;
 import Model.CadastrarFuncionario;
 import Model.Funcionario;
 import Model.GerenciaUsuario;
+import Model.Login;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -39,7 +40,7 @@ public class CadastrarFuncionarioController implements Initializable {
     private Button btCadastrar;
 
     @FXML
-    private Button btSair;
+    private Button btFinalizarSessao;
 
     @FXML
     private TextField tfCPF;
@@ -94,10 +95,10 @@ public class CadastrarFuncionarioController implements Initializable {
             }
         });
         
-        btSair.setOnMouseClicked((MouseEvent e)->{
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
             fechaJanela();
         });
-        btSair.setOnKeyPressed((KeyEvent e)->{
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 fechaJanela();
             }
@@ -106,8 +107,8 @@ public class CadastrarFuncionarioController implements Initializable {
     }
     
     private void cadastraFunc(){
-        double idFuncionario = Double.parseDouble(tfCPF.getText());
-        String nomeFuncionario = tfNome.getText(), 
+        String idFuncionario = tfCPF.getText(),
+               nomeFuncionario = tfNome.getText(), 
                cargo = tfCargo.getText(), 
                senha = pfSenha.getText(), 
                confirm = pfConfirm.getText();
@@ -138,6 +139,16 @@ public class CadastrarFuncionarioController implements Initializable {
 
     public void fechaJanela(){
         CadastrarFuncionario.getStage().close();
+    }
+    
+    private void voltaTelaLogin(){
+        Login login = new Login();
+        try {
+            login.start(new Stage());
+        } catch (Exception ex) {
+            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fechaJanela();
     }
     
 }

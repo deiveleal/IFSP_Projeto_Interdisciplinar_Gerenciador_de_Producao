@@ -40,7 +40,7 @@ public class MenuPrincipalController implements Initializable {
     private Button btGerencEstoq;
 
     @FXML
-    private Button btSair;
+    private Button btFinalizarSessao;
 
 
     /**
@@ -79,11 +79,11 @@ public class MenuPrincipalController implements Initializable {
         });
         
         
-        btSair.setOnMouseClicked((MouseEvent e)->{
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
             voltaTelaLogin();
         });
 
-        btSair.setOnKeyPressed((KeyEvent e)->{
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 voltaTelaLogin();
             }
