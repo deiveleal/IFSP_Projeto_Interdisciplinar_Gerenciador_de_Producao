@@ -6,10 +6,10 @@
 package Controller;
 
 import DAO.FuncionarioDAO;
+import Model.BatmanDeFerro;
 import Model.CadastrarFuncionario;
 import Model.Funcionario;
 import Model.GerenciaUsuario;
-import Model.Login;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -76,9 +76,10 @@ public class CadastrarFuncionarioController implements Initializable {
         
         btVoltar.setOnMouseClicked((MouseEvent e)->{
             GerenciaUsuario geruser = new GerenciaUsuario();
-            fechaJanela();            
+          
             try {
                 geruser.start(new Stage());
+                fechaJanela();  
             } catch (Exception ex) {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -86,20 +87,25 @@ public class CadastrarFuncionarioController implements Initializable {
         btVoltar.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 GerenciaUsuario geruser = new GerenciaUsuario();
-                fechaJanela();            
+          
                 try {
                     geruser.start(new Stage());
+                    fechaJanela();  
                 } catch (Exception ex) {
                     Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
         
+        BatmanDeFerro BatFer = new BatmanDeFerro();
+        
         btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+            BatFer.voltaTelaLogin();
             fechaJanela();
         });
         btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
+                BatFer.voltaTelaLogin();
                 fechaJanela();
             }
 
@@ -140,15 +146,4 @@ public class CadastrarFuncionarioController implements Initializable {
     public void fechaJanela(){
         CadastrarFuncionario.getStage().close();
     }
-    
-    private void voltaTelaLogin(){
-        Login login = new Login();
-        try {
-            login.start(new Stage());
-        } catch (Exception ex) {
-            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        fechaJanela();
-    }
-    
 }

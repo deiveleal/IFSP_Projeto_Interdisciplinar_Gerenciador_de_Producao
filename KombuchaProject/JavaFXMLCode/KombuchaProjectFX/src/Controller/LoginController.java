@@ -87,14 +87,12 @@ public class LoginController implements Initializable {
         try {
             if(dao.login(tfLogin.getText(), pfSenha.getText())){
                 MenuPrincipal menu = new MenuPrincipal();
-<<<<<<< HEAD
-                login.setIdFuncionarioAtivo(tfLogin.getText());
-=======
+
                 BatFer.setIdFuncionarioAtivo(tfLogin.getText());
->>>>>>> origin
-                fechaJanela();
+
                 try {
                     menu.start(new Stage());
+                    fechaJanela();  
                     BatFer.printaUsuario();
                 } catch (Exception ex) {
                     Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);

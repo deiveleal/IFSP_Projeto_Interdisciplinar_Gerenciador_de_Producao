@@ -13,10 +13,9 @@
       <Button fx:id="btExcluirUser" layoutX="371.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Excluir Usuário" />
       <TableView fx:id="tableUser" layoutX="56.0" layoutY="191.0" prefHeight="282.0" prefWidth="688.0">
         <columns>
-          <TableColumn prefWidth="115.0" text="CPF" />
-          <TableColumn prefWidth="254.0" text="Nome" />
-            <TableColumn prefWidth="165.0" text="Cargo" />
-            <TableColumn prefWidth="153.0" text="Senha" />
+          <TableColumn fx:id="tbcolCPF" prefWidth="153.0" text="CPF" />
+          <TableColumn fx:id="tbcolNome" prefWidth="303.0" text="Nome" />
+            <TableColumn fx:id="tbcolCargo" prefWidth="231.0" text="Cargo" />
         </columns>
       </TableView>
       <Label layoutX="212.0" layoutY="45.0" text="Alterar Dados de Usuário">

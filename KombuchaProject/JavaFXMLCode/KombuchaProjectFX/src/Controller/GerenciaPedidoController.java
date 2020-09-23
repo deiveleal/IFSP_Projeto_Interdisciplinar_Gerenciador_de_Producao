@@ -6,6 +6,7 @@
 package Controller;
 
 
+import Model.BatmanDeFerro;
 import Model.GerenciaPedido;
 import Model.Login;
 import Model.MenuPrincipal;
@@ -82,9 +83,10 @@ public class GerenciaPedidoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         btVoltar.setOnMouseClicked((MouseEvent e)->{
             MenuPrincipal menu = new MenuPrincipal();
-            fechaJanela();            
+          
             try {
                 menu.start(new Stage());
+                fechaJanela();  
             } catch (Exception ex) {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -92,20 +94,25 @@ public class GerenciaPedidoController implements Initializable {
         btVoltar.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 MenuPrincipal menu = new MenuPrincipal();
-                fechaJanela();            
+          
                 try {
                     menu.start(new Stage());
+                    fechaJanela();  
                 } catch (Exception ex) {
                     Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
         
+        BatmanDeFerro BatFer = new BatmanDeFerro();
+        
         btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+            BatFer.voltaTelaLogin();
             fechaJanela();
         });
         btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
+                BatFer.voltaTelaLogin();
                 fechaJanela();
             }
 
@@ -114,16 +121,5 @@ public class GerenciaPedidoController implements Initializable {
 
     public void fechaJanela(){
         GerenciaPedido.getStage().close();
-    }
-    
-    private void voltaTelaLogin(){
-        Login login = new Login();
-        try {
-            login.start(new Stage());
-        } catch (Exception ex) {
-            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        fechaJanela();
-    }
-    
+    }    
 }

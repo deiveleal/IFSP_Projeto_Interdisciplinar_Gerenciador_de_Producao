@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.BatmanDeFerro;
 import Model.GerenciaEstoque;
 import Model.Login;
 import Model.MenuPrincipal;
@@ -56,9 +57,10 @@ public class GerenciaEstoqueController implements Initializable {
         
         btVoltar.setOnMouseClicked((MouseEvent e)->{
             MenuPrincipal menu = new MenuPrincipal();
-            fechaJanela();            
+         
             try {
                 menu.start(new Stage());
+                fechaJanela();  
             } catch (Exception ex) {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -66,20 +68,23 @@ public class GerenciaEstoqueController implements Initializable {
         btVoltar.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 MenuPrincipal menu = new MenuPrincipal();
-                fechaJanela();            
+           
                 try {
                     menu.start(new Stage());
+                    fechaJanela();  
                 } catch (Exception ex) {
                     Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
-        
+        BatmanDeFerro BatFer = new BatmanDeFerro();
         btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+            BatFer.voltaTelaLogin();
             fechaJanela();
         });
         btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
+                BatFer.voltaTelaLogin();
                 fechaJanela();
             }
 
@@ -88,16 +93,5 @@ public class GerenciaEstoqueController implements Initializable {
 
     public void fechaJanela(){
         GerenciaEstoque.getStage().close();
-    } 
-    
-    private void voltaTelaLogin(){
-        Login login = new Login();
-        try {
-            login.start(new Stage());
-        } catch (Exception ex) {
-            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        fechaJanela();
-    }
-    
+    }     
 }

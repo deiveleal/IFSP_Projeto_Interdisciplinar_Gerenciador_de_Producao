@@ -14,11 +14,11 @@ public class Pedido {
     private int id_Sabor;
     private int qtd_Producao;
     private int id_Fermentador;
-    private int id_Funcionario;
+    private String id_Funcionario;
     private Date data_Pedido;
 
 
-    public Pedido(int id_Pedido, int id_Sabor, int qtd_Producao, int id_Fermentador, int id_Funcionario) {
+    public Pedido(int id_Pedido, int id_Sabor, int qtd_Producao, int id_Fermentador, String id_Funcionario) {
         this.id_Pedido = id_Pedido;
         this.id_Sabor = id_Sabor;
         this.qtd_Producao = qtd_Producao;
@@ -58,11 +58,11 @@ public class Pedido {
         this.id_Fermentador = id_Fermentador;
     }
 
-    public int getId_Funcionario() {
+    public String getId_Funcionario() {
         return id_Funcionario;
     }
 
-    public void setId_Funcionario(int id_Funcionario) {
+    public void setId_Funcionario(String id_Funcionario) {
         this.id_Funcionario = id_Funcionario;
     }
    
@@ -72,29 +72,7 @@ public class Pedido {
 
     public void setData_Pedido(Date data_Pedido) {
         this.data_Pedido = data_Pedido;
-    }
-    
-    
-    
-    public void inserir_Data_Lote(){
-    
-    }
-    
-    public void perda_Producao(){
-    
-    }
-    
-    //Se pedido retornar true pedido realizado com sucesso
-    public boolean inserir_Pedido(){
-        return true;
-    }
-    
-    //Se pedido cancelado com sucesso retorna true
-    public boolean cancelar_Pedido(){
-        return true;
-    }
-    
-    
+    }   
 }
 
 
