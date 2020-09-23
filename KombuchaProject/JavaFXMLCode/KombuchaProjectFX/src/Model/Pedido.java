@@ -17,7 +17,8 @@ public class Pedido {
     private String id_Funcionario;
     private Date data_Pedido;
 
-
+    public Pedido(){
+    }
     public Pedido(int id_Pedido, int id_Sabor, int qtd_Producao, int id_Fermentador, String id_Funcionario) {
         this.id_Pedido = id_Pedido;
         this.id_Sabor = id_Sabor;
