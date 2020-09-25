@@ -5,20 +5,20 @@ USE  tribos_kombucha;
 
 CREATE TABLE Funcionario(
 	idFuncionario VARCHAR(11) PRIMARY KEY,
-    nomeFuncionario VARCHAR(70) NOT NULL,
-    cargo VARCHAR(70),
-    senha VARCHAR(30)
+    nomeFuncionario CHAR(100) NOT NULL,
+    cargo VARCHAR(40),
+    senha VARCHAR(20)
 );
 
 CREATE TABLE ItemDeEstoque (
 	idItem INT PRIMARY KEY,
-    tipoItem VARCHAR(70) NOT NULL
+    tipoItem VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Estoque(
 	idItem INT,
 	idItemEstoque INT,
-    nomeItem VARCHAR(70),
+    nomeItem VARCHAR(50),
     quantItem DOUBLE,
     
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem),
@@ -28,7 +28,7 @@ CREATE TABLE Estoque(
 CREATE TABLE Insumo(
     idInsumo INT PRIMARY KEY,
     idItemEstoque INT,
-    nomeInsumo VARCHAR (70),
+    nomeInsumo VARCHAR (50),
 	descInsumo VARCHAR (100),
     
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem)
@@ -47,16 +47,16 @@ CREATE TABLE Fermentador(
 CREATE TABLE EmbalagemKombucha(
     idEmbalagem INT PRIMARY KEY,
     idItemEstoque INT,
-    corEmbalagem VARCHAR(30),
-    nomeEmbalagem VARCHAR(70),
+    corEmbalagem VARCHAR(50),
+    nomeEmbalagem VARCHAR(50),
     
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem)
 );
 
 CREATE TABLE SaborKombucha(
     idKombucha  INT PRIMARY KEY,
-    nomeKombucha VARCHAR(70) NOT NULL,
-    chaBase VARCHAR(70) NOT NULL,
+    nomeKombucha VARCHAR(50) NOT NULL,
+    chaBase VARCHAR(50) NOT NULL,
     idChaBase INT,
     prePreparoQuantCha DOUBLE NOT NULL,
 	prePreparoQuantAgua DOUBLE NOT NULL,
@@ -70,24 +70,28 @@ CREATE TABLE SaborKombucha(
 CREATE TABLE Pedido(
     idPedido INT AUTO_INCREMENT PRIMARY KEY,
     idSabor INT,
+    nomeSabor VARCHAR(100),
     quantidadeProducao INT,
     idFermentador INT NOT NULL,
-    idFuncionario VARCHAR (11),
+    idFermentadorExtra INT,
+    idFuncionario VARCHAR(11),
 	quantidadeCha  DOUBLE,
 	quantidadeAgua  DOUBLE,
     quantidadeEmbalagem  INT,
     dataEntradaPedido DATETIME,
     
-    FOREIGN KEY fk_id_sabor (idSabor) REFERENCES SaborKombucha(idKombucha),
-    FOREIGN KEY fk_id_fermentador (idFermentador) REFERENCES Fermentador(idFermentador),
-    FOREIGN KEY fk_id_funcionario (idFuncionario) REFERENCES Funcionario(idFuncionario)
+    FOREIGN KEY (idSabor) REFERENCES SaborKombucha(idKombucha),
+    FOREIGN KEY (idFermentador) REFERENCES Fermentador(idFermentador),
+	FOREIGN KEY (idFermentadorExtra) REFERENCES Fermentador(idFermentador),
+    FOREIGN KEY (idFuncionario) references Funcionario(idFuncionario)
 );
+
 
 CREATE TABLE KombuchaPronto(
     idKombuchaPronto INT PRIMARY KEY ,
     idItemEstoque INT,
     idSabor INT,
-	nomeProduto VARCHAR(70),
+	nomeProduto VARCHAR(50),
     dataFabricacao DATE,
 
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem),
