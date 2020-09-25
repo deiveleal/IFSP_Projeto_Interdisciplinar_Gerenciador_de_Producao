@@ -35,15 +35,16 @@ VALUES
     estadoProducao,
     volume)
 VALUES
-	(1, 3, true, 4.0),
-    (2, 3, true, 4.0),
+	(0, 3, true, 4),
+    (1, 3, false, 4.0),
+    (2, 3, false, 4.0),
     (3, 3, false, 4.0),
-    (4, 3, true, 4.0),
+    (4, 3, false, 4.0),
     (5, 3, false, 4.0),
-    (6, 3, true, 4.0),
-    (7, 3, true, 4.0),
+    (6, 3, false, 4.0),
+    (7, 3, false, 4.0),
     (8, 3, false, 4.0);
-    
+
 
  INSERT INTO EmbalagemKombucha(
         idEmbalagem,
@@ -67,7 +68,7 @@ VALUES
     quantidadeAcucar,
     idEmbalagem)
 VALUES
-        (1, 'Anis', 'Chá de Anis', 4, 0.025, 1.0, 0.045, 1);
+        (1, 'Anis', 'Chá de Anis', 4, 0.025, 0.3, 0.045, 1);
         
  INSERT INTO Estoque(
     idItem,
@@ -88,4 +89,16 @@ VALUES
         (3, 4, 'Kombucha Pronto Hibisco', 8),
         (4, 4, 'Kombucha Pronto Gengibre', 8);
         
+        
+INSERT INTO pedido( 
+					idSabor, 
+                    quantidadeProducao, 
+                    idFermentador,
+                    idFermentadorExtra,
+                    idFuncionario,
+                    quantidadeCha,
+                    quantidadeAgua,
+                    quantidadeEmbalagem,
+                    dataEntradaPedido)
+	VALUES ( 1, 1, 0, NULL, 1, 1, 1, 1, NOW());
  

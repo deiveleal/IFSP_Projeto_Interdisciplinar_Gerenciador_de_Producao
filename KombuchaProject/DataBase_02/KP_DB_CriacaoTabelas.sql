@@ -4,21 +4,21 @@ USE  tribos_kombucha;
 -- Criação das tabelas
 
 CREATE TABLE Funcionario(
-	idFuncionario BIGINT PRIMARY KEY,
-    nomeFuncionario CHAR(60) NOT NULL,
+	idFuncionario VARCHAR(11) PRIMARY KEY,
+    nomeFuncionario CHAR(100) NOT NULL,
     cargo VARCHAR(40),
     senha VARCHAR(20)
 );
 
 CREATE TABLE ItemDeEstoque (
 	idItem INT PRIMARY KEY,
-    tipoItem VARCHAR(20) NOT NULL
+    tipoItem VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Estoque(
 	idItem INT,
 	idItemEstoque INT,
-    nomeItem VARCHAR(20),
+    nomeItem VARCHAR(50),
     quantItem DOUBLE,
     
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem),
@@ -47,8 +47,8 @@ CREATE TABLE Fermentador(
 CREATE TABLE EmbalagemKombucha(
     idEmbalagem INT PRIMARY KEY,
     idItemEstoque INT,
-    corEmbalagem VARCHAR(20),
-    nomeEmbalagem VARCHAR(20),
+    corEmbalagem VARCHAR(50),
+    nomeEmbalagem VARCHAR(50),
     
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem)
 );
@@ -68,11 +68,13 @@ CREATE TABLE SaborKombucha(
 );
 
 CREATE TABLE Pedido(
-    idPedido INT PRIMARY KEY,
+    idPedido INT AUTO_INCREMENT PRIMARY KEY,
     idSabor INT,
+    nomeSabor VARCHAR(100),
     quantidadeProducao INT,
     idFermentador INT NOT NULL,
-    idFuncionario BIGINT,
+    idFermentadorExtra INT,
+    idFuncionario VARCHAR(11),
 	quantidadeCha  DOUBLE,
 	quantidadeAgua  DOUBLE,
     quantidadeEmbalagem  INT,
@@ -80,14 +82,16 @@ CREATE TABLE Pedido(
     
     FOREIGN KEY (idSabor) REFERENCES SaborKombucha(idKombucha),
     FOREIGN KEY (idFermentador) REFERENCES Fermentador(idFermentador),
+	FOREIGN KEY (idFermentadorExtra) REFERENCES Fermentador(idFermentador),
     FOREIGN KEY (idFuncionario) references Funcionario(idFuncionario)
 );
+
 
 CREATE TABLE KombuchaPronto(
     idKombuchaPronto INT PRIMARY KEY ,
     idItemEstoque INT,
     idSabor INT,
-	nomeProduto VARCHAR(20),
+	nomeProduto VARCHAR(50),
     dataFabricacao DATE,
 
     FOREIGN KEY (idItemEstoque) references ItemDeEstoque(idItem),
