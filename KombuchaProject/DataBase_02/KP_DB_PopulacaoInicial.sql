@@ -6,8 +6,9 @@ INSERT INTO Funcionario(
     cargo, 
     senha)
 VALUES
-    ('12345678912', 'Daniel', 'Teste', '1111'),
-    ('06146045675','Deive','Desenvolvedor','123456');
+    ('12345678921', 'Daniel', 'Teste', '1111'),
+    ('06146045675', 'Deive', 'Developer', '123456');
+    
     
 INSERT INTO ItemDeEstoque(
     idItem,
@@ -88,5 +89,10 @@ VALUES
         (2, 4, 'Kombucha Pronto Abacaxi', 8),
         (3, 4, 'Kombucha Pronto Hibisco', 8),
         (4, 4, 'Kombucha Pronto Gengibre', 8);
+        
+insert into Pedido(idSabor, quantidadeProducao, 
+					idFermentador, idFuncionario,quantidadeAgua,
+					quantidadeEmbalagem, dataEntradaPedido)
+Values (1, 7, 1, 12345678921,1.0, 1, now());
         
  

@@ -33,29 +33,14 @@ import javafx.stage.Stage;
  */
 public class CadastrarFuncionarioController implements Initializable {    
 
-    @FXML
-    private Button btVoltar;
-
-    @FXML
-    private Button btCadastrar;
-
-    @FXML
-    private Button btFinalizarSessao;
-
-    @FXML
-    private TextField tfCPF;
-
-    @FXML
-    private TextField tfNome;
-
-    @FXML
-    private TextField tfCargo;
-
-    @FXML
-    private PasswordField pfSenha;
-
-    @FXML
-    private PasswordField pfConfirm;
+    @FXML private Button btVoltar;
+    @FXML private Button btCadastrar;
+    @FXML private Button btFinalizarSessao;
+    @FXML private TextField tfCPF;
+    @FXML private TextField tfNome;
+    @FXML private TextField tfCargo;
+    @FXML private PasswordField pfSenha;
+    @FXML private PasswordField pfConfirm;
 
     /**
      * Initializes the controller class.

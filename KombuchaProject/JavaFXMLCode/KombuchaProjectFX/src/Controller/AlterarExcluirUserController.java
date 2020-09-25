@@ -50,8 +50,9 @@ public class AlterarExcluirUserController implements Initializable {
     @FXML private Button btAlteraDados;
     @FXML private Button btFinalizarSessao;
     
+    private ObservableList<Funcionario> funcionarioList = FXCollections.observableArrayList();
     private Funcionario funcSelecionado;
-    
+    BatmanDeFerro BatFer = new BatmanDeFerro();
     /**
      * Initializes the controller class.
      */
@@ -72,7 +73,7 @@ public class AlterarExcluirUserController implements Initializable {
                 AlteraDadosFuncionario altDadFunc = new AlteraDadosFuncionario(funcSelecionado);
                 try {
                     altDadFunc.start(new Stage());
-                   // fechaJanela();
+                    fechaJanela();
                 } catch (Exception ex) {
                     Logger.getLogger(AlterarExcluirUserController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -89,7 +90,7 @@ public class AlterarExcluirUserController implements Initializable {
                     AlteraDadosFuncionario altDadFunc = new AlteraDadosFuncionario(funcSelecionado);
                     try {
                         altDadFunc.start(new Stage());
-                        //fechaJanela();
+                        fechaJanela();
                     } catch (Exception ex) {
                         Logger.getLogger(AlterarExcluirUserController.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -140,8 +141,6 @@ public class AlterarExcluirUserController implements Initializable {
             }
         });
         
-        BatmanDeFerro BatFer = new BatmanDeFerro();
-        
         btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
             BatFer.voltaTelaLogin();
             fechaJanela();  
@@ -152,6 +151,12 @@ public class AlterarExcluirUserController implements Initializable {
                 fechaJanela();  
             }
         });
+        
+        tfBusca.setOnKeyReleased((KeyEvent e)->{
+            tableUser.setItems(buscaFuncionario());
+        });
+        
+        
     }
     public void fechaJanela(){
         AlterarExcluirUser.getStage().close();
@@ -167,8 +172,10 @@ public class AlterarExcluirUserController implements Initializable {
     
     public ObservableList<Funcionario> atualizaTabela(){
         FuncionarioDAO dao = new FuncionarioDAO();
-        return FXCollections.observableArrayList(dao.getList());
-    }
+        funcionarioList = FXCollections.observableArrayList(dao.getList());
+        return funcionarioList;
+    }    
+    
     
     public void deleta(){
         if (funcSelecionado != null){
@@ -185,4 +192,14 @@ public class AlterarExcluirUserController implements Initializable {
             a.show();            
         }
     }
+       
+    private ObservableList<Funcionario> buscaFuncionario(){
+        ObservableList<Funcionario> pesquisaFuncionario = FXCollections.observableArrayList();
+        for(int x = 0; x < funcionarioList.size(); x++){
+            if(funcionarioList.get(x).getNomeFuncionario().toLowerCase().contains(tfBusca.getText().toLowerCase())){
+                pesquisaFuncionario.add(funcionarioList.get(x));
+            }}
+        return pesquisaFuncionario;
+    }
+    
 }

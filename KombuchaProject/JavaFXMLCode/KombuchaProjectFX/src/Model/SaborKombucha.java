@@ -7,83 +7,92 @@ package Model;
  * 
  */
 public class SaborKombucha {
-    private int id_kombucha;
-    private String nome_kombucha;
-    private String cha_base;
-    private double qtd_cha;
-    private double qtd_agua;
-    private int id_embalagem;
-    private int id_cha_base;
+    private int idKombucha;
+    private String nomeKombucha;
+    private String chaBase;
+    private int idChaBase;
+    private double prePreparoQuantCha;
+    private double prePreparoQuantAgua;
+    private double quantidadeAcucar;
+    private int idEmbalagem;
 
+    public SaborKombucha(){
+    
+    }
+    
     public SaborKombucha(int id_kombucha, String nome_kombucha, String cha_base, double qtd_cha, double qtd_agua, int id_embalagem, int id_cha_base) {
-        this.id_kombucha = id_kombucha;
-        this.nome_kombucha = nome_kombucha;
-        this.cha_base = cha_base;
-        this.qtd_cha = qtd_cha;
-        this.qtd_agua = qtd_agua;
-        this.id_embalagem = id_embalagem;
-        this.id_cha_base = id_cha_base;
+        this.idKombucha = id_kombucha;
+        this.nomeKombucha = nome_kombucha;
+        this.chaBase = cha_base;
+        this.prePreparoQuantCha = qtd_cha;
+        this.prePreparoQuantAgua = qtd_agua;
+        this.idEmbalagem = id_embalagem;
+        this.idChaBase = id_cha_base;
     }
 
-    public int getId_kombucha() {
-        return id_kombucha;
+    public int getIdKombucha() {
+        return idKombucha;
     }
 
-    public void setId_kombucha(int id_kombucha) {
-        this.id_kombucha = id_kombucha;
+    public void setIdKombucha(int idKombucha) {
+        this.idKombucha = idKombucha;
     }
 
-    public String getNome_kombucha() {
-        return nome_kombucha;
+    public String getNomeKombucha() {
+        return nomeKombucha;
     }
 
-    public void setNome_kombucha(String nome_kombucha) {
-        this.nome_kombucha = nome_kombucha;
+    public void setNomeKombucha(String nomeKombucha) {
+        this.nomeKombucha = nomeKombucha;
     }
 
-    public String getCha_base() {
-        return cha_base;
+    public String getChaBase() {
+        return chaBase;
     }
 
-    public void setCha_base(String cha_base) {
-        this.cha_base = cha_base;
-    }
-
-    public double getQtd_cha() {
-        return qtd_cha;
-    }
-
-    public void setQtd_cha(double qtd_cha) {
-        this.qtd_cha = qtd_cha;
-    }
-
-    public double getQtd_agua() {
-        return qtd_agua;
-    }
-
-    public void setQtd_agua(double qtd_agua) {
-        this.qtd_agua = qtd_agua;
-    }
-
-    public int getId_embalagem() {
-        return id_embalagem;
-    }
-
-    public void setId_embalagem(int id_embalagem) {
-        this.id_embalagem = id_embalagem;
-    }
-
-    public int getId_cha_base() {
-        return id_cha_base;
-    }
-
-    public void setId_cha_base(int id_cha_base) {
-        this.id_cha_base = id_cha_base;
+    public void setChaBase(String chaBase) {
+        this.chaBase = chaBase;
     }
     
-    
+    public int getIdChaBase() {
+        return idChaBase;
+    }
 
-    
+    public void setIdChaBase(int idChaBase) {
+        this.idChaBase = idChaBase;
+    }
+
+    public double getPrePreparoQuantCha() {
+        return prePreparoQuantCha;
+    }
+
+    public void setPrePreparoQuantCha(double prePreparoQuantCha) {
+        this.prePreparoQuantCha = prePreparoQuantCha;
+    }
+
+    public double getPrePreparoQuantAgua() {
+        return prePreparoQuantAgua;
+    }
+
+    public void setPrePreparoQuantAgua(double prePreparoQuantAgua) {
+        this.prePreparoQuantAgua = prePreparoQuantAgua;
+    }
+
+    public double getQuantidadeAcucar() {
+        return quantidadeAcucar;
+    }
+
+    public void setQuantidadeAcucar(double quantidadeAcucar) {
+        this.quantidadeAcucar = quantidadeAcucar;
+    }
+
+    public int getIdEmbalagem() {
+        return idEmbalagem;
+    }
+
+    public void setIdEmbalagem(int idEmbalagem) {
+        this.idEmbalagem = idEmbalagem;
+    }  
 }
 
 

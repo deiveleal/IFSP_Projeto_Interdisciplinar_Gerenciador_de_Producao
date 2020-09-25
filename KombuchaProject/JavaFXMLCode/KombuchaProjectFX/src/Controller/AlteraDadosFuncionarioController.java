@@ -61,14 +61,28 @@ public class AlteraDadosFuncionarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        AlterarExcluirUser altdeluser = new AlterarExcluirUser();
         initFuncionario();
         
         btAtualizarDados.setOnMouseClicked((MouseEvent e)->{                                          
-            atualizaDados();
+            try {
+                atualizaDados();
+                altdeluser.start(new Stage());
+                fechaJanela(); 
+            } catch (Exception ex) {
+                Logger.getLogger(AlteraDadosFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            fechaJanela();  
         });
         btAtualizarDados.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){                                                 
-                atualizaDados();
+                try {
+                    atualizaDados();
+                    altdeluser.start(new Stage());
+                    fechaJanela(); 
+                } catch (Exception ex) {
+                    Logger.getLogger(AlteraDadosFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
+                } 
             }
         });       
         
@@ -121,25 +135,32 @@ public class AlteraDadosFuncionarioController implements Initializable {
                cargo = tfCargo.getText(),
                senha = pfSenha.getText(),
                confirm = pfConfirm.getText();
-        if(senha.equals(confirm) && senha != null && confirm != null){
-            FuncionarioDAO dao = new FuncionarioDAO();
-            Funcionario func = new Funcionario(idFuncionario, nomeFuncionario, cargo, senha);
-            if(dao.update(func)){
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setHeaderText("Dados do usuário atualizados!");
-                alert.show();
-                fechaJanela();            
-            }else{
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText("Erro ao atualizar dados do usuário!");                
-                alert.show();
-                fechaJanela();
+        if(idFuncionario != null && nomeFuncionario != null && cargo != null 
+                && senha != null && confirm != null){
+            if(senha.equals(confirm)){
+                FuncionarioDAO dao = new FuncionarioDAO();
+                Funcionario func = new Funcionario(idFuncionario, nomeFuncionario, cargo, senha);
+                if(dao.update(func)){
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setHeaderText("Dados do usuário atualizados!");
+                    alert.show();
+                    fechaJanela();            
+                }else{
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText("Erro ao atualizar dados do usuário!");                
+                    alert.show();
+                    fechaJanela();
+                }
             }
-        }
-        else{
+            else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Senhas não coincidem!");
+                alert.show();
+            }
+        }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Senhas não coincidem!");
-            alert.show();
-        }       
+            alert.setHeaderText("Todos os campos devem ser preenchidos!");
+            alert.show();                
+        }
     }
 }

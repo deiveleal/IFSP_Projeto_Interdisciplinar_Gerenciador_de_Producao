@@ -1,4 +1,4 @@
--- CREATE SCHEMA tribos_kombucha;
+CREATE SCHEMA tribos_kombucha;
 USE  tribos_kombucha;
 
 -- Criação das tabelas
@@ -68,7 +68,7 @@ CREATE TABLE SaborKombucha(
 );
 
 CREATE TABLE Pedido(
-    idPedido INT PRIMARY KEY,
+    idPedido INT AUTO_INCREMENT PRIMARY KEY,
     idSabor INT,
     quantidadeProducao INT,
     idFermentador INT NOT NULL,
@@ -78,9 +78,9 @@ CREATE TABLE Pedido(
     quantidadeEmbalagem  INT,
     dataEntradaPedido DATETIME,
     
-    FOREIGN KEY (idSabor) REFERENCES SaborKombucha(idKombucha),
-    FOREIGN KEY (idFermentador) REFERENCES Fermentador(idFermentador),
-    FOREIGN KEY (idFuncionario) references Funcionario(idFuncionario)
+    FOREIGN KEY fk_id_sabor (idSabor) REFERENCES SaborKombucha(idKombucha),
+    FOREIGN KEY fk_id_fermentador (idFermentador) REFERENCES Fermentador(idFermentador),
+    FOREIGN KEY fk_id_funcionario (idFuncionario) REFERENCES Funcionario(idFuncionario)
 );
 
 CREATE TABLE KombuchaPronto(

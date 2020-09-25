@@ -5,7 +5,6 @@
  */
 package Model;
 
-import Controller.AlteraDadosFuncionarioController;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -17,12 +16,8 @@ import javafx.stage.Stage;
  * @author Carolina
  * @author Deive
  */
-public class AlteraDadosFuncionario extends Application {
-    
-    public AlteraDadosFuncionario(Funcionario func){
-        AlteraDadosFuncionarioController.setFuncionario(func);
-    }
-    
+
+public class CadastrarSabor extends Application{
     private static Stage stage;//Uma janela1
     
     public static void main(String[] args){
@@ -31,9 +26,9 @@ public class AlteraDadosFuncionario extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/View/AlteraDadosFuncionario.fxml"));//Carrega FXML
+        Parent root = FXMLLoader.load(getClass().getResource("/View/CadastrarSabor.fxml"));//Carrega FXML
         Scene scene = new Scene(root);//Coloca o FXML em uma cena
-        stage.setTitle("Alteração de Dados");
+        stage.setTitle("Cadastrar Sabor");
         stage.setScene(scene);//Coloca a cena em uma janela
         stage.show();//Abre a janela2
         setStage(stage);
@@ -44,7 +39,8 @@ public class AlteraDadosFuncionario extends Application {
     }
 
     public static void setStage(Stage stage) {
-        AlteraDadosFuncionario.stage = stage;
+        CadastrarSabor.stage = stage;
     }
+
     
 }

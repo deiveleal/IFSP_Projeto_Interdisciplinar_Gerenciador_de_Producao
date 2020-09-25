@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import DAO.PedidoDAO;
 import Model.BatmanDeFerro;
 import Model.GerenciaEstoque;
 import Model.GerenciaUsuario;
@@ -28,19 +29,13 @@ import javafx.stage.Stage;
  * @author deive
  */
 public class MenuPrincipalController implements Initializable {
+    BatmanDeFerro BatFer = new BatmanDeFerro();
     
 
-    @FXML
-    private Button btGerencUsuario;
-
-    @FXML
-    private Button btGerencPedido;
-
-    @FXML
-    private Button btGerencEstoq;
-
-    @FXML
-    private Button btFinalizarSessao;
+    @FXML private Button btGerencUsuario;
+    @FXML private Button btGerencPedido;
+    @FXML private Button btGerencEstoq;
+    @FXML private Button btFinalizarSessao;
 
 
     /**
@@ -60,6 +55,18 @@ public class MenuPrincipalController implements Initializable {
                 Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        btGerencUsuario.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                GerenciaUsuario ger = new GerenciaUsuario();
+                try {
+                    ger.start(new Stage());
+                    fechaJanela();  
+                } catch (Exception ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+                
         btGerencPedido.setOnMouseClicked((MouseEvent e)->{
             GerenciaPedido ped = new GerenciaPedido();
            
@@ -70,6 +77,18 @@ public class MenuPrincipalController implements Initializable {
                 Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        btGerencPedido.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                GerenciaPedido ped = new GerenciaPedido();
+                try {
+                    ped.start(new Stage());
+                    fechaJanela();  
+                } catch (Exception ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+                
         btGerencEstoq.setOnMouseClicked((MouseEvent e)->{
             GerenciaEstoque estq = new GerenciaEstoque();
             
@@ -80,8 +99,18 @@ public class MenuPrincipalController implements Initializable {
                 Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        
-        BatmanDeFerro BatFer = new BatmanDeFerro();
+        btGerencEstoq.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                GerenciaEstoque estq = new GerenciaEstoque();
+            
+                try {
+                    estq.start(new Stage());
+                    fechaJanela();  
+                } catch (Exception ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
         
         btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
             BatFer.voltaTelaLogin();
@@ -98,5 +127,6 @@ public class MenuPrincipalController implements Initializable {
     }
     private void fechaJanela() {
         MenuPrincipal.getStage().close();
-    } 
+    }
+    
 }

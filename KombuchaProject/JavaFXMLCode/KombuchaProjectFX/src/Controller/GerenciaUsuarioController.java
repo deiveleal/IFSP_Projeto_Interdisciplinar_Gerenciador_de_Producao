@@ -9,7 +9,6 @@ import Model.AlterarExcluirUser;
 import Model.BatmanDeFerro;
 import Model.CadastrarFuncionario;
 import Model.GerenciaUsuario;
-import Model.Login;
 import Model.MenuPrincipal;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,29 +28,22 @@ import javafx.stage.Stage;
  * @author deive
  */
 public class GerenciaUsuarioController implements Initializable {   
+
+    @FXML private Button btVoltar;
+    @FXML private Button btFinalizarSessao;
+    @FXML private Button btCadastFunc;
+    @FXML private Button btAltExcDadFunc;
     
-
-    @FXML
-    private Button btVoltar;
-
-    @FXML
-    private Button btFinalizarSessao;
-
-    @FXML
-    private Button btCadastFunc;
-
-    @FXML
-    private Button btAltExcDadFunc;
-
+    BatmanDeFerro BatFer = new BatmanDeFerro();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        CadastrarFuncionario cadfunc = new CadastrarFuncionario();
+        AlterarExcluirUser altdeluser = new AlterarExcluirUser();
         // TODO
-        btCadastFunc.setOnMouseClicked((MouseEvent e)->{
-            CadastrarFuncionario cadfunc = new CadastrarFuncionario();
-           
+        btCadastFunc.setOnMouseClicked((MouseEvent e)->{           
             try {
                 cadfunc.start(new Stage());
                 fechaJanela();  
@@ -59,9 +51,18 @@ public class GerenciaUsuarioController implements Initializable {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        btAltExcDadFunc.setOnMouseClicked((MouseEvent e)->{
-            AlterarExcluirUser altdeluser = new AlterarExcluirUser();
-           
+        btCadastFunc.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                try {
+                    cadfunc.start(new Stage());
+                    fechaJanela();  
+                } catch (Exception ex) {
+                    Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        btAltExcDadFunc.setOnMouseClicked((MouseEvent e)->{           
             try {
                 altdeluser.start(new Stage());
                 fechaJanela();  
@@ -69,6 +70,18 @@ public class GerenciaUsuarioController implements Initializable {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        btAltExcDadFunc.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                try {
+                    altdeluser.start(new Stage());
+                    fechaJanela();  
+                } catch (Exception ex) {
+                    Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        
         
         btVoltar.setOnMouseClicked((MouseEvent e)->{
             MenuPrincipal menu = new MenuPrincipal();
@@ -92,7 +105,6 @@ public class GerenciaUsuarioController implements Initializable {
                 }
             }
         });
-        BatmanDeFerro BatFer = new BatmanDeFerro();
         
         btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
             BatFer.voltaTelaLogin();

@@ -92,7 +92,7 @@ public class FuncionarioDAO extends Funcionario{
     //Método que retorna uma lista de usuários do banco
     public List<Funcionario> getList(){
         List<Funcionario> func = new ArrayList<>();
-        String sql = "SELECT * FROM Funcionario";
+        String sql = "SELECT * FROM Funcionario ORDER BY nomeFuncionario";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet ResSet = stmt.executeQuery();
@@ -111,8 +111,7 @@ public class FuncionarioDAO extends Funcionario{
             ex.printStackTrace();
             System.out.println("Erro! Lista não retornada");
             return null;
-        }
-        
+        }        
         return func;
     }
     

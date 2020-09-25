@@ -23,11 +23,6 @@ public class BatmanDeFerro {
     
     
     
-    
-    
-    
-    
-
     public String getIdFuncionarioAtivo() {
         return idFuncionarioAtivo;
     }
