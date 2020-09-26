@@ -13,19 +13,31 @@ import java.util.Date;
 public class Pedido {
     private int idPedido;
     private int idSabor;
+    private String nomeSabor;
     private int qtdProducao;
     private String idFuncionario;
     private Date dataPedido;
 
     public Pedido(){
     }
-    public Pedido(int idPedido, int idSabor, int qtdProducao, int idFermentador, String idFuncionario) {
+    
+    public Pedido(Pedido pedido){
+    
+    }
+    
+    public Pedido(int idPedido, String idFuncionario, String nomeSabor, int qtdProducao) {
         this.idPedido = idPedido;
-        this.idSabor = idSabor;
+        this.nomeSabor = nomeSabor;
         this.qtdProducao = qtdProducao;
         this.idFuncionario = idFuncionario;
     }
 
+    public Pedido(String idFuncionario, String nomeSabor, int qtdProducao) {
+        this.nomeSabor = nomeSabor;
+        this.qtdProducao = qtdProducao;
+        this.idFuncionario = idFuncionario;
+    }
+    
     public int getIdPedido() {
         return idPedido;
     }
@@ -42,6 +54,16 @@ public class Pedido {
         this.idSabor = idSabor;
     }
 
+    public String getNomeSabor() {
+        return nomeSabor;
+    }
+
+    public void setNomeSabor(String nomeSabor) {
+        this.nomeSabor = nomeSabor;
+    }
+
+    
+    
     public int getQtdProducao() {
         return qtdProducao;
     }
@@ -69,6 +91,7 @@ public class Pedido {
     public void mostraPedido(){
         System.out.println("Cód. Pedido : "+getIdPedido());
         System.out.println("Cód. Sabor : "+getIdSabor());
+        System.out.println("Sabor : "+getNomeSabor());      
         System.out.println("Quantidade : "+getQtdProducao());
         System.out.println("Data : "+getDataPedido());
     }  

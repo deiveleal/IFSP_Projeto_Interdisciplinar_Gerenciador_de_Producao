@@ -1,5 +1,5 @@
 -- SCRIPTS AGRUPADOS
-CREATE SCHEMA tribos_kombucha;
+-- CREATE SCHEMA tribos_kombucha;
 USE  tribos_kombucha;
 
 -- Criação das tabelas
@@ -107,7 +107,8 @@ INSERT INTO Funcionario(
     cargo, 
     senha)
 VALUES
-    (1, 'Daniel', 'Teste', '1111');
+    ('1', 'Daniel', 'Teste', '1111'),
+    ('06146045675', 'Deive', 'Dev', '123');
     
 INSERT INTO ItemDeEstoque(
     idItem,
@@ -320,11 +321,16 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS montaPedidoPreparo;
 DELIMITER $$
-	CREATE PROCEDURE montaPedidoPreparo (IN idFuncionario DOUBLE,
-										 IN idKombucha INT, 
+	CREATE PROCEDURE montaPedidoPreparo (IN idFuncionario VARCHAR(11),
+    									 -- IN idKombucha INT,
+                                         in saborKombuchaIN VARCHAR(52), -- nova entrada
 										 IN quantidadeDeProducao DOUBLE)
+	
+                                         
+
 										 
 	BEGIN 
+		
         DECLARE quantidadeDeProducao_aux INT;
         DECLARE idPedido_aux INT;
         DECLARE prePreparoQuantCha_aux DOUBLE;
@@ -335,7 +341,9 @@ DELIMITER $$
         DECLARE volumeProducao DOUBLE;
         DECLARE idSabor_aux INT;
         DECLARE nomeSabor_aux VARCHAR(100);
+        DECLARE idKombucha INT;
         
+		SELECT idKombucha into idKombucha from saborkombucha where nomeKombucha = saborKombuchaIN; -- novo select     
 		SELECT NOW() INTO dataEntradaPedido;
         
         -- FUNÇÃO DE DECREMENTO DE SKOOBY
@@ -354,14 +362,14 @@ DELIMITER $$
         
         SET volumeProducao = prePreparoQuantAgua_aux + prePreparoQuantCha_aux;
      
-		SELECT idPedido INTO idPedido_aux FROM tribos_kombucha.pedido
+		SELECT idPedido INTO idPedido_aux FROM tribos_kombucha.Pedido
 			ORDER BY idPedido DESC LIMIT 1;
 		SET idPedido_aux = idPedido_aux + 1;
      
-        SELECT nomeKombucha INTO nomeSabor_aux FROM tribos_kombucha.saborkombucha
+        SELECT nomeKombucha INTO nomeSabor_aux FROM tribos_kombucha.SaborKombucha
 			WHERE idKombucha = idSabor_aux;
         
-        INSERT INTO pedido( 
+        INSERT INTO Pedido( 
 							idSabor,
                             nomeSabor,
                             quantidadeProducao,
@@ -392,8 +400,8 @@ DELIMITER ;
 
 /*
 -- EXEMPLO TESTE DE INSERÇÃO DE PEDIDO
-SET @quantidadeDeProducao = 2;
-CALL montaPedidoPreparo(1, 1, @quantidadeDeProducao);
+SET @quantidadeDeProducao = 13;
+CALL montaPedidoPreparo('1', 'Anis', @quantidadeDeProducao);
 SELECT @quantidadeDeProducao;
 
 

@@ -15,6 +15,5 @@ public class ConnectionFactoryTeste {
         try (Connection con = new ConnectionFactory().getConnection()) {
             System.out.println("Conexão aberta!");
         }
-    }
-    
+    }    
 }

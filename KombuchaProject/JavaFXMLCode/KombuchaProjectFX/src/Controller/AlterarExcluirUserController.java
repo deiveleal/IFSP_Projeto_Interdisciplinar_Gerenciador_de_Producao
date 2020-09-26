@@ -39,6 +39,9 @@ import javafx.stage.Stage;
  * @author deive
  */
 public class AlterarExcluirUserController implements Initializable {
+    private ObservableList<Funcionario> funcionarioList = FXCollections.observableArrayList();
+    private Funcionario funcSelecionado;
+    BatmanDeFerro BatFer = new BatmanDeFerro();
     
     @FXML private Button btExcluirUser;
     @FXML private TableView<Funcionario> tableUser;
@@ -50,15 +53,8 @@ public class AlterarExcluirUserController implements Initializable {
     @FXML private Button btAlteraDados;
     @FXML private Button btFinalizarSessao;
     
-    private ObservableList<Funcionario> funcionarioList = FXCollections.observableArrayList();
-    private Funcionario funcSelecionado;
-    BatmanDeFerro BatFer = new BatmanDeFerro();
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         initTable();
         
         tableUser.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
@@ -105,7 +101,11 @@ public class AlterarExcluirUserController implements Initializable {
         
         
         btExcluirUser.setOnMouseClicked((MouseEvent e) ->{
-            deleta();
+            try {
+                deleta();
+            } catch (Exception ex) {
+                Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });        
         btExcluirUser.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){          
@@ -175,7 +175,6 @@ public class AlterarExcluirUserController implements Initializable {
         funcionarioList = FXCollections.observableArrayList(dao.getList());
         return funcionarioList;
     }    
-    
     
     public void deleta(){
         if (funcSelecionado != null){

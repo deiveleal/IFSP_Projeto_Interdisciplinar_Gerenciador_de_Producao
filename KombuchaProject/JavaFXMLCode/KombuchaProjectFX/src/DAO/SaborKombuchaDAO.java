@@ -10,7 +10,10 @@ import Model.BatmanDeFerro;
 import Model.SaborKombucha;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -102,6 +105,29 @@ public class SaborKombuchaDAO extends SaborKombucha{
             Logger.getLogger(SaborKombuchaDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } 
+    }
+    
+    public List<SaborKombucha> saboresList(){
+        List<SaborKombucha> saborKomb = new ArrayList<>();
+        String sqlSabores = "SELECT idKombucha, nomeKombucha from SaborKombucha;";
+        try{
+                        PreparedStatement stmt = con.prepareStatement(sqlSabores);
+            ResultSet ResSet = stmt.executeQuery();
+            while(ResSet.next()){
+                SaborKombucha saborKombucha = new SaborKombucha();                
+                saborKombucha.setIdKombucha(ResSet.getInt("idKombucha"));
+                saborKombucha.setNomeKombucha(ResSet.getString("nomeKombucha"));                
+                saborKomb.add(saborKombucha);         
+            }
+            stmt.close();
+            ResSet.close();
+            con.close();      
+        } catch (SQLException ex) {
+            System.out.println("Erro! Lista não retornada");
+            return null;
+        } 
+        return saborKomb;
+                
     }
     
     

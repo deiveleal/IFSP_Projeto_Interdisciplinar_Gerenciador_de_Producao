@@ -19,41 +19,37 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * @author carolina
  * @author deive
  */
 public class PedidoDAO extends Pedido{
-
+    private Connection con;
     private Date dataPedido;
-
-    @Override
-    public Date getDataPedido() {
-        return dataPedido;
-    }
-
-    @Override
-    public void setDataPedido(Date dataPedido) {
-        this.dataPedido = dataPedido;
-    }
     
     BatmanDeFerro BatFer = new BatmanDeFerro();
     Pedido pedido = new Pedido();
-
-    private Connection con;
-   
+    
     public PedidoDAO(){
         this.con = new ConnectionFactory().getConnection();
     }
     
+
+    public Date getDataPedido() {
+        return dataPedido;
+    }
+    public void setDataPedido(Date dataPedido) {
+        this.dataPedido = dataPedido;
+    }
+      
     //Método que insere um novo pedido;
-    public boolean insertPedido(Pedido pedido){
-        pedido.setIdFuncionario(BatFer.getIdFuncionarioAtivo());
-        String sql = "INSERT INTO Pedido(idSabor, qtdProducao, idFuncionario) VALUES(?,?,?)";
-        try { 
-            PreparedStatement stmt = con.prepareStatement(sql);            
-            stmt.setInt(1, pedido.getIdSabor());
-            stmt.setInt(2, pedido.getQtdProducao());
-            stmt.setString(3, pedido.getIdFuncionario());
+    public boolean inserePedido(Pedido ped){
+        ped.setIdFuncionario(BatFer.getIdFuncionarioAtivo());
+        String sql = "CALL montaPedidoPreparo(?, ?, ?);";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, ped.getIdFuncionario());            
+            stmt.setString(2, ped.getNomeSabor());
+            stmt.setInt(3, ped.getQtdProducao());
             
             stmt.execute();
             stmt.close();
@@ -67,15 +63,17 @@ public class PedidoDAO extends Pedido{
     }
     
     //Método que atualiza os dados de um usuário
-    public boolean updatePedido(Pedido pedido){
-        pedido.setIdFuncionario(BatFer.getIdFuncionarioAtivo());
-        String sql = "UPDATE Pedido SET  idSabor = ?, qtdProducao = ?, idFuncionario = ?  WHERE idPedido = ?;";
+    public boolean updatePedido(Pedido ped){
+        ped.setIdFuncionario(BatFer.getIdFuncionarioAtivo());
+        String sql = "UPDATE Pedido SET  idFuncionario = ?, idSabor = ?, qtdProducao = ?  WHERE idPedido = ?;";
         try { 
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, pedido.getIdSabor());
-            stmt.setInt(2, pedido.getQtdProducao());
-            stmt.setString(3, pedido.getIdFuncionario());
-            stmt.setInt(4, pedido.getIdPedido());
+            
+            stmt.setString(1, ped.getIdFuncionario());
+            stmt.setString(2, ped.getNomeSabor());
+            stmt.setInt(3, ped.getQtdProducao());
+
+            stmt.setInt(4, ped.getIdPedido());
             
             stmt.execute();
             stmt.close();
@@ -89,12 +87,12 @@ public class PedidoDAO extends Pedido{
     }
     
     //Método que deleta um usuário
-    public boolean deletaPedido(Pedido pedido){
+    public boolean deletaPedido(Pedido ped){
         String sql = "DELETE FROM Pedido WHERE idPedido = ?;";
         try { 
             PreparedStatement stmt = con.prepareStatement(sql);
            
-            stmt.setInt(1, pedido.getIdPedido());
+            stmt.setInt(1, ped.getIdPedido());
             
             stmt.execute();
             stmt.close();
@@ -110,7 +108,7 @@ public class PedidoDAO extends Pedido{
     //Método que retorna uma lista de pedidos
     public List<Pedido> getList(){
         List<Pedido> ped = new ArrayList<>();
-        String sql = "SELECT * FROM Pedido";
+        String sql = "SELECT * FROM Pedido ORDER BY dataEntradaPedido";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet ResSet = stmt.executeQuery();
@@ -118,7 +116,7 @@ public class PedidoDAO extends Pedido{
                 Pedido pedido = new Pedido();
                 
                 pedido.setIdPedido(ResSet.getInt("idPedido"));
-                pedido.setIdSabor(ResSet.getInt("idSabor"));
+                pedido.setNomeSabor(ResSet.getString("nomeSabor"));
                 pedido.setQtdProducao(ResSet.getInt("quantidadeProducao"));
                 pedido.setDataPedido(ResSet.getDate("dataEntradaPedido"));
                 
@@ -128,6 +126,7 @@ public class PedidoDAO extends Pedido{
             ResSet.close();
             con.close();                
         } catch (SQLException ex) {
+            ex.printStackTrace();
             System.out.println("Erro! Lista não retornada");
             return null;
         }        

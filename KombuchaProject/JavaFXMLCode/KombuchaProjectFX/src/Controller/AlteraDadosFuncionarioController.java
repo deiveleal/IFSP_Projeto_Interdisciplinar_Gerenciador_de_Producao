@@ -41,6 +41,7 @@ public class AlteraDadosFuncionarioController implements Initializable {
     @FXML private Label lblIdFuncionario;
     @FXML private Button btFinalizarSessao;
     
+    BatmanDeFerro BatFer = new BatmanDeFerro();
     private static Funcionario funcionario;
 
     public static Funcionario getFuncionario() {
@@ -51,13 +52,6 @@ public class AlteraDadosFuncionarioController implements Initializable {
         AlteraDadosFuncionarioController.funcionario = funcionario;
     }
     
-        
-    BatmanDeFerro BatFer = new BatmanDeFerro();
-
-
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -67,19 +61,14 @@ public class AlteraDadosFuncionarioController implements Initializable {
         btAtualizarDados.setOnMouseClicked((MouseEvent e)->{                                          
             try {
                 atualizaDados();
-                altdeluser.start(new Stage());
-                fechaJanela(); 
             } catch (Exception ex) {
                 Logger.getLogger(AlteraDadosFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            fechaJanela();  
         });
         btAtualizarDados.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){                                                 
                 try {
                     atualizaDados();
-                    altdeluser.start(new Stage());
-                    fechaJanela(); 
                 } catch (Exception ex) {
                     Logger.getLogger(AlteraDadosFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
                 } 
@@ -129,7 +118,8 @@ public class AlteraDadosFuncionarioController implements Initializable {
         pfConfirm.setText(funcionario.getSenha());    
     }
     
-    public void atualizaDados(){
+    public void atualizaDados() throws Exception{
+        //AlterarExcluirUser altExcUs = new AlterarExcluirUser();
         String idFuncionario = lblIdFuncionario.getText(),
                nomeFuncionario = tfNome.getText(),
                cargo = tfCargo.getText(),
@@ -144,12 +134,14 @@ public class AlteraDadosFuncionarioController implements Initializable {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setHeaderText("Dados do usuário atualizados!");
                     alert.show();
-                    fechaJanela();            
+                    tfCargo.setText("");
+                    pfSenha.setText("");
+                    pfConfirm.setText("");
+                    
                 }else{
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText("Erro ao atualizar dados do usuário!");                
                     alert.show();
-                    fechaJanela();
                 }
             }
             else{
@@ -160,7 +152,7 @@ public class AlteraDadosFuncionarioController implements Initializable {
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Todos os campos devem ser preenchidos!");
-            alert.show();                
+            alert.show(); 
         }
     }
 }

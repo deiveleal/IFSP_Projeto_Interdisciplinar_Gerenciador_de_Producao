@@ -5,7 +5,6 @@
  */
 package Controller;
 
-import DAO.PedidoDAO;
 import Model.BatmanDeFerro;
 import Model.GerenciaEstoque;
 import Model.GerenciaUsuario;
@@ -18,6 +17,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -29,22 +29,18 @@ import javafx.stage.Stage;
  * @author deive
  */
 public class MenuPrincipalController implements Initializable {
-    BatmanDeFerro BatFer = new BatmanDeFerro();
-    
+    BatmanDeFerro BatFer = new BatmanDeFerro();    
 
     @FXML private Button btGerencUsuario;
     @FXML private Button btGerencPedido;
     @FXML private Button btGerencEstoq;
     @FXML private Button btFinalizarSessao;
+    @FXML private Label lblIdFuncionarioAtivo;
 
-
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        initIdFuncionarioAtivo();
+        
         btGerencUsuario.setOnMouseClicked((MouseEvent e)->{
             GerenciaUsuario ger = new GerenciaUsuario();
           
@@ -127,6 +123,10 @@ public class MenuPrincipalController implements Initializable {
     }
     private void fechaJanela() {
         MenuPrincipal.getStage().close();
+    }
+        
+    public void initIdFuncionarioAtivo(){
+        lblIdFuncionarioAtivo.setText(BatFer.getIdFuncionarioAtivo());  
     }
     
 }

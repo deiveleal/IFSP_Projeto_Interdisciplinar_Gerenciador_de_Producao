@@ -19,17 +19,16 @@ import javafx.stage.Stage;
 // Classe com atributos e métodos úteis para utilização geral
 
 public class BatmanDeFerro {
-    private String idFuncionarioAtivo;
-    
-    
-    
+    private static String idFuncionarioAtivo;
+
     public String getIdFuncionarioAtivo() {
         return idFuncionarioAtivo;
     }
 
-    public void setIdFuncionarioAtivo(String idFuncionario) {
-        this.idFuncionarioAtivo = idFuncionario;
+    public void setIdFuncionarioAtivo(String idFuncionarioAtivo) {
+        this.idFuncionarioAtivo = idFuncionarioAtivo;
     }  
+    
     public void printaUsuario(){
         System.out.println("Usuário Logado: "+getIdFuncionarioAtivo());    
     }

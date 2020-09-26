@@ -31,7 +31,8 @@ import javafx.stage.Stage;
  *
  * @author deive
  */
-public class CadastrarFuncionarioController implements Initializable {    
+public class CadastrarFuncionarioController implements Initializable { 
+    BatmanDeFerro BatFer = new BatmanDeFerro();
 
     @FXML private Button btVoltar;
     @FXML private Button btCadastrar;
@@ -82,7 +83,7 @@ public class CadastrarFuncionarioController implements Initializable {
             }
         });
         
-        BatmanDeFerro BatFer = new BatmanDeFerro();
+
         
         btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
             BatFer.voltaTelaLogin();
@@ -103,7 +104,6 @@ public class CadastrarFuncionarioController implements Initializable {
                cargo = tfCargo.getText(), 
                senha = pfSenha.getText(), 
                confirm = pfConfirm.getText();
-
         
         if(senha.equals(confirm)){
             Funcionario func = new Funcionario(idFuncionario, nomeFuncionario, cargo, senha);  
@@ -111,23 +111,18 @@ public class CadastrarFuncionarioController implements Initializable {
             if(funcDao.insert(func)){
                 Alert alert = new Alert(AlertType.CONFIRMATION);
                 alert.setHeaderText("Usuário cadastrado!");
-                alert.show();
-            
+                alert.show();            
             }else{
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("Erro ao cadastrar usuário!");
                 alert.show();
-            }
-            
-            
+            }            
         }else{
             Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText("Senhas não coincidem!");
             alert.show();
-        }
-    
+        }    
     }
-
     public void fechaJanela(){
         CadastrarFuncionario.getStage().close();
     }

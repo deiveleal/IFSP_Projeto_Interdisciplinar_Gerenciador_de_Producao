@@ -7,10 +7,14 @@ package Controller;
 
 
 import DAO.PedidoDAO;
+import DAO.SaborKombuchaDAO;
+import Model.AlterarPedido;
 import Model.BatmanDeFerro;
+import Model.CadastrarSabor;
 import Model.GerenciaPedido;
 import Model.MenuPrincipal;
 import Model.Pedido;
+import Model.SaborKombucha;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
@@ -38,50 +42,131 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- *
+ * @author carolina
  * @author deive
  */
 public class GerenciaPedidoController implements Initializable {
-    @FXML private Button btExcluiPedido;
-    @FXML private Button btInserirPedido;
-    @FXML private Button btCadastrarSabor;
+    private ObservableList<Pedido> pedidoList = FXCollections.observableArrayList();
+    private Pedido pedidoSelecionado;
+    private ObservableList<SaborKombucha> obsSaborKombucha;
+    BatmanDeFerro BatFer = new BatmanDeFerro();
+    SaborKombuchaDAO saborKDAO = new SaborKombuchaDAO();
+ 
+    @FXML private Label lblIdFuncionarioAtivo;
+    @FXML private ComboBox<SaborKombucha> cbSabores;
     @FXML private TextField tfQuantidade;
+    @FXML private TextField tfBusca;
+    @FXML private Button btCadastrarSabor;
+    @FXML private Button btInserirPedido;
+    @FXML private Button btAlterarPedido;
+    @FXML private Button btExcluiPedido;
     @FXML private TableView<Pedido> tablePedidos;
     @FXML private TableColumn<Pedido, Integer> colCodPedido;
-    @FXML private TableColumn<Pedido, Integer> colSabor;
+    @FXML private TableColumn<Pedido, String> colSabor;
     @FXML private TableColumn<Pedido, Integer> colQtd;
     @FXML private TableColumn<Pedido, Date> colData;
-    @FXML private ComboBox<?> cbSabors;
     @FXML private Button btVoltar;
-    @FXML private TextField tfBusca;
-    @FXML private Button btAlterarPedido;
     @FXML private Button btFinalizarSessao;
-    @FXML private Label lblIdFuncionarioAtivo;
-    
-    PedidoDAO dao = new PedidoDAO();
-    BatmanDeFerro BatFer = new BatmanDeFerro();
-    
-    private Pedido ped;
-    
-    public Pedido getPed() {
-        return ped;
-    }
-    public void setPed(Pedido ped) {
-        this.ped = ped;
-    }    
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        lblIdFuncionarioAtivo.setText(BatFer.getIdFuncionarioAtivo());     
-        initTable();
-        listaPedidos();
+        initIdFuncionarioAtivo();
+        initTable();          
         
         tablePedidos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object  newValue){
-                ped = (Pedido) newValue;           
+                pedidoSelecionado = (Pedido) newValue;           
             }       
-        }); 
+        });
+        
+        btAlterarPedido.setOnMouseClicked((MouseEvent e)->{
+            if(pedidoSelecionado != null){
+                AlterarPedido alteraPedido = new AlterarPedido();
+                try {
+                    alteraPedido.start(new Stage());
+                    fechaJanela();
+                } catch (Exception ex) {
+                    Logger.getLogger(GerenciaPedidoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+            else{
+                Alert a = new Alert(Alert.AlertType.WARNING);
+                a.setHeaderText("Nenhum pedido selecionado!");
+                a.show();               
+            }
+        });
+        btAlterarPedido.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                if(pedidoSelecionado != null){
+                      AlterarPedido alteraPedido = new AlterarPedido();
+                      Pedido pedido = new Pedido();
+                      try {
+                          pedido.setIdPedido(pedidoSelecionado.getIdPedido());
+                          alteraPedido.start(new Stage());
+                          fechaJanela();
+                      } catch (Exception ex) {
+                          Logger.getLogger(GerenciaPedidoController.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+
+                  }
+                  else{
+                      Alert a = new Alert(Alert.AlertType.WARNING);
+                      a.setHeaderText("Nenhum pedido selecionado!");
+                      a.show();               
+                  }
+            }
+        });
+        
+        btCadastrarSabor.setOnMouseClicked((MouseEvent e)->{
+            CadastrarSabor cadSabor = new CadastrarSabor();
+            try {
+                cadSabor.start(new Stage());
+                fechaJanela();  
+            } catch (Exception ex) {
+                Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            }        
+        });
+        btCadastrarSabor.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                CadastrarSabor cadSabor = new CadastrarSabor();
+                try {
+                    cadSabor.start(new Stage());
+                    fechaJanela();  
+                } catch (Exception ex) {
+                    Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+                }              
+            }
+        });
+        
+        btInserirPedido.setOnMouseClicked((MouseEvent e)->{
+            inserePedido();
+        });
+        btInserirPedido.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                inserePedido();
+            }
+        });
+        
+        btExcluiPedido.setOnMouseClicked((MouseEvent e)->{
+            try {
+                deleta();
+            } catch (Exception ex) {
+                Logger.getLogger(GerenciaPedidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        btExcluiPedido.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                try {
+                    deleta();
+                } catch (Exception ex) {
+                    Logger.getLogger(GerenciaPedidoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
         
         btVoltar.setOnMouseClicked((MouseEvent e)->{
             MenuPrincipal menu = new MenuPrincipal();
@@ -114,8 +199,12 @@ public class GerenciaPedidoController implements Initializable {
                 BatFer.voltaTelaLogin();
                 fechaJanela();
             }
-
         });
+                
+        tfBusca.setOnKeyReleased((KeyEvent e)->{
+            tablePedidos.setItems(buscaPedido());
+        });
+        
     }
 
     public void fechaJanela(){
@@ -123,8 +212,9 @@ public class GerenciaPedidoController implements Initializable {
     }    
     
     public void initTable(){
+        cbSabores.setItems(saboresCombobox());
         colCodPedido.setCellValueFactory(new PropertyValueFactory("idPedido"));
-        colSabor.setCellValueFactory(new PropertyValueFactory("idSabor"));
+        colSabor.setCellValueFactory(new PropertyValueFactory("nomeSabor"));
         colQtd.setCellValueFactory(new PropertyValueFactory("qtdProducao")); 
         colData.setCellValueFactory(new PropertyValueFactory("dataPedido")); 
         
@@ -132,12 +222,15 @@ public class GerenciaPedidoController implements Initializable {
     }      
     
     public ObservableList<Pedido> atualizaTabela(){
-        return FXCollections.observableArrayList(dao.getList());
+        PedidoDAO dao = new PedidoDAO();
+        pedidoList = FXCollections.observableArrayList(dao.getList());
+        return pedidoList;
     }
     
     public void deleta(){
-        if (ped != null){
-            dao.deletaPedido(ped);
+        if (pedidoSelecionado != null){
+            PedidoDAO dao = new PedidoDAO();
+            dao.deletaPedido(pedidoSelecionado);
             Alert a = new Alert(Alert.AlertType.CONFIRMATION);
             a.setHeaderText("Pedido deletado com sucesso!");            
             a.show(); 
@@ -156,6 +249,44 @@ public class GerenciaPedidoController implements Initializable {
         for (int x = 0; x < pedido.size(); x++){
             pedido.get(x).mostraPedido();
         }
+    }
+    
+    public void initIdFuncionarioAtivo(){
+        lblIdFuncionarioAtivo.setText(BatFer.getIdFuncionarioAtivo());  
+    }
+    
+    public ObservableList<SaborKombucha> saboresCombobox(){        
+        obsSaborKombucha = FXCollections.observableArrayList(saborKDAO.saboresList());
+        return obsSaborKombucha;        
+    }
+    
+    public void inserePedido(){
+        String idFuncionarioAtivo = BatFer.getIdFuncionarioAtivo(),
+        nomeSabor = cbSabores.getValue().toString();
+        int quantidadeProducao = Integer.parseInt(tfQuantidade.getText()); 
+        
+        Pedido novoPedido = new Pedido(idFuncionarioAtivo, nomeSabor, quantidadeProducao);                                         
+        PedidoDAO dao = new PedidoDAO();
+        if(dao.inserePedido(novoPedido)){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Pedido inserido com sucesso!");
+            tablePedidos.setItems(atualizaTabela());
+            alert.show();            
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Erro ao inserir novo pedido!");
+            alert.show();
+        }         
+    }
+    
+    private ObservableList<Pedido> buscaPedido(){
+        ObservableList<Pedido> pesquisaPedido = FXCollections.observableArrayList();
+        for(int x = 0; x < pedidoList.size(); x++){
+            if(pedidoList.get(x).getNomeSabor().toLowerCase().contains(tfBusca.getText().toLowerCase())){
+                pesquisaPedido.add(pedidoList.get(x));
+            }
+        }
+        return pesquisaPedido;
     }
     
 }

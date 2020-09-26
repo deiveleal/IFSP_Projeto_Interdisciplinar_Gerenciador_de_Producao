@@ -6,7 +6,7 @@ INSERT INTO Funcionario(
     cargo, 
     senha)
 VALUES
-    (1, 'Daniel', 'Teste', '1111');
+    ('12345678921', 'Daniel', 'Teste', '1111');
     
 INSERT INTO ItemDeEstoque(
     idItem,
