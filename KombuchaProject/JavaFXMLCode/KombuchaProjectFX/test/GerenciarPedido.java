@@ -12,15 +12,23 @@ import java.util.List;
  */
 public class GerenciarPedido {
     public static void main(String[] args) {
+        Pedido pedido = new Pedido();
         PedidoDAO dao = new PedidoDAO();
-        List<Pedido> pedido = dao.getList();
+        
+        pedido.setIdFuncionario("06146045675");            
+        pedido.setIdSabor(1);
+        pedido.setQtdProducao(7);
+        
+        dao.inserePedido(pedido);
+        
+        List<Pedido> lastpedido = dao.getList();        
        
-        if(pedido != null){
-            for (int dado = 0; dado < pedido.size(); dado++){
+        if(lastpedido != null){
+            for (int dado = 0; dado < lastpedido.size(); dado++){
                 
                 System.out.println("--------------------------------------------");
                 
-                pedido.get(dado).mostraPedido();
+                lastpedido.get(dado).mostraPedido();
                 
                 System.out.println("--------------------------------------------");
             }

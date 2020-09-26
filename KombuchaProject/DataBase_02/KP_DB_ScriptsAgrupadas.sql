@@ -1,5 +1,9 @@
 -- SCRIPTS AGRUPADOS
+<<<<<<< HEAD
 CREATE SCHEMA tribos_kombucha;
+=======
+-- CREATE SCHEMA tribos_kombucha;
+>>>>>>> e481a0874cad50f25d4cd25acc6d3b2f713e17c1
 USE  tribos_kombucha;
 
 -- Criação das tabelas
@@ -107,7 +111,12 @@ INSERT INTO Funcionario(
     cargo, 
     senha)
 VALUES
+<<<<<<< HEAD
     (1, 'Daniel', 'Teste', '1111');
+=======
+    ('1', 'Daniel', 'Teste', '1111'),
+    ('06146045675', 'Deive', 'Dev', '123');
+>>>>>>> e481a0874cad50f25d4cd25acc6d3b2f713e17c1
     
 INSERT INTO ItemDeEstoque(
     idItem,
@@ -191,8 +200,12 @@ VALUES
         (4, 4, 'Kombucha Pronto Gengibre', 8);
         
         
+<<<<<<< HEAD
 INSERT INTO pedido( 
 					idSabor, 
+=======
+INSERT INTO Pedido( idSabor, 
+>>>>>>> e481a0874cad50f25d4cd25acc6d3b2f713e17c1
                     quantidadeProducao, 
                     idFermentador,
                     idFermentadorExtra,
@@ -321,11 +334,24 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS montaPedidoPreparo;
 DELIMITER $$
+<<<<<<< HEAD
 	CREATE PROCEDURE montaPedidoPreparo (IN idFuncionario DOUBLE,
 										 IN idKombucha INT, 
 										 IN quantidadeDeProducao DOUBLE)
 										 
 	BEGIN 
+=======
+	CREATE PROCEDURE montaPedidoPreparo (IN idFuncionario VARCHAR(11),
+    									 -- IN idKombucha INT,
+                                         in saborKombuchaIN VARCHAR(52), -- nova entrada
+										 IN quantidadeDeProducao DOUBLE)
+	
+                                         
+
+										 
+	BEGIN 
+		
+>>>>>>> e481a0874cad50f25d4cd25acc6d3b2f713e17c1
         DECLARE quantidadeDeProducao_aux INT;
         DECLARE idPedido_aux INT;
         DECLARE prePreparoQuantCha_aux DOUBLE;
@@ -336,7 +362,13 @@ DELIMITER $$
         DECLARE volumeProducao DOUBLE;
         DECLARE idSabor_aux INT;
         DECLARE nomeSabor_aux VARCHAR(100);
+<<<<<<< HEAD
         
+=======
+        DECLARE idKombucha INT;
+        
+		SELECT idKombucha into idKombucha from saborkombucha where nomeKombucha = saborKombuchaIN; -- novo select     
+>>>>>>> e481a0874cad50f25d4cd25acc6d3b2f713e17c1
 		SELECT NOW() INTO dataEntradaPedido;
         
         -- FUNÇÃO DE DECREMENTO DE SKOOBY
@@ -355,6 +387,7 @@ DELIMITER $$
         
         SET volumeProducao = prePreparoQuantAgua_aux + prePreparoQuantCha_aux;
      
+<<<<<<< HEAD
 		SELECT idPedido INTO idPedido_aux FROM tribos_kombucha.pedido
 			ORDER BY idPedido DESC LIMIT 1;
 		SET idPedido_aux = idPedido_aux + 1;
@@ -363,6 +396,16 @@ DELIMITER $$
 			WHERE idKombucha = idSabor_aux;
         
         INSERT INTO pedido( 
+=======
+		SELECT idPedido INTO idPedido_aux FROM tribos_kombucha.Pedido
+			ORDER BY idPedido DESC LIMIT 1;
+		SET idPedido_aux = idPedido_aux + 1;
+     
+        SELECT nomeKombucha INTO nomeSabor_aux FROM tribos_kombucha.SaborKombucha
+			WHERE idKombucha = idSabor_aux;
+        
+        INSERT INTO Pedido( 
+>>>>>>> e481a0874cad50f25d4cd25acc6d3b2f713e17c1
 							idSabor,
                             nomeSabor,
                             quantidadeProducao,
@@ -393,8 +436,13 @@ DELIMITER ;
 
 /*
 -- EXEMPLO TESTE DE INSERÇÃO DE PEDIDO
+<<<<<<< HEAD
 SET @quantidadeDeProducao = 2;
 CALL montaPedidoPreparo(1, 1, @quantidadeDeProducao);
+=======
+SET @quantidadeDeProducao = 13;
+CALL montaPedidoPreparo('1', 'Anis', @quantidadeDeProducao);
+>>>>>>> e481a0874cad50f25d4cd25acc6d3b2f713e17c1
 SELECT @quantidadeDeProducao;
 
 

@@ -31,36 +31,36 @@ import javafx.stage.Stage;
  * @author Carolina
  * @author Deive
  */
-public class LoginController implements Initializable {
-    Login login = new Login();
+public class LoginController implements Initializable {   
+    @FXML private TextField tfLogin;
+    @FXML private PasswordField pfSenha;
+    @FXML private Button btSair;
+    @FXML private Button btEntrar;
     
-    @FXML
-    private TextField tfLogin;
+    Login login = new Login();
+    LoginDAO dao = new LoginDAO();
+    BatmanDeFerro BatFer = new BatmanDeFerro();
+    private static String idLoginAtivo;
 
-    @FXML
-    private PasswordField pfSenha;
+    public String getIdLoginAtivo() {
+        return idLoginAtivo;
+    }
 
-    @FXML
-    private Button btSair;
+    public void setIdLoginAtivo(String idLoginAtivo) {
+        this.idLoginAtivo = idLoginAtivo;
+    }
 
-    @FXML
-    private Button btEntrar;
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btEntrar.setOnMouseClicked((MouseEvent e)->{
             logar();
-        });
-        
+        });        
         btEntrar.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 logar();
             }
-        });        
+        });  
+        
         pfSenha.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 logar();
@@ -81,17 +81,17 @@ public class LoginController implements Initializable {
         Login.getStage().close();
     }
     
-    public void logar(){
-        LoginDAO dao = new LoginDAO();
-        BatmanDeFerro BatFer = new BatmanDeFerro();
+    public void logar(){        
         try {
             if(dao.login(tfLogin.getText(), pfSenha.getText())){
                 MenuPrincipal menu = new MenuPrincipal();
 
-                BatFer.setIdFuncionarioAtivo(tfLogin.getText());
 
                 try {
                     menu.start(new Stage());
+                    BatFer.setIdFuncionarioAtivo(tfLogin.getText());
+                    //setIdLoginAtivo(tfLogin.getText());
+                    System.out.println("Login: "+BatFer.getIdFuncionarioAtivo());
                     fechaJanela();  
                     BatFer.printaUsuario();
                 } catch (Exception ex) {

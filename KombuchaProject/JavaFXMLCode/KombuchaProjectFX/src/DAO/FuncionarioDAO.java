@@ -57,6 +57,7 @@ public class FuncionarioDAO extends Funcionario{
             stmt.setString(1, func.getNomeFuncionario());
             stmt.setString(2, func.getCargo());
             stmt.setString(3, func.getSenha());
+            
             stmt.setString(4, func.getIdFuncionario());
             
             stmt.execute();
@@ -98,6 +99,7 @@ public class FuncionarioDAO extends Funcionario{
             ResultSet ResSet = stmt.executeQuery();
             while(ResSet.next()){
                 Funcionario funcionario = new Funcionario();
+                
                 funcionario.setIdFuncionario(ResSet.getString("idFuncionario"));
                 funcionario.setNomeFuncionario(ResSet.getString("nomeFuncionario"));
                 funcionario.setCargo(ResSet.getString("cargo"));

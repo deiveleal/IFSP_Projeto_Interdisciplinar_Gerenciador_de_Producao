@@ -5,7 +5,6 @@
  */
 package Model;
 
-import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,22 +12,21 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * @author Carolina
- * @author Deive
+ *
+ * @author deive
  */
-public class CadastrarFuncionario extends Application{
+public class AlterarPedido {
     
-    private static Stage stage;//Uma janela1
+        private static Stage stage;
     
     public static void main(String[] args){
         launch(args);
     }
 
-    @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/View/CadastrarFuncionario.fxml"));//Carrega FXML
+        Parent root = FXMLLoader.load(getClass().getResource("/View/AlterarPedido.fxml"));//Carrega FXML
         Scene scene = new Scene(root);//Coloca o FXML em uma cena
-        stage.setTitle("Cadastrar Funcionario");
+        stage.setTitle("Alterar Pedido");
         stage.setScene(scene);//Coloca a cena em uma janela
         stage.show();//Abre a janela2
         setStage(stage);
@@ -39,7 +37,7 @@ public class CadastrarFuncionario extends Application{
     }
 
     public static void setStage(Stage stage) {
-        CadastrarFuncionario.stage = stage;
+        AlterarPedido.stage = stage;
     }
 
     

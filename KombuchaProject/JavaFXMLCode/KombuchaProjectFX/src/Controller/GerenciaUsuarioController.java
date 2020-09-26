@@ -24,17 +24,18 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
- *
+ * @author carolina
  * @author deive
  */
 public class GerenciaUsuarioController implements Initializable {   
-
+    BatmanDeFerro BatFer = new BatmanDeFerro();
+    
     @FXML private Button btVoltar;
     @FXML private Button btFinalizarSessao;
     @FXML private Button btCadastFunc;
     @FXML private Button btAltExcDadFunc;
     
-    BatmanDeFerro BatFer = new BatmanDeFerro();
+
     /**
      * Initializes the controller class.
      */

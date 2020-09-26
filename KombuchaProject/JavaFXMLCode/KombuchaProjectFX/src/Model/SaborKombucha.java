@@ -20,14 +20,15 @@ public class SaborKombucha {
     
     }
     
-    public SaborKombucha(int id_kombucha, String nome_kombucha, String cha_base, double qtd_cha, double qtd_agua, int id_embalagem, int id_cha_base) {
-        this.idKombucha = id_kombucha;
-        this.nomeKombucha = nome_kombucha;
-        this.chaBase = cha_base;
-        this.prePreparoQuantCha = qtd_cha;
-        this.prePreparoQuantAgua = qtd_agua;
-        this.idEmbalagem = id_embalagem;
-        this.idChaBase = id_cha_base;
+    public SaborKombucha(int idkombucha, String nomekombucha, String chabase,  int idchabase,double qtdcha, double qtdagua, double qtdacucar,int idembalagem) {
+        this.idKombucha = idkombucha;
+        this.nomeKombucha = nomekombucha;
+        this.chaBase = chabase;
+        this.idChaBase = idchabase;
+        this.prePreparoQuantCha = qtdcha;
+        this.prePreparoQuantAgua = qtdagua;
+        this.quantidadeAcucar = qtdacucar;
+        this.idEmbalagem = idembalagem;
     }
 
     public int getIdKombucha() {
@@ -93,6 +94,13 @@ public class SaborKombucha {
     public void setIdEmbalagem(int idEmbalagem) {
         this.idEmbalagem = idEmbalagem;
     }  
+
+    @Override
+    public String toString() {
+        return getNomeKombucha();
+    }
+    
+    
 }
 
 
