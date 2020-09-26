@@ -78,6 +78,7 @@ CREATE TABLE Pedido(
     idFuncionario VARCHAR(11),
 	quantidadeCha  DOUBLE,
 	quantidadeAgua  DOUBLE,
+    quantidadeAcucar DOUBLE,
     quantidadeEmbalagem  INT,
     dataEntradaPedido DATETIME,
     
@@ -202,9 +203,10 @@ INSERT INTO Pedido( idSabor,
                     idFuncionario,
                     quantidadeCha,
                     quantidadeAgua,
+                    quantidadeAcucar,
                     quantidadeEmbalagem,
                     dataEntradaPedido)
-	VALUES ( 1, 'teste', 1, 0, NULL, 1, 1, 1, 1, NOW());
+	VALUES ( 1, 'teste', 1, 0, NULL, 1, 1, 1, 1, 1, NOW());
  
  -- SUB PROCEDURES MONTAGEM DE PEDIDOS
  
@@ -259,7 +261,24 @@ END;
 $$
 DELIMITER ;
 
+-- Monta quantidade de acucar por pedido
+DROP FUNCTION IF EXISTS montagemAcucar;
+DELIMITER $$
+CREATE FUNCTION montagemAcucar (idKombuchaIN INT, qtdPedido INT)
+RETURNS DOUBLE DETERMINISTIC
+BEGIN
+	DECLARE quantAcucar_aux DOUBLE;
+    DECLARE acucarReceita_aux DOUBLE;
+    
+    SELECT quantidadeAcucar INTO acucarReceita_aux FROM SaborKombucha
+		WHERE idKombucha = idKombuchaIN;
 
+    SET quantAcucar_aux = acucarReceita_aux * qtdPedido;
+	
+RETURN quantAcucar_aux;
+END;
+$$
+DELIMITER ;
 
 -- Seta fermentador para pedido
 DROP PROCEDURE IF EXISTS escolheFermentador;
@@ -340,6 +359,7 @@ DELIMITER $$
         DECLARE volumeProducao DOUBLE;
         DECLARE idSabor_aux INT;
         DECLARE nomeSabor_aux VARCHAR(100);
+        DECLARE quantidadeAcucar_aux DOUBLE;
         
         
 		SELECT idKombucha INTO idSabor_aux FROM SaborKombucha 
@@ -355,6 +375,8 @@ DELIMITER $$
         SET quantEmbalagem = montagemEmbalagem (idSabor_aux, quantidadeDeProducao);
         
 		SET prePreparoQuantAgua_aux = montagemAgua(idSabor_aux, quantidadeDeProducao);
+        
+        SET quantidadeAcucar_aux = montagemAcucar(idSabor_aux, quantidadeDeProducao);
                 
         SET volumeProducao = prePreparoQuantAgua_aux + prePreparoQuantCha_aux;
 
@@ -374,6 +396,7 @@ DELIMITER $$
                             idFuncionario,
                             quantidadeCha,
                             quantidadeAgua,
+                            quantidadeAcucar,
                             quantidadeEmbalagem,
                             dataEntradaPedido)
 		VALUES(
@@ -384,6 +407,7 @@ DELIMITER $$
             idFuncionario,
             prePreparoQuantCha_aux,
             prePreparoQuantAgua_aux,
+            quantidadeAcucar_aux,
             quantEmbalagem,
             dataEntradaPedido
 			);
@@ -411,3 +435,54 @@ SELECT @quantidadeDeProducao;
 SELECT * FROM pedido;
 SELECT * FROM fermentador;
 */
+
+
+
+-- Procedure dar baixa no estoque
+DROP PROCEDURE IF EXISTS darBaixaPedido;
+DELIMITER $$
+CREATE PROCEDURE darBaixaPedido (IN idPedidoIN INT)
+	BEGIN
+    DECLARE idSabor_aux INT;
+	DECLARE idCha_aux INT;    
+    DECLARE idEmbalagem_aux INT; 
+    DECLARE quantidadeAcucar_aux DOUBLE;
+    DECLARE quantidadeCha_aux DOUBLE;
+    DECLARE quantidadeAgua_aux DOUBLE;
+    DECLARE quantidadeEmbalagem_aux INT;
+    
+    
+    -- pega idSabor do pedido
+    SELECT idSabor INTO idSabor_aux FROM Pedido 
+		WHERE idPedido = idPedidoIN;
+	-- pega quantidade de chá do pedido
+    SELECT quantidadeCha INTO quantidadeCha_aux FROM pedido 
+		WHERE idPedido = idPedidoIN;
+	-- pega idChaBase do pedido
+	SELECT idChaBase INTO idCha_aux FROM SaborKombucha 
+		WHERE idKombucha = idSabor_aux;
+     -- pega quantidade de agua do pedido   
+	SELECT quantidadeAgua INTO quantidadeAgua_aux FROM Pedido
+		WHERE idPedido = idPedidoIN;
+	-- pega quantidade de embalagem
+    SELECT quantidadeEmbalagem INTO quantidadeEmbalagem_aux FROM Pedido
+		WHERE idPedido = idPedidoIN;
+	SELECT idEmbalagem INTO idEmbalagem_aux FROM SaborKombucha
+		WHERE idKombucha = idSabor_aux;
+	-- pega quantidade açucar
+	SELECT quantidadeAcucar INTO quantidadeAcucar_aux FROM Pedido
+		WHERE idPedido = idPedidoIN;
+        
+	-- retira valores do estoque
+	UPDATE Estoque SET quantItem = quantItem - quantidadeCha_aux
+		WHERE idItem = idCha_aux AND idItemEstoque = 1;
+	UPDATE Estoque SET quantItem = quantItem - quantidadeAgua_aux
+		WHERE idItem = 1 AND idItemEstoque = 1;
+	UPDATE Estoque SET quantItem = quantItem - quantidadeEmbalagem_aux
+		WHERE idItem = idEmbalagem_aux AND idItemEstoque = 2;
+	UPDATE Estoque SET quantItem = quantItem - quantidadeAcucar_aux
+		WHERE idItem = 2 AND idItemEstoque = 1;
+        
+    END
+$$
+DELIMITER ;
