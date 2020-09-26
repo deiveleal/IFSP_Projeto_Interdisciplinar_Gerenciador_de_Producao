@@ -13,8 +13,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
- * @author deive
+ * @author Carolina
+ * @author Deive
  */
 public class CadastrarFuncionario extends Application{
     

@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.FuncionarioDAO;
+import Model.BatmanDeFerro;
 import Model.CadastrarFuncionario;
 import Model.Funcionario;
 import Model.GerenciaUsuario;
@@ -32,29 +33,14 @@ import javafx.stage.Stage;
  */
 public class CadastrarFuncionarioController implements Initializable {    
 
-    @FXML
-    private Button btVoltar;
-
-    @FXML
-    private Button btCadastrar;
-
-    @FXML
-    private Button btSair;
-
-    @FXML
-    private TextField tfCPF;
-
-    @FXML
-    private TextField tfNome;
-
-    @FXML
-    private TextField tfCargo;
-
-    @FXML
-    private PasswordField pfSenha;
-
-    @FXML
-    private PasswordField pfConfirm;
+    @FXML private Button btVoltar;
+    @FXML private Button btCadastrar;
+    @FXML private Button btFinalizarSessao;
+    @FXML private TextField tfCPF;
+    @FXML private TextField tfNome;
+    @FXML private TextField tfCargo;
+    @FXML private PasswordField pfSenha;
+    @FXML private PasswordField pfConfirm;
 
     /**
      * Initializes the controller class.
@@ -75,9 +61,10 @@ public class CadastrarFuncionarioController implements Initializable {
         
         btVoltar.setOnMouseClicked((MouseEvent e)->{
             GerenciaUsuario geruser = new GerenciaUsuario();
-            fechaJanela();            
+          
             try {
                 geruser.start(new Stage());
+                fechaJanela();  
             } catch (Exception ex) {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -85,20 +72,25 @@ public class CadastrarFuncionarioController implements Initializable {
         btVoltar.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 GerenciaUsuario geruser = new GerenciaUsuario();
-                fechaJanela();            
+          
                 try {
                     geruser.start(new Stage());
+                    fechaJanela();  
                 } catch (Exception ex) {
                     Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
         
-        btSair.setOnMouseClicked((MouseEvent e)->{
+        BatmanDeFerro BatFer = new BatmanDeFerro();
+        
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+            BatFer.voltaTelaLogin();
             fechaJanela();
         });
-        btSair.setOnKeyPressed((KeyEvent e)->{
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
+                BatFer.voltaTelaLogin();
                 fechaJanela();
             }
 
@@ -106,8 +98,8 @@ public class CadastrarFuncionarioController implements Initializable {
     }
     
     private void cadastraFunc(){
-        double idFuncionario = Double.parseDouble(tfCPF.getText());
-        String nomeFuncionario = tfNome.getText(), 
+        String idFuncionario = tfCPF.getText(),
+               nomeFuncionario = tfNome.getText(), 
                cargo = tfCargo.getText(), 
                senha = pfSenha.getText(), 
                confirm = pfConfirm.getText();
@@ -139,5 +131,4 @@ public class CadastrarFuncionarioController implements Initializable {
     public void fechaJanela(){
         CadastrarFuncionario.getStage().close();
     }
-    
 }

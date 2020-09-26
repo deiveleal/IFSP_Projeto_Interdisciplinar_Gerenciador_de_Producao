@@ -6,6 +6,7 @@
 package Controller;
 
 import DAO.LoginDAO;
+import Model.BatmanDeFerro;
 import Model.Login;
 import Model.MenuPrincipal;
 import java.net.URL;
@@ -82,14 +83,17 @@ public class LoginController implements Initializable {
     
     public void logar(){
         LoginDAO dao = new LoginDAO();
+        BatmanDeFerro BatFer = new BatmanDeFerro();
         try {
-            if(dao.login(Double.parseDouble(tfLogin.getText()), pfSenha.getText())){
+            if(dao.login(tfLogin.getText(), pfSenha.getText())){
                 MenuPrincipal menu = new MenuPrincipal();
-                login.setIdFuncionarioAtivo(Long.parseLong(tfLogin.getText()));
-                fechaJanela();
+
+                BatFer.setIdFuncionarioAtivo(tfLogin.getText());
+
                 try {
                     menu.start(new Stage());
-                    printaUsuario();
+                    fechaJanela();  
+                    BatFer.printaUsuario();
                 } catch (Exception ex) {
                     Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -105,8 +109,6 @@ public class LoginController implements Initializable {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        public void printaUsuario(){
-        System.out.println("Usuário Logado: "+login.getIdFuncionarioAtivo());    
-    }
+
 
 }

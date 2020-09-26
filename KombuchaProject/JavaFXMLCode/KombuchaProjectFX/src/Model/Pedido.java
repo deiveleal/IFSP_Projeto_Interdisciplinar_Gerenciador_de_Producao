@@ -1,99 +1,77 @@
 
 package Model;
 
+import java.util.Date;
+
 /**
  *
  * @author carolina
  * @author deive
  * 
  */
-import java.util.Date;
 
 public class Pedido {
-    private int id_Pedido;
-    private int id_Sabor;
-    private int qtd_Producao;
-    private int id_Fermentador;
-    private int id_Funcionario;
-    private Date data_Pedido;
+    private int idPedido;
+    private int idSabor;
+    private int qtdProducao;
+    private String idFuncionario;
+    private Date dataPedido;
 
-
-    public Pedido(int id_Pedido, int id_Sabor, int qtd_Producao, int id_Fermentador, int id_Funcionario) {
-        this.id_Pedido = id_Pedido;
-        this.id_Sabor = id_Sabor;
-        this.qtd_Producao = qtd_Producao;
-        this.id_Fermentador = id_Fermentador;
-        this.id_Funcionario = id_Funcionario;
+    public Pedido(){
+    }
+    public Pedido(int idPedido, int idSabor, int qtdProducao, int idFermentador, String idFuncionario) {
+        this.idPedido = idPedido;
+        this.idSabor = idSabor;
+        this.qtdProducao = qtdProducao;
+        this.idFuncionario = idFuncionario;
     }
 
-    public int getId_Pedido() {
-        return id_Pedido;
+    public int getIdPedido() {
+        return idPedido;
     }
 
-    public void setId_Pedido(int id_Pedido) {
-        this.id_Pedido = id_Pedido;
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
     }
 
-    public int getId_Sabor() {
-        return id_Sabor;
+    public int getIdSabor() {
+        return idSabor;
     }
 
-    public void setId_Sabor(int id_Sabor) {
-        this.id_Sabor = id_Sabor;
+    public void setIdSabor(int idSabor) {
+        this.idSabor = idSabor;
     }
 
-    public int getQtd_Producao() {
-        return qtd_Producao;
+    public int getQtdProducao() {
+        return qtdProducao;
     }
 
-    public void setQtd_Producao(int qtd_Producao) {
-        this.qtd_Producao = qtd_Producao;
+    public void setQtdProducao(int qtdProducao) {
+        this.qtdProducao = qtdProducao;
     }
 
-    public int getId_Fermentador() {
-        return id_Fermentador;
+    public String getIdFuncionario() {
+        return idFuncionario;
     }
 
-    public void setId_Fermentador(int id_Fermentador) {
-        this.id_Fermentador = id_Fermentador;
+    public void setIdFuncionario(String idFuncionario) {
+        this.idFuncionario = idFuncionario;
     }
 
-    public int getId_Funcionario() {
-        return id_Funcionario;
+    public Date getDataPedido() {
+        return dataPedido;
     }
 
-    public void setId_Funcionario(int id_Funcionario) {
-        this.id_Funcionario = id_Funcionario;
-    }
-   
-    public Date getData_Pedido() {
-        return data_Pedido;
-    }
-
-    public void setData_Pedido(Date data_Pedido) {
-        this.data_Pedido = data_Pedido;
-    }
+    public void setDataPedido(Date dataPedido) {
+        this.dataPedido = dataPedido;
+    } 
     
-    
-    
-    public void inserir_Data_Lote(){
-    
-    }
-    
-    public void perda_Producao(){
-    
-    }
-    
-    //Se pedido retornar true pedido realizado com sucesso
-    public boolean inserir_Pedido(){
-        return true;
-    }
-    
-    //Se pedido cancelado com sucesso retorna true
-    public boolean cancelar_Pedido(){
-        return true;
-    }
-    
+    public void mostraPedido(){
+        System.out.println("Cód. Pedido : "+getIdPedido());
+        System.out.println("Cód. Sabor : "+getIdSabor());
+        System.out.println("Quantidade : "+getQtdProducao());
+        System.out.println("Data : "+getDataPedido());
+    }  
     
 }
 

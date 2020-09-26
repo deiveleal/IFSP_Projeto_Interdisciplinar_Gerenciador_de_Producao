@@ -11,28 +11,44 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GerenciaPedidoController">
    <children>
-      <Button fx:id="btCancelarPedido" layoutX="615.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Cancelar Pedido" />
-      <Button fx:id="btInserirPedido" layoutX="357.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Inserir Pedido" />
+      <ComboBox fx:id="cbSabors" layoutX="58.0" layoutY="161.0" prefHeight="30.0" prefWidth="367.0" promptText="Sabores Disponíveis" visibleRowCount="7" />
+      <TextField fx:id="tfQuantidade" layoutX="440.0" layoutY="161.0" prefHeight="30.0" prefWidth="306.0" promptText=" Quantidade entre 1 e 8" />
+      <TextField fx:id="tfBusca" alignment="CENTER" layoutX="57.0" layoutY="256.0" prefHeight="30.0" prefWidth="171.0" promptText="Buscar Pedido" />
       <Button fx:id="btCadastrarSabor" layoutX="228.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Cadastrar Sabor" />
-      <TextField fx:id="tfQuantidade" layoutX="440.0" layoutY="161.0" prefHeight="30.0" prefWidth="306.0" promptText="Quantidade" />
+      <Button fx:id="btInserirPedido" layoutX="357.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Inserir Pedido" />
+      <Button fx:id="btAlterarPedido" layoutX="486.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Alterar Pedido" />
+      <Button fx:id="btExcluiPedido" layoutX="615.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Excluir Pedido" />
       <TableView fx:id="tablePedidos" layoutX="56.0" layoutY="286.0" prefHeight="251.0" prefWidth="688.0">
         <columns>
           <TableColumn fx:id="colCodPedido" prefWidth="115.0" text="Cód.Pedido" />
-          <TableColumn fx:id="colSabor" prefWidth="196.0" text="Sabor" />
-            <TableColumn fx:id="colQtd" prefWidth="115.0" text="Quantidade" />
-            <TableColumn fx:id="colData" prefWidth="115.0" text="Data" />
-            <TableColumn fx:id="colCliente" prefWidth="151.0" text="Cliente" />
+          <TableColumn fx:id="colSabor" prefWidth="289.0" text="Sabor" />
+            <TableColumn fx:id="colQtd" prefWidth="114.0" text="Quantidade" />
+            <TableColumn fx:id="colData" prefWidth="169.0" text="Data" />
         </columns>
       </TableView>
-      <ComboBox fx:id="cbSabors" layoutX="58.0" layoutY="161.0" prefHeight="30.0" prefWidth="367.0" promptText="Sabores Disponíveis" visibleRowCount="7" />
+      <Button fx:id="btVoltar" layoutX="57.0" layoutY="551.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Voltar">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btFinalizarSessao" layoutX="530.0" layoutY="547.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" text="Finalizar Sessão">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Label layoutX="26.0" layoutY="14.0" text="Funcionário Registrado:">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblIdFuncionarioAtivo">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
       <Label layoutX="212.0" layoutY="45.0" text="Gerenciamento de Pedidos">
          <font>
             <Font size="30.0" />
-         </font>
-      </Label>
-      <Label layoutX="129.0" layoutY="114.0" text="Sabores Kombucha">
-         <font>
-            <Font size="21.0" />
          </font>
       </Label>
       <Label layoutX="530.0" layoutY="114.0" text="Quantidade">
@@ -40,17 +56,10 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="btVoltar" layoutX="57.0" layoutY="551.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Voltar">
+      <Label layoutX="129.0" layoutY="114.0" text="Sabores Kombucha">
          <font>
-            <Font size="16.0" />
+            <Font size="21.0" />
          </font>
-      </Button>
-      <Button fx:id="btSair" layoutX="674.0" layoutY="551.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Sair">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <TextField fx:id="tfBusca" alignment="CENTER" layoutX="57.0" layoutY="256.0" prefHeight="30.0" prefWidth="171.0" promptText="Buscar Pedido" />
-      <Button fx:id="btAlterarPedido" layoutX="486.0" layoutY="256.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Alterar Pedido" />
+      </Label>
    </children>
 </AnchorPane>

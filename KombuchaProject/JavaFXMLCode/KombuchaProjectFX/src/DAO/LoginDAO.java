@@ -24,11 +24,11 @@ public class LoginDAO extends Funcionario{
     }
     
     //Método que busca o usuário e a senha
-    public Boolean login(double idFuncionario, String senha) throws SQLException{
+    public Boolean login(String idFuncionario, String senha) throws SQLException{
         boolean encontrado = false;
         String sql = "SELECT * FROM Funcionario WHERE idFuncionario = ? AND senha = ?;";
         PreparedStatement stm = con.prepareStatement(sql);
-        stm.setDouble(1, idFuncionario);
+        stm.setString(1, idFuncionario);
         stm.setString(2, senha);
         ResultSet rs = stm.executeQuery();
         if(rs.next()){

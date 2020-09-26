@@ -6,11 +6,10 @@
 package Controller;
 
 import Model.AlterarExcluirUser;
+import Model.BatmanDeFerro;
 import Model.CadastrarFuncionario;
-import Model.GerenciaEstoque;
 import Model.GerenciaUsuario;
 import Model.MenuPrincipal;
-import Model.GerenciaPedido;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -29,60 +28,53 @@ import javafx.stage.Stage;
  * @author deive
  */
 public class GerenciaUsuarioController implements Initializable {   
+
+    @FXML private Button btVoltar;
+    @FXML private Button btFinalizarSessao;
+    @FXML private Button btCadastFunc;
+    @FXML private Button btAltExcDadFunc;
     
-
-    @FXML
-    private Button btVoltar;
-
-    @FXML
-    private Button btSair;
-
-    @FXML
-    private Button btCadastFunc;
-
-    @FXML
-    private Button btAltExcDadFunc;
-
+    BatmanDeFerro BatFer = new BatmanDeFerro();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        CadastrarFuncionario cadfunc = new CadastrarFuncionario();
+        AlterarExcluirUser altdeluser = new AlterarExcluirUser();
         // TODO
-        btCadastFunc.setOnMouseClicked((MouseEvent e)->{
-            CadastrarFuncionario cadfunc = new CadastrarFuncionario();
-            fechaJanela();            
+        btCadastFunc.setOnMouseClicked((MouseEvent e)->{           
             try {
                 cadfunc.start(new Stage());
+                fechaJanela();  
             } catch (Exception ex) {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        btAltExcDadFunc.setOnMouseClicked((MouseEvent e)->{
-            AlterarExcluirUser altdeluser = new AlterarExcluirUser();
-            fechaJanela();            
-            try {
-                altdeluser.start(new Stage());
-            } catch (Exception ex) {
-                Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+        btCadastFunc.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                try {
+                    cadfunc.start(new Stage());
+                    fechaJanela();  
+                } catch (Exception ex) {
+                    Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         
-        btVoltar.setOnMouseClicked((MouseEvent e)->{
-            MenuPrincipal menu = new MenuPrincipal();
-            fechaJanela();            
+        btAltExcDadFunc.setOnMouseClicked((MouseEvent e)->{           
             try {
-                menu.start(new Stage());
+                altdeluser.start(new Stage());
+                fechaJanela();  
             } catch (Exception ex) {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        btVoltar.setOnKeyPressed((KeyEvent e)->{
+        btAltExcDadFunc.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
-                MenuPrincipal menu = new MenuPrincipal();
-                fechaJanela();            
                 try {
-                    menu.start(new Stage());
+                    altdeluser.start(new Stage());
+                    fechaJanela();  
                 } catch (Exception ex) {
                     Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -90,17 +82,43 @@ public class GerenciaUsuarioController implements Initializable {
         });
         
         
-        btSair.setOnMouseClicked((MouseEvent e)->{
+        
+        btVoltar.setOnMouseClicked((MouseEvent e)->{
+            MenuPrincipal menu = new MenuPrincipal();
+           
+            try {
+                menu.start(new Stage());
+                fechaJanela();  
+            } catch (Exception ex) {
+                Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        btVoltar.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                MenuPrincipal menu = new MenuPrincipal();
+            
+                try {
+                    menu.start(new Stage());
+                    fechaJanela();  
+                } catch (Exception ex) {
+                    Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+            BatFer.voltaTelaLogin();
             fechaJanela();
         });
-        btSair.setOnKeyPressed((KeyEvent e)->{
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
+                BatFer.voltaTelaLogin();
                 fechaJanela();
             }
         });
     }
     public void fechaJanela(){
         GerenciaUsuario.getStage().close();
-    }    
-    
+    }  
+        
 }

@@ -5,11 +5,12 @@
  */
 package Controller;
 
+import DAO.PedidoDAO;
+import Model.BatmanDeFerro;
 import Model.GerenciaEstoque;
 import Model.GerenciaUsuario;
 import Model.MenuPrincipal;
 import Model.GerenciaPedido;
-import Model.Login;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -28,19 +29,13 @@ import javafx.stage.Stage;
  * @author deive
  */
 public class MenuPrincipalController implements Initializable {
+    BatmanDeFerro BatFer = new BatmanDeFerro();
     
 
-    @FXML
-    private Button btGerencUsuario;
-
-    @FXML
-    private Button btGerencPedido;
-
-    @FXML
-    private Button btGerencEstoq;
-
-    @FXML
-    private Button btSair;
+    @FXML private Button btGerencUsuario;
+    @FXML private Button btGerencPedido;
+    @FXML private Button btGerencEstoq;
+    @FXML private Button btFinalizarSessao;
 
 
     /**
@@ -52,55 +47,86 @@ public class MenuPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         btGerencUsuario.setOnMouseClicked((MouseEvent e)->{
             GerenciaUsuario ger = new GerenciaUsuario();
-            fechaJanela();            
+          
             try {
                 ger.start(new Stage());
+                fechaJanela();  
             } catch (Exception ex) {
                 Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        btGerencUsuario.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                GerenciaUsuario ger = new GerenciaUsuario();
+                try {
+                    ger.start(new Stage());
+                    fechaJanela();  
+                } catch (Exception ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+                
         btGerencPedido.setOnMouseClicked((MouseEvent e)->{
             GerenciaPedido ped = new GerenciaPedido();
-            fechaJanela();            
+           
             try {
                 ped.start(new Stage());
+                fechaJanela();  
             } catch (Exception ex) {
                 Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        btGerencPedido.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                GerenciaPedido ped = new GerenciaPedido();
+                try {
+                    ped.start(new Stage());
+                    fechaJanela();  
+                } catch (Exception ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+                
         btGerencEstoq.setOnMouseClicked((MouseEvent e)->{
             GerenciaEstoque estq = new GerenciaEstoque();
-            fechaJanela();            
+            
             try {
                 estq.start(new Stage());
+                fechaJanela();  
             } catch (Exception ex) {
                 Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        btGerencEstoq.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                GerenciaEstoque estq = new GerenciaEstoque();
+            
+                try {
+                    estq.start(new Stage());
+                    fechaJanela();  
+                } catch (Exception ex) {
+                    Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
         
-        
-        btSair.setOnMouseClicked((MouseEvent e)->{
-            voltaTelaLogin();
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+            BatFer.voltaTelaLogin();
+            fechaJanela();
         });
 
-        btSair.setOnKeyPressed((KeyEvent e)->{
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
-                voltaTelaLogin();
+                BatFer.voltaTelaLogin();
+                fechaJanela();
             }
         });
     
     }
     private void fechaJanela() {
         MenuPrincipal.getStage().close();
-    }
-    private void voltaTelaLogin(){
-        Login login = new Login();
-        try {
-            login.start(new Stage());
-        } catch (Exception ex) {
-            Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        fechaJanela();
     }
     
 }

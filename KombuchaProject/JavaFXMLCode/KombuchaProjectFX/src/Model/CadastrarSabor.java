@@ -6,18 +6,18 @@
 package Model;
 
 import javafx.application.Application;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
- * @author deive
+ * @author Carolina
+ * @author Deive
  */
-public class Login extends Application{
-    
-    private String idFuncionarioAtivo;    
+
+public class CadastrarSabor extends Application{
     private static Stage stage;//Uma janela1
     
     public static void main(String[] args){
@@ -26,13 +26,12 @@ public class Login extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/View/Login.fxml"));//Carrega FXML
+        Parent root = FXMLLoader.load(getClass().getResource("/View/CadastrarSabor.fxml"));//Carrega FXML
         Scene scene = new Scene(root);//Coloca o FXML em uma cena
-        stage.setTitle("Login");
+        stage.setTitle("Cadastrar Sabor");
         stage.setScene(scene);//Coloca a cena em uma janela
         stage.show();//Abre a janela2
         setStage(stage);
-
     }
 
     public static Stage getStage() {
@@ -40,16 +39,8 @@ public class Login extends Application{
     }
 
     public static void setStage(Stage stage) {
-        Login.stage = stage;
+        CadastrarSabor.stage = stage;
     }
 
-    public String getIdFuncionarioAtivo() {
-        return idFuncionarioAtivo;
-    }
-
-    public void setIdFuncionarioAtivo(String idFuncionarioAtivo) {
-        this.idFuncionarioAtivo = idFuncionarioAtivo;
-    }
-
-
+    
 }
