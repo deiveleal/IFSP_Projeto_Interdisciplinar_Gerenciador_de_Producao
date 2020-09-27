@@ -394,6 +394,28 @@ DELIMITER ;
 
 -- 
 
+DROP PROCEDURE IF EXISTS reposicaoEstoque;
+DELIMITER $$
+CREATE PROCEDURE reposicaoEstoque(IN idItemIN INT, IN idItemEstoqueIN INT, IN quantIncrementoIN DOUBLE) 
+    BEGIN
+		DECLARE quantItem_aux DOUBLE;
+        
+		SELECT quantItem INTO quantItem_aux FROM Estoque
+			WHERE idItem = idItemIN AND idItemEstoque = idItemEstoqueIN;
+            
+		IF quantItem_aux IS NULL THEN
+			UPDATE Estoque SET quantItem = 0
+				WHERE idItem = idItemIN AND idItemEstoque = idItemEstoqueIN;
+        END IF;
+		
+        UPDATE Estoque SET quantItem = quantItem + quantIncrementoIN
+			WHERE idItem = idItemIN AND idItemEstoque = idItemEstoqueIN;
+        
+    END
+$$
+DELIMITER ;
+
+
 DROP PROCEDURE IF EXISTS montaPedidoPreparo;
 DELIMITER $$
 
