@@ -425,7 +425,7 @@ DELIMITER ;
 SET @quantidadeDeProducao = 2;
 CALL montaPedidoPreparo(1, 1, @quantidadeDeProducao);
 
-SET @quantidadeDeProducao = 13;
+SET @quantidadeDeProducao = 3;
 CALL montaPedidoPreparo('1', 'Anis', @quantidadeDeProducao);
 
 SELECT @quantidadeDeProducao;
@@ -435,8 +435,6 @@ SELECT @quantidadeDeProducao;
 SELECT * FROM pedido;
 SELECT * FROM fermentador;
 */
-
-
 
 -- Procedure dar baixa no estoque
 DROP PROCEDURE IF EXISTS darBaixaPedido;
@@ -484,5 +482,29 @@ CREATE PROCEDURE darBaixaPedido (IN idPedidoIN INT)
 		WHERE idItem = 2 AND idItemEstoque = 1;
         
     END
+$$
+DELIMITER ;
+/*
+SELECT * FROM estoque;
+CALL darBaixaPedido (2);
+SELECT * FROM PEDIDO;
+SELECT * FROM itemdeestoque;
+SELECT * FROM estoque;
+*/
+
+-- TRIGGER 
+DROP TRIGGER IF EXISTS darBaixaEstoque;
+DELIMITER $$
+CREATE TRIGGER darBaixaEstoque
+AFTER INSERT ON pedido
+FOR EACH ROW 
+    BEGIN
+		DECLARE ultimoPedido INT;
+        
+        SELECT idPedido INTO ultimoPedido FROM pedido
+			order by idPedido DESC LIMIT 1;
+        
+         CALL darBaixaPedido (ultimoPedido);
+    END 
 $$
 DELIMITER ;
