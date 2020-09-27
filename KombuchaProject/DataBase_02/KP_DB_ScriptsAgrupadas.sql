@@ -56,8 +56,8 @@ CREATE TABLE EmbalagemKombucha(
 
 CREATE TABLE SaborKombucha(
     idKombucha  INT PRIMARY KEY,
-    nomeKombucha VARCHAR(50) NOT NULL,
-    chaBase VARCHAR(50) NOT NULL,
+    nomeKombucha VARCHAR(100) NOT NULL,
+    chaBase VARCHAR(100) NOT NULL,
     idChaBase INT,
     prePreparoQuantCha DOUBLE NOT NULL,
 	prePreparoQuantAgua DOUBLE NOT NULL,
@@ -173,7 +173,11 @@ VALUES
     quantidadeAcucar,
     idEmbalagem)
 VALUES
-        (1, 'Anis', 'Chá de Anis', 4, 0.025, 0.3, 0.045, 1);
+        (1, 'Anis', 'Extrato de Anis', 4, 0.025, 0.3, 0.045, 1),
+        (2, 'Abacaxi com Hortelã', 'Extrato de Abacaxi com Hortelã', 5, 0.025, 0.3, 0.045, 1),
+        (3, 'Hibisco-Uva', 'Extrato de Hibisco-Uva', 6, 0.025, 0.3, 0.045, 1),
+        (4, 'Capim-Santo Gengibre-Limão', 'Extrato de Capim-Santo Gengibre-Limão', 7, 0.025, 0.3, 0.045, 1);
+        
         
  INSERT INTO Estoque(
     idItem,
@@ -184,7 +188,10 @@ VALUES
         (1, 1, 'Água', 20),
         (2, 1, 'Açucar', 10),
         (3, 1, 'Scoby', 32),
-        (4, 1, 'Chá de Anis', 2),
+        (4, 1, 'Extrato de Anis', 20),
+        (5, 1, 'Extrato de Abacaxi com Hortelã', 20),
+        (6, 1, 'Extrato de Hibisco-Uva', 20),
+        (7, 1, 'Extrato de Capim-Santo Gengibre-Limão', 20),
         (1, 2, 'Embalagem Anis', 32),
         (2, 2, 'Embalagem Abacaxi', 32),
         (3, 2, 'Embalagem Hibisco', 32),
@@ -207,6 +214,46 @@ INSERT INTO Pedido( idSabor,
                     quantidadeEmbalagem,
                     dataEntradaPedido)
 	VALUES ( 1, 'teste', 1, 0, NULL, 1, 1, 1, 1, 1, NOW());
+    
+-- Criação de Usuarios e Controle de Acesso
+
+CREATE USER IF NOT EXISTS 'desenvolvedor'@'localhost'
+	IDENTIFIED BY 'dev12345'
+	PASSWORD EXPIRE INTERVAL 90 DAY;
+    
+CREATE USER IF NOT EXISTS 'admdb'@'localhost'
+	IDENTIFIED BY 'mandb123'
+    PASSWORD EXPIRE INTERVAL 365 DAY;
+    
+CREATE USER IF NOT EXISTS 'userdb'@'localhost'
+	IDENTIFIED BY 'user1234'
+    PASSWORD EXPIRE INTERVAL 365 DAY;
+    
+GRANT ALTER, DELETE, INSERT, SELECT, UPDATE
+	ON tribos_kombucha.*
+    TO 'desenvolvedor'@'localhost' WITH GRANT OPTION;
+    
+GRANT ALL
+	ON tribos_kombucha.*
+    TO 'admdb'@'localhost' WITH GRANT OPTION;
+    
+GRANT DELETE, INSERT, SELECT, UPDATE
+	ON tribos_kombucha.*
+    TO 'userdb'@'localhost';
+    
+FLUSH PRIVILEGES;
+    
+-- Função de Agregação
+DROP PROCEDURE IF EXISTS NumeroPedidoPorData;
+DELIMITER $$
+CREATE PROCEDURE NumeroPedidoPorData(IN dataDeEntradaIN DATE)
+BEGIN
+    SELECT count(idPedido) AS 'Total de Pedidos' FROM Pedido
+        WHERE date(dataEntradaPedido) LIKE dataDeEntradaIN;
+END
+$$
+DELIMITER ;
+
  
  -- SUB PROCEDURES MONTAGEM DE PEDIDOS
  
@@ -508,3 +555,12 @@ FOR EACH ROW
     END 
 $$
 DELIMITER ;
+
+-- VIEWS
+-- SELECT * FROM saborkombucha
+
+/*
+FALTA IMPLEMENTAR:
+	- VIEWS
+    - BACKUP    
+*/
