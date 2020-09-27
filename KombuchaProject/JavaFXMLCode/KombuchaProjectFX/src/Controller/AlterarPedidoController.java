@@ -44,6 +44,7 @@ public class AlterarPedidoController implements Initializable {
     @FXML private Label lblIdPedido;
     @FXML private Label lblIdFuncionario;
     @FXML private TextField tfQuantidade;
+    @FXML private Label lblDataUltimaAlteracao;
     @FXML private Button btVoltar;
     @FXML private Button btAtualizarPedido;
     @FXML private Button btFinalizarSessao;
@@ -121,9 +122,11 @@ public class AlterarPedidoController implements Initializable {
         Pedido pedidoInit = new Pedido();
         lblIdFuncionarioAtivo.setText(BatFer.getIdFuncionarioAtivo());
         lblIdPedido.setText(Integer.toString(pedidoInit.getIdPedido()));
-        lblIdFuncionario.setText(BatFer.getIdFuncionarioAtivo());
+        lblIdFuncionario.setText(pedidoInit.getIdFuncionario());
         cbListSabores.setItems(saboresCombobox());
-        tfQuantidade.setText(Integer.toString(pedidoInit.getQtdProducao()));    
+        tfQuantidade.setText(Integer.toString(pedidoInit.getQtdProducao()));
+        //lblDataUltimaAlteracao.setText(pedidoInit.getDataPedido());
+        
     }
     
     public void atualizaPedido() throws Exception{
