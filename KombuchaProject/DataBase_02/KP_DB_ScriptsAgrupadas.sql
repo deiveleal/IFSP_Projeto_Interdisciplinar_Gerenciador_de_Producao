@@ -55,7 +55,7 @@ CREATE TABLE EmbalagemKombucha(
 );
 
 CREATE TABLE SaborKombucha(
-    idKombucha  INT PRIMARY KEY,
+    idKombucha  INT AUTO_INCREMENT PRIMARY KEY,
     nomeKombucha VARCHAR(100) NOT NULL,
     chaBase VARCHAR(100) NOT NULL,
     idChaBase INT,
@@ -132,7 +132,10 @@ VALUES
     (1, 1, 'Água', 'Água Mineral'),
     (2, 1, 'Açucar', 'Organico'),
     (3, 1, 'Scoby', 'Colonia para fermentação'),
-    (4, 1, 'Chá de Anis', 'Chá de Anis');
+    (4, 1, 'Extrato de Anis', 20),
+	(5, 1, 'Extrato de Abacaxi com Hortelã', 20),
+	(6, 1, 'Extrato de Hibisco-Uva', 20),
+	(7, 1, 'Extrato de Capim-Santo Gengibre-Limão', 20);
  
  INSERT INTO Fermentador(
 	idFermentador,
@@ -162,23 +165,6 @@ VALUES
     (3, 2, 'Verde', 'Embalagem Hibisco'),
     (4, 2, 'Laranja', 'Embalagem Gengibre');
      
-
- INSERT INTO SaborKombucha(
-    idKombucha,
-	nomeKombucha,
-    chaBase,
-    idChaBase,
-    prePreparoQuantCha,
-    prePreparoQuantAgua,
-    quantidadeAcucar,
-    idEmbalagem)
-VALUES
-        (1, 'Anis', 'Extrato de Anis', 4, 0.025, 0.3, 0.045, 1),
-        (2, 'Abacaxi com Hortelã', 'Extrato de Abacaxi com Hortelã', 5, 0.025, 0.3, 0.045, 1),
-        (3, 'Hibisco-Uva', 'Extrato de Hibisco-Uva', 6, 0.025, 0.3, 0.045, 1),
-        (4, 'Capim-Santo Gengibre-Limão', 'Extrato de Capim-Santo Gengibre-Limão', 7, 0.025, 0.3, 0.045, 1);
-        
-        
  INSERT INTO Estoque(
     idItem,
 	idItemEstoque,
@@ -196,10 +182,28 @@ VALUES
         (2, 2, 'Embalagem Abacaxi', 32),
         (3, 2, 'Embalagem Hibisco', 32),
         (4, 2, 'Embalagem Gengibre', 32),
-        (1, 4, 'Kombucha Pronto Anis', 8),
-        (2, 4, 'Kombucha Pronto Abacaxi', 8),
-        (3, 4, 'Kombucha Pronto Hibisco', 8),
-        (4, 4, 'Kombucha Pronto Gengibre', 8);
+        (1, 4, 'Kombucha Pronto Anis', 48),
+        (2, 4, 'Kombucha Pronto Abacaxi', 48),
+        (3, 4, 'Kombucha Pronto Hibisco', 48),
+        (4, 4, 'Kombucha Pronto Gengibre', 48);
+
+ INSERT INTO SaborKombucha(
+    idKombucha,
+	nomeKombucha,
+    chaBase,
+    idChaBase,
+    prePreparoQuantCha,
+    prePreparoQuantAgua,
+    quantidadeAcucar,
+    idEmbalagem)
+VALUES
+        (1, 'Anis', 'Extrato de Anis', 4, 0.025, 0.3, 0.045, 1),
+        (2, 'Abacaxi com Hortelã', 'Extrato de Abacaxi com Hortelã', 5, 0.025, 0.3, 0.045, 1),
+        (3, 'Hibisco-Uva', 'Extrato de Hibisco-Uva', 6, 0.025, 0.3, 0.045, 1),
+        (4, 'Capim-Santo Gengibre-Limão', 'Extrato de Capim-Santo Gengibre-Limão', 7, 0.025, 0.3, 0.045, 1);
+        
+        
+
 
 
 INSERT INTO Pedido( idSabor, 
