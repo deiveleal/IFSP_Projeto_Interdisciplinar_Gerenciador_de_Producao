@@ -12,6 +12,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AlterarPedidoController">
    <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="294.0" layoutY="74.0" text="Alterar Pedido">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
       <GridPane layoutX="14.0" layoutY="14.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -21,23 +26,18 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Funcionário Registrado:">
+            <Label prefHeight="16.0" prefWidth="124.0" text="Funcionário Registrado:">
                <font>
                   <Font size="12.0" />
                </font>
             </Label>
-            <Label fx:id="lblIdFuncionarioAtivo" prefHeight="20.0" prefWidth="9.0" GridPane.rowIndex="1">
+            <Label fx:id="lblIdFuncionarioAtivo" prefHeight="16.0" prefWidth="124.0" GridPane.rowIndex="1">
                <font>
                   <Font size="12.0" />
                </font>
             </Label>
          </children>
       </GridPane>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="294.0" layoutY="74.0" text="Alterar Pedido">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
       <GridPane alignment="TOP_RIGHT" layoutX="59.0" layoutY="184.0" prefHeight="229.0" prefWidth="135.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -66,11 +66,6 @@
                </font>
             </Label>
             <Label text="Quantidade" GridPane.rowIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label text="Data da Alteração" GridPane.rowIndex="4">
                <font>
                   <Font size="16.0" />
                </font>
@@ -104,11 +99,6 @@
                   <Font size="16.0" />
                </font></TextField>
             <ComboBox fx:id="cbListSabores" prefHeight="34.0" prefWidth="426.0" promptText="Escolha um sabor" GridPane.rowIndex="2" />
-            <Label fx:id="lblDataUltimaAlteracao" layoutX="10.0" layoutY="79.0" prefHeight="34.0" prefWidth="426.0" GridPane.rowIndex="4">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
          </children>
       </GridPane>
       <GridPane layoutX="52.0" layoutY="493.0" prefHeight="40.0" prefWidth="732.0">

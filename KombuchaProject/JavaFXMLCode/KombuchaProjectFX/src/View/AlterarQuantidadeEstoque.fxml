@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -10,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.AlterarQuantidadeEstoqueController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AlterarQuantidadeEstoqueController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="265.0" layoutY="79.0" text="Inserção Estoque">
          <font>
@@ -26,30 +25,24 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Nome" GridPane.rowIndex="1">
+            <Label text="ID Item Estoque" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Cargo" GridPane.rowIndex="2">
+            <Label text="Nome" GridPane.rowIndex="2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="CPF">
+            <Label text="ID Item">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label text="Senha" GridPane.rowIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label text="Confirmar Senha" GridPane.rowIndex="4">
+            <Label text="Quantidade" GridPane.rowIndex="3">
                <font>
                   <Font size="16.0" />
                </font>
@@ -57,7 +50,7 @@
          </children>
       </GridPane>
       <Button fx:id="btVoltar" layoutX="90.0" layoutY="496.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="111.0" text="Voltar" />
-      <Button fx:id="btAtualizarDados" layoutX="309.0" layoutY="496.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="172.0" text="Atualizar Dados">
+      <Button fx:id="btInserirReposicao" layoutX="309.0" layoutY="496.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="172.0" text="Atualizar Dados">
          <font>
             <Font size="16.0" />
          </font>
@@ -71,14 +64,24 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField fx:id="tfNome" prefHeight="30.0" prefWidth="426.0" promptText="Nome" GridPane.rowIndex="1" />
-            <TextField fx:id="tfCargo" prefHeight="30.0" prefWidth="426.0" promptText="Cargo" GridPane.rowIndex="2" />
-            <PasswordField fx:id="pfSenha" prefHeight="30.0" promptText="Senha" GridPane.rowIndex="3" />
-            <PasswordField fx:id="pfConfirm" prefHeight="30.0" promptText="Repita a Senha" GridPane.rowIndex="4" />
-            <Label fx:id="lblIdFuncionario" alignment="CENTER" contentDisplay="CENTER">
+            <TextField fx:id="tfQtdReposicao" prefHeight="30.0" prefWidth="426.0" promptText="Cargo" text="Quantidade  em Reposição" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lblIdItem" prefHeight="30.0" prefWidth="426.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblIdItemEstoque" prefHeight="30.0" prefWidth="426.0" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblNome" prefHeight="30.0" prefWidth="426.0" GridPane.rowIndex="2">
                <font>
                   <Font size="16.0" />
                </font>
@@ -115,12 +118,12 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Funcionário Registrado:">
+            <Label prefHeight="16.0" prefWidth="129.0" text="Funcionário Registrado:">
                <font>
                   <Font size="12.0" />
                </font>
             </Label>
-            <Label fx:id="lblIdFuncionarioAtivo1" prefHeight="20.0" prefWidth="9.0" GridPane.rowIndex="1">
+            <Label fx:id="lblIdFuncionarioAtivo" prefHeight="16.0" prefWidth="129.0" GridPane.rowIndex="1">
                <font>
                   <Font size="12.0" />
                </font>

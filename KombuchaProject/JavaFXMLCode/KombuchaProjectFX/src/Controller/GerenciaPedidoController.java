@@ -14,10 +14,10 @@ import Model.CadastrarSabor;
 import Model.GerenciaPedido;
 import Model.MenuPrincipal;
 import Model.Pedido;
+import Model.PopConfirmaQuantPedido;
 import Model.SaborKombucha;
 import java.net.URL;
 import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -83,7 +83,7 @@ public class GerenciaPedidoController implements Initializable {
         
         btAlterarPedido.setOnMouseClicked((MouseEvent e)->{
             if(pedidoSelecionado != null){
-                AlterarPedido alteraPedido = new AlterarPedido();
+                AlterarPedido alteraPedido = new AlterarPedido(pedidoSelecionado);
                 try {
                     alteraPedido.start(new Stage());
                     fechaJanela();
@@ -101,10 +101,8 @@ public class GerenciaPedidoController implements Initializable {
         btAlterarPedido.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
                 if(pedidoSelecionado != null){
-                      AlterarPedido alteraPedido = new AlterarPedido();
-                      Pedido pedido = new Pedido();
-                      try {
-                          pedido.setIdPedido(pedidoSelecionado.getIdPedido());
+                      AlterarPedido alteraPedido = new AlterarPedido(pedidoSelecionado);
+                      try {                          
                           alteraPedido.start(new Stage());
                           fechaJanela();
                       } catch (Exception ex) {
@@ -242,14 +240,14 @@ public class GerenciaPedidoController implements Initializable {
             a.show();            
         }
     }   
-        
+        /*
     public void listaPedidos(){
         List<Pedido> pedido = new PedidoDAO().getList();
         System.out.println("Listando Pedidos");
         for (int x = 0; x < pedido.size(); x++){
             pedido.get(x).mostraPedido();
         }
-    }
+    }*/
     
     public void initIdFuncionarioAtivo(){
         lblIdFuncionarioAtivo.setText(BatFer.getIdFuncionarioAtivo());  
@@ -266,12 +264,18 @@ public class GerenciaPedidoController implements Initializable {
         int quantidadeProducao = Integer.parseInt(tfQuantidade.getText()); 
         
         Pedido novoPedido = new Pedido(idFuncionarioAtivo, nomeSabor, quantidadeProducao);                                         
+        //PopConfirmaQuantPedido confped = new PopConfirmaQuantPedido();
         PedidoDAO dao = new PedidoDAO();
         if(dao.inserePedido(novoPedido)){
+            try {
+               // confped.start(new Stage());
+            } catch (Exception ex) {
+                Logger.getLogger(GerenciaPedidoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("Pedido inserido com sucesso!");
-            tablePedidos.setItems(atualizaTabela());
-            alert.show();            
+            alert.show();
+            tablePedidos.setItems(atualizaTabela());                     
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Erro ao inserir novo pedido!");

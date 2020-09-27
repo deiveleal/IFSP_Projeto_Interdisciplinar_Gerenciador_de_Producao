@@ -6,44 +6,33 @@
 package DAO;
 
 import Connection.ConnectionFactory;
-import Model.BatmanDeFerro;
+import Model.Estoque;
 import Model.Pedido;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @author carolina
- * @author deive
+ *
+ * @author Deive
  */
-public class PedidoDAO extends Pedido{
+public class EstoqueDAO{
     private Connection con;
-    private Date dataPedido;
+    Estoque estok = new Estoque();
     
-    BatmanDeFerro BatFer = new BatmanDeFerro();
-    Pedido pedido = new Pedido();
-    
-    public PedidoDAO(){
+    public EstoqueDAO(){
         this.con = new ConnectionFactory().getConnection();
     }
     
-
-    public Date getDataPedido() {
-        return dataPedido;
-    }
-    public void setDataPedido(Date dataPedido) {
-        this.dataPedido = dataPedido;
-    }
-      
+    
+    /*
     //Método que insere um novo pedido;
     public boolean inserePedido(Pedido ped){
-        ped.setIdFuncionario(BatFer.getIdFuncionarioAtivo());
         String sql = "CALL montaPedidoPreparo(?, ?, ?);";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -60,20 +49,17 @@ public class PedidoDAO extends Pedido{
             Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }    
-    }
+    }*/
     
     //Método que atualiza os dados de um usuário
-    public boolean updatePedido(Pedido ped){
-        ped.setIdFuncionario(BatFer.getIdFuncionarioAtivo());
-        String sql = "UPDATE Pedido SET  idFuncionario = ?, idSabor = ?, quantidadeProducao = ?  WHERE idPedido = ?;";
+    public boolean updateEstoque(Estoque estoq){
+        String sql = "UPDATE Estoque SET  quantItem = ?  WHERE idItem = ?;";
         try { 
             PreparedStatement stmt = con.prepareStatement(sql);
             
-            stmt.setString(1, ped.getIdFuncionario());
-            stmt.setString(2, ped.getNomeSabor());
-            stmt.setInt(3, ped.getQtdProducao());
+            stmt.setDouble(1, estoq.getQtdItem());
 
-            stmt.setInt(4, ped.getIdPedido());
+            stmt.setInt(4, estoq.getIdItem());
             
             stmt.execute();
             stmt.close();
@@ -81,18 +67,18 @@ public class PedidoDAO extends Pedido{
             return true;
         } 
         catch (SQLException ex) { 
-            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }    
     }
     
     //Método que deleta um usuário
-    public boolean deletaPedido(Pedido ped){
-        String sql = "DELETE FROM Pedido WHERE idPedido = ?;";
+    public boolean deletaItem(Estoque estoq){
+        String sql = "DELETE FROM Estoque WHERE idItem = ?;";
         try { 
             PreparedStatement stmt = con.prepareStatement(sql);
            
-            stmt.setInt(1, ped.getIdPedido());
+            stmt.setInt(1, estoq.getIdItem());
             
             stmt.execute();
             stmt.close();
@@ -100,27 +86,27 @@ public class PedidoDAO extends Pedido{
             return true;
         } 
         catch (SQLException ex) { 
-            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } 
     }
     
     //Método que retorna uma lista de pedidos
-    public List<Pedido> getList(){
-        List<Pedido> ped = new ArrayList<>();
-        String sql = "SELECT * FROM Pedido ORDER BY dataEntradaPedido";
+    public List<Estoque> getList(){
+        List<Estoque> estoq = new ArrayList<>();
+        String sql = "SELECT * FROM Estoque ORDER BY nomeItem";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet ResSet = stmt.executeQuery();
             while(ResSet.next()){
-                Pedido pedido = new Pedido();
+                Estoque estoque = new Estoque();
                 
-                pedido.setIdPedido(ResSet.getInt("idPedido"));
-                pedido.setNomeSabor(ResSet.getString("nomeSabor"));
-                pedido.setQtdProducao(ResSet.getInt("quantidadeProducao"));
-                pedido.setDataPedido(ResSet.getDate("dataEntradaPedido"));
+                estoque.setIdItem(ResSet.getInt("idItem"));
+                estoque.setIdItemEstoque(ResSet.getInt("idItemEstoque"));
+                estoque.setNomeItem(ResSet.getString("nomeItem"));
+                estoque.setQtdItem(ResSet.getDouble("quantItem"));
                 
-                ped.add(pedido);         
+                estoq.add(estoque);         
             }
             stmt.close();
             ResSet.close();
@@ -130,24 +116,8 @@ public class PedidoDAO extends Pedido{
             System.out.println("Erro! Lista não retornada");
             return null;
         }        
-        return ped;
+        return estoq;
     }
-        //Método que deleta um usuário
-    public boolean selectUltimoPedido(Pedido ped){
-        String sql = "SELECT * FROM Pedido WHERE idPedido = ?;";
-        try { 
-            PreparedStatement stmt = con.prepareStatement(sql);
-           
-            stmt.setInt(1, ped.getIdPedido());
-            
-            stmt.execute();
-            stmt.close();
-            con.close();
-            return true;
-        } 
-        catch (SQLException ex) { 
-            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        } 
-    }
+    
+    
 }

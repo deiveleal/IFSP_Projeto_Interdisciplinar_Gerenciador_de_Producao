@@ -15,7 +15,12 @@ public class Pedido {
     private int idSabor;
     private String nomeSabor;
     private int qtdProducao;
+    private int idFermentador;
     private String idFuncionario;
+    private double quantidadeCha; 
+    private double quantidadeAgua; 
+    private double quantidadeAcucar; 
+    private int quantidadeEmbalagem;
     private Date dataPedido;
 
     public Pedido(){
@@ -62,7 +67,45 @@ public class Pedido {
         this.nomeSabor = nomeSabor;
     }
 
-    
+    public int getIdFermentador() {
+        return idFermentador;
+    }
+
+    public void setIdFermentador(int idFermentador) {
+        this.idFermentador = idFermentador;
+    }
+
+    public double getQuantidadeCha() {
+        return quantidadeCha;
+    }
+
+    public void setQuantidadeCha(double quantidadeCha) {
+        this.quantidadeCha = quantidadeCha;
+    }
+
+    public double getQuantidadeAgua() {
+        return quantidadeAgua;
+    }
+
+    public void setQuantidadeAgua(double quantidadeAgua) {
+        this.quantidadeAgua = quantidadeAgua;
+    }
+
+    public double getQuantidadeAcucar() {
+        return quantidadeAcucar;
+    }
+
+    public void setQuantidadeAcucar(double quantidadeAcucar) {
+        this.quantidadeAcucar = quantidadeAcucar;
+    }
+
+    public int getQuantidadeEmbalagem() {
+        return quantidadeEmbalagem;
+    }
+
+    public void setQuantidadeEmbalagem(int quantidadeEmbalagem) {
+        this.quantidadeEmbalagem = quantidadeEmbalagem;
+    }
     
     public int getQtdProducao() {
         return qtdProducao;
@@ -87,15 +130,6 @@ public class Pedido {
     public void setDataPedido(Date dataPedido) {
         this.dataPedido = dataPedido;
     } 
-    
-    public void mostraPedido(){
-        System.out.println("Cód. Pedido : "+getIdPedido());
-        System.out.println("Cód. Sabor : "+getIdSabor());
-        System.out.println("Sabor : "+getNomeSabor());      
-        System.out.println("Quantidade : "+getQtdProducao());
-        System.out.println("Data : "+getDataPedido());
-    }  
-    
 }
 
 

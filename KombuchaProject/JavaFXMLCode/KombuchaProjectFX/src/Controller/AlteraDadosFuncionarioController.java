@@ -32,6 +32,9 @@ import javafx.stage.Stage;
  * @author deive
  */
 public class AlteraDadosFuncionarioController implements Initializable {
+    BatmanDeFerro BatFer = new BatmanDeFerro();
+    private static Funcionario funcionario;
+    
     @FXML private Button btVoltar;
     @FXML private Button btAtualizarDados;
     @FXML private TextField tfNome;
@@ -41,9 +44,6 @@ public class AlteraDadosFuncionarioController implements Initializable {
     @FXML private Label lblIdFuncionario;
     @FXML private Button btFinalizarSessao;
     
-    BatmanDeFerro BatFer = new BatmanDeFerro();
-    private static Funcionario funcionario;
-
     public static Funcionario getFuncionario() {
         return funcionario;
     }

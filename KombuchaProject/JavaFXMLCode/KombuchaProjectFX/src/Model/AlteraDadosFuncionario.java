@@ -23,7 +23,7 @@ public class AlteraDadosFuncionario extends Application {
         AlteraDadosFuncionarioController.setFuncionario(func);
     }
     
-    private static Stage stage;//Uma janela1
+    private static Stage stage;
     
     public static void main(String[] args){
         launch(args);

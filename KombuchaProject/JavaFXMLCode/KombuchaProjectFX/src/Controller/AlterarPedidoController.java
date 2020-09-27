@@ -38,43 +38,47 @@ import javafx.stage.Stage;
 public class AlterarPedidoController implements Initializable {
     BatmanDeFerro BatFer = new BatmanDeFerro();
     private ObservableList<SaborKombucha> obsSaborKombucha;
+    private static Pedido ped;
 
-    
     @FXML private Label lblIdFuncionarioAtivo;
     @FXML private Label lblIdPedido;
     @FXML private Label lblIdFuncionario;
     @FXML private TextField tfQuantidade;
-    @FXML private Label lblDataUltimaAlteracao;
     @FXML private Button btVoltar;
     @FXML private Button btAtualizarPedido;
     @FXML private Button btFinalizarSessao;
     @FXML private ComboBox<SaborKombucha> cbListSabores;
 
+    public static Pedido getPed() {
+        return ped;
+    }
 
+    public static void setPed(Pedido ped) {
+        AlterarPedidoController.ped = ped;
+    }
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initAltPedido();
-        // TODO
+
         btAtualizarPedido.setOnMouseClicked((MouseEvent e)->{
+
             try {
                 atualizaPedido();
+
             } catch (Exception ex) {
                 Logger.getLogger(AlterarPedidoController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            fechaJanela();  
         });
         btAtualizarPedido.setOnKeyPressed((KeyEvent e)->{
             if(e.getCode() == KeyCode.ENTER){
+
                 try {
                     atualizaPedido();
+ 
                 } catch (Exception ex) {
                     Logger.getLogger(AlterarPedidoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                fechaJanela();  
             }
         });
         
@@ -119,14 +123,11 @@ public class AlterarPedidoController implements Initializable {
     }    
     
     public void initAltPedido(){
-        Pedido pedidoInit = new Pedido();
         lblIdFuncionarioAtivo.setText(BatFer.getIdFuncionarioAtivo());
-        lblIdPedido.setText(Integer.toString(pedidoInit.getIdPedido()));
-        lblIdFuncionario.setText(pedidoInit.getIdFuncionario());
+        lblIdPedido.setText(Integer.toString(ped.getIdPedido()));
+        lblIdFuncionario.setText(BatFer.getIdFuncionarioAtivo());
         cbListSabores.setItems(saboresCombobox());
-        tfQuantidade.setText(Integer.toString(pedidoInit.getQtdProducao()));
-        //lblDataUltimaAlteracao.setText(pedidoInit.getDataPedido());
-        
+        tfQuantidade.setText(Integer.toString(ped.getQtdProducao()));        
     }
     
     public void atualizaPedido() throws Exception{
@@ -141,13 +142,11 @@ public class AlterarPedidoController implements Initializable {
         if(dao.updatePedido(pedidoCorrigido)){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("Pedido atualizado com sucesso!");
-            alert.show();
-            fechaJanela();            
+            alert.show();   
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Erro ao atualizar pedido!");                
             alert.show();
-            fechaJanela();
         }
     }
     public ObservableList<SaborKombucha> saboresCombobox(){

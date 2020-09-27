@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Controller.PopConfirmaQuantPedidoController;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +17,11 @@ import javafx.stage.Stage;
  * @author Deive
  */
 public class PopConfirmaQuantPedido {
-            private static Stage stage;
+    public PopConfirmaQuantPedido(Pedido ped){
+        PopConfirmaQuantPedidoController.setPed(ped);
+    }
+    
+    private static Stage stage;
     
     public static void main(String[] args){
         launch(args);

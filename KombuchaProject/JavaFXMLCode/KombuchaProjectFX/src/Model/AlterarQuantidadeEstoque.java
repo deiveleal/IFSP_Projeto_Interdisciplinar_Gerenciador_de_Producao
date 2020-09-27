@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Controller.AlterarQuantidadeEstoqueController;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,10 +13,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
+ * @author Carolina
  * @author Deive
  */
 public class AlterarQuantidadeEstoque {
+    
+    public AlterarQuantidadeEstoque(Estoque estoq){
+        AlterarQuantidadeEstoqueController.setEstoqAlt(estoq);
+    }    
+    public AlterarQuantidadeEstoque() {
+    }
+    
     private static Stage stage;
     
     public static void main(String[] args){

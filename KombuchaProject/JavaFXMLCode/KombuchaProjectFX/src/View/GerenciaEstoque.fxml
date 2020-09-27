@@ -16,10 +16,10 @@
       <Button fx:id="btCadastrarItem" layoutX="148.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="171.0" text="Cadastrar Item" />
       <TableView fx:id="tableEstoque" layoutX="56.0" layoutY="173.0" prefHeight="364.0" prefWidth="688.0">
         <columns>
-          <TableColumn prefWidth="115.0" text="Item" />
-          <TableColumn prefWidth="196.0" text="Nome" />
-            <TableColumn prefWidth="279.0" text="Descrição" />
-            <TableColumn prefWidth="97.0" text="Quantidade" />
+          <TableColumn fx:id="colIdEstoque" prefWidth="115.0" text="Id Item" />
+          <TableColumn fx:id="colItemEstoque" prefWidth="196.0" text="Id Item Estoque" />
+            <TableColumn fx:id="colNome" prefWidth="279.0" text="Nome" />
+            <TableColumn fx:id="colQuantidade" prefWidth="97.0" text="Quantidade" />
         </columns>
       </TableView>
       <Label layoutX="195.0" layoutY="48.0" text="Gerenciamento de Estoque">

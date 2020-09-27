@@ -5,6 +5,8 @@
  */
 package Model;
 
+import Controller.AlterarPedidoController;
+import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,17 +14,22 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
+ * @author carolina
  * @author deive
  */
-public class AlterarPedido {
+public class AlterarPedido extends Application{
     
-        private static Stage stage;
+    public AlterarPedido(Pedido pedido){
+        AlterarPedidoController.setPed(pedido);
+    }
+    
+    private static Stage stage;
     
     public static void main(String[] args){
         launch(args);
     }
 
+    @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/View/AlterarPedido.fxml"));//Carrega FXML
         Scene scene = new Scene(root);//Coloca o FXML em uma cena

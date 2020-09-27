@@ -28,7 +28,7 @@ public class GerenciarPedido {
                 
                 System.out.println("--------------------------------------------");
                 
-                lastpedido.get(dado).mostraPedido();
+                //lastpedido.get(dado).mostraPedido();
                 
                 System.out.println("--------------------------------------------");
             }

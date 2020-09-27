@@ -8,48 +8,54 @@ package Model;
  * 
  */
 public class Estoque {
-    private int id_Item;
-    private int id_Item_Estoque;
-    private String nome_Item;
-    private double qtd_Item;
-
+    private int idItem;
+    private int idItemEstoque;
+    private String nomeItem;
+    private double qtdItem;
+    
+    public Estoque() {
+    }
+    
+    public Estoque(Estoque estoque){
+    }
+    
     public Estoque(int id_Item, int id_Item_Estoque, String nome_Item, double qtd_Item) {
-        this.id_Item = id_Item;
-        this.id_Item_Estoque = id_Item_Estoque;
-        this.nome_Item = nome_Item;
-        this.qtd_Item = qtd_Item;
+        this.idItem = id_Item;
+        this.idItemEstoque = id_Item_Estoque;
+        this.nomeItem = nome_Item;
+        this.qtdItem = qtd_Item;
+    }
+    
+    public int getIdItem() {
+        return idItem;
     }
 
-    public int getId_Item() {
-        return id_Item;
+    public void setIdItem(int idItem) {
+        this.idItem = idItem;
     }
 
-    public void setId_Item(int id_Item) {
-        this.id_Item = id_Item;
+    public int getIdItemEstoque() {
+        return idItemEstoque;
     }
 
-    public int getId_Item_Estoque() {
-        return id_Item_Estoque;
+    public void setIdItemEstoque(int idItemEstoque) {
+        this.idItemEstoque = idItemEstoque;
     }
 
-    public void setId_Item_Estoque(int id_Item_Estoque) {
-        this.id_Item_Estoque = id_Item_Estoque;
+    public String getNomeItem() {
+        return nomeItem;
     }
 
-    public String getNome_Item() {
-        return nome_Item;
+    public void setNomeItem(String nomeItem) {
+        this.nomeItem = nomeItem;
     }
 
-    public void setNome_Item(String nome_Item) {
-        this.nome_Item = nome_Item;
+    public double getQtdItem() {
+        return qtdItem;
     }
 
-    public double getQtd_Item() {
-        return qtd_Item;
-    }
-
-    public void setQtd_Item(double qtd_Item) {
-        this.qtd_Item = qtd_Item;
+    public void setQtdItem(double qtdItem) {
+        this.qtdItem = qtdItem;
     }
     
     
