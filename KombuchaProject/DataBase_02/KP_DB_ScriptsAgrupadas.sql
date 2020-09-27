@@ -264,12 +264,13 @@ DELIMITER ;
  -- Monta chá para pedido
 DROP FUNCTION IF EXISTS montagemCha;
 DELIMITER $$
-CREATE FUNCTION montagemCha (idKombucha INT, qtdPedido INT)
+CREATE FUNCTION montagemCha (idKombuchaIN INT, qtdPedido INT)
 RETURNS DOUBLE DETERMINISTIC
 BEGIN
 	DECLARE prePreparoQuantCha_aux DOUBLE;
     DECLARE quantidadeDeProducao DOUBLE;
-	SELECT prePreparoQuantCha INTO prePreparoQuantCha_aux FROM tribos_kombucha.SaborKombucha WHERE idKombucha = idKombucha;
+	SELECT prePreparoQuantCha INTO prePreparoQuantCha_aux FROM tribos_kombucha.SaborKombucha 
+		WHERE idKombucha = idKombuchaIN;
         SET quantidadeDeProducao = prePreparoQuantCha_aux * qtdPedido;
 
 RETURN quantidadeDeProducao;
@@ -280,12 +281,13 @@ DELIMITER ;
 -- Monta água para pedido
 DROP FUNCTION IF EXISTS montagemAgua;
 DELIMITER $$
-CREATE FUNCTION montagemAgua (idKombucha INT, qtdPedido INT)
+CREATE FUNCTION montagemAgua (idKombuchaIN INT, qtdPedido INT)
 RETURNS DOUBLE DETERMINISTIC
 BEGIN
 	DECLARE prePreparoQuantAgua_aux DOUBLE;
     DECLARE quantidadeDeProducao DOUBLE;
-	SELECT prePreparoQuantAgua INTO prePreparoQuantAgua_aux FROM tribos_kombucha.SaborKombucha WHERE idKombucha = idKombucha;
+	SELECT prePreparoQuantAgua INTO prePreparoQuantAgua_aux FROM tribos_kombucha.SaborKombucha 
+		WHERE idKombucha = idKombuchaIN;
         SET quantidadeDeProducao = prePreparoQuantAgua_aux * qtdPedido;
 
 RETURN quantidadeDeProducao;
@@ -419,7 +421,7 @@ DELIMITER $$
 		SELECT NOW() INTO dataEntradaPedido;
         
         -- FUNÇÃO DE DECREMENTO DE SKOOBY
-        
+	
         SELECT quantidadeDeProducao INTO quantidadeDeProducao_aux;
         SET prePreparoQuantCha_aux = montagemCha(idSabor_aux, quantidadeDeProducao);
                 
@@ -430,15 +432,12 @@ DELIMITER $$
         SET quantidadeAcucar_aux = montagemAcucar(idSabor_aux, quantidadeDeProducao);
                 
         SET volumeProducao = prePreparoQuantAgua_aux + prePreparoQuantCha_aux;
-
+	
 		SELECT idPedido INTO idPedido_aux FROM tribos_kombucha.Pedido
 			ORDER BY idPedido DESC LIMIT 1;
 		SET idPedido_aux = idPedido_aux + 1;
 		
-        /*
-        SELECT nomeKombucha INTO nomeSabor_aux FROM tribos_kombucha.SaborKombucha
-			WHERE idKombucha = idSabor_aux;
-        */
+        
         INSERT INTO Pedido( 
 							idSabor,
                             nomeSabor,
@@ -472,9 +471,6 @@ DELIMITER ;
 
 /*
 -- EXEMPLO TESTE DE INSERÇÃO DE PEDIDO
-
-SET @quantidadeDeProducao = 2;
-CALL montaPedidoPreparo(1, 1, @quantidadeDeProducao);
 
 SET @quantidadeDeProducao = 3;
 CALL montaPedidoPreparo('1', 'Anis', @quantidadeDeProducao);
