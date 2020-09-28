@@ -31,19 +31,31 @@ import javafx.stage.Stage;
  * @author deive
  */
 public class CadastrarSaborController implements Initializable {
+
     BatmanDeFerro BatFer = new BatmanDeFerro();
 
-    @FXML private TextField tfIdKombucha;
-    @FXML private TextField tfNomeKombucha;
-    @FXML private TextField tfChaBase;
-    @FXML private TextField tfIdChaBase;
-    @FXML private TextField tfPrePreparoQuantCha;
-    @FXML private TextField tfQuantidadeAgua;
-    @FXML private TextField tfPrePreparoQuantAcucar;
-    @FXML private TextField tfIdEmbalagem;
-    @FXML private Button btVoltar;
-    @FXML private Button btCadastrar;
-    @FXML private Button btFinalizarSessao;
+    @FXML
+    private TextField tfIdKombucha;
+    @FXML
+    private TextField tfNomeKombucha;
+    @FXML
+    private TextField tfChaBase;
+    @FXML
+    private TextField tfIdChaBase;
+    @FXML
+    private TextField tfPrePreparoQuantCha;
+    @FXML
+    private TextField tfQuantidadeAgua;
+    @FXML
+    private TextField tfPrePreparoQuantAcucar;
+    @FXML
+    private TextField tfIdEmbalagem;
+    @FXML
+    private Button btVoltar;
+    @FXML
+    private Button btCadastrar;
+    @FXML
+    private Button btFinalizarSessao;
 
     /**
      * Initializes the controller class.
@@ -51,76 +63,79 @@ public class CadastrarSaborController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        btCadastrar.setOnMouseClicked((MouseEvent e)->{
+        btCadastrar.setOnMouseClicked((MouseEvent e) -> {
             cadastraSabor();
         });
-        btCadastrar.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btCadastrar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 cadastraSabor();
             }
         });
-        
-        btVoltar.setOnMouseClicked((MouseEvent e)->{
+
+        btVoltar.setOnMouseClicked((MouseEvent e) -> {
             GerenciaPedido gerPed = new GerenciaPedido();
-          
+
             try {
                 gerPed.start(new Stage());
-                fechaJanela();  
-            } catch (Exception ex) {
+                fechaJanela();
+            }
+            catch (Exception ex) {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        btVoltar.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
-                GerenciaPedido gerPed = new GerenciaPedido();        
+        btVoltar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                GerenciaPedido gerPed = new GerenciaPedido();
                 try {
                     gerPed.start(new Stage());
-                    fechaJanela();  
-                } catch (Exception ex) {
+                    fechaJanela();
+                }
+                catch (Exception ex) {
                     Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
-        
-        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e) -> {
             BatFer.voltaTelaLogin();
             fechaJanela();
         });
-        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 BatFer.voltaTelaLogin();
                 fechaJanela();
             }
 
         });
     }
-    
-    public void cadastraSabor(){
-        int idKombucha = Integer.parseInt(tfIdKombucha.getText()),  
-            idChaBase = Integer.parseInt(tfIdChaBase.getText()), 
-            idEmbalagem = Integer.parseInt(tfIdEmbalagem.getText());
+
+    public void cadastraSabor() {
+        int idKombucha = Integer.parseInt(tfIdKombucha.getText()),
+                idChaBase = Integer.parseInt(tfIdChaBase.getText()),
+                idEmbalagem = Integer.parseInt(tfIdEmbalagem.getText());
         String nomeKombucha = tfNomeKombucha.getText(),
-               chaBase = tfChaBase.getText();
-        double qtdCha = Double.parseDouble(tfPrePreparoQuantCha.getText()), 
-               qtdAgua = Double.parseDouble(tfQuantidadeAgua.getText()), 
-               qtdAcucar = Double.parseDouble(tfPrePreparoQuantAcucar.getText()); 
-                                                       
-        SaborKombucha saborKombucha = new SaborKombucha(idKombucha, nomeKombucha, 
-                                                        chaBase, idChaBase, qtdCha,
-                                                        qtdAgua, qtdAcucar, idEmbalagem);                                         
+                chaBase = tfChaBase.getText();
+        double qtdCha = Double.parseDouble(tfPrePreparoQuantCha.getText()),
+                qtdAgua = Double.parseDouble(tfQuantidadeAgua.getText()),
+                qtdAcucar = Double.parseDouble(tfPrePreparoQuantAcucar.getText());
+
+        SaborKombucha saborKombucha = new SaborKombucha(idKombucha, nomeKombucha,
+                chaBase, idChaBase, qtdCha,
+                qtdAgua, qtdAcucar, idEmbalagem);
         SaborKombuchaDAO saborKombuchaDao = new SaborKombuchaDAO();
-        if(saborKombuchaDao.insertSaborKombucha(saborKombucha)){
+        if (saborKombuchaDao.insertSaborKombucha(saborKombucha)) {
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setHeaderText("Sabor cadastrado com sucesso!");
-            alert.show();            
-        }else{
+            alert.show();
+        } else {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText("Erro ao cadastrar novo sabor!");
             alert.show();
-        }   
+        }
     }
-    public void fechaJanela(){
+
+    public void fechaJanela() {
         CadastrarSabor.getStage().close();
-    }  
-    
+    }
+
 }

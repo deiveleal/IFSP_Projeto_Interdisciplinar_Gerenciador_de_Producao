@@ -22,36 +22,47 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
+ *
  * @author carolina
  * @author Deive
  */
 public class PopConfirmaQuantPedidoController implements Initializable {
 
-    @FXML private Label lblIdPedido;
-    @FXML private Label lblSabor;
-    @FXML private Label lblQtdProducao;
-    @FXML private Label lblIdFermentador;
-    @FXML private Label lblQtdExtrato;
-    @FXML private Label lblQtdAgua;
-    @FXML private Label lblQtdAcucar;
-    @FXML private Label lblQtdEmbalagem;
-    @FXML private Button btOK;
+    @FXML
+    private Label lblIdPedido;
+    @FXML
+    private Label lblSabor;
+    @FXML
+    private Label lblQtdProducao;
+    @FXML
+    private Label lblIdFermentador;
+    @FXML
+    private Label lblQtdExtrato;
+    @FXML
+    private Label lblQtdAgua;
+    @FXML
+    private Label lblQtdAcucar;
+    @FXML
+    private Label lblQtdEmbalagem;
+    @FXML
+    private Button btOK;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initRelatorioPedido();
-        
-        btOK.setOnMouseClicked((MouseEvent e)->{
-            fechaJanela();  
+
+        btOK.setOnMouseClicked((MouseEvent e) -> {
+            fechaJanela();
         });
-        btOK.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
-                fechaJanela();  
+        btOK.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                fechaJanela();
             }
         });
-    }    
-    public void initRelatorioPedido(){
-        DecimalFormat df = new DecimalFormat("#0.000#"); 
+    }
+
+    public void initRelatorioPedido() {
+        DecimalFormat df = new DecimalFormat("#0.000#");
         PedidoDAO dao = new PedidoDAO();
         List<Pedido> ultimoPedido = dao.selectUltimoPedido();
         lblIdPedido.setText(Integer.toString(ultimoPedido.get(0).getIdPedido()));
@@ -63,8 +74,9 @@ public class PopConfirmaQuantPedidoController implements Initializable {
         lblQtdAcucar.setText(df.format(ultimoPedido.get(0).getQuantidadeAcucar()));
         lblQtdEmbalagem.setText(Integer.toString(ultimoPedido.get(0).getQuantidadeEmbalagem()));
     }
-    public void fechaJanela(){
+
+    public void fechaJanela() {
         PopConfirmaQuantPedido.getStage().close();
-    }  
-    
+    }
+
 }

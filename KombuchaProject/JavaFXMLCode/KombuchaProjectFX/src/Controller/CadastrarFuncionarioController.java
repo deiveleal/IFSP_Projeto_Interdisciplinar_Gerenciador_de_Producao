@@ -31,99 +31,110 @@ import javafx.stage.Stage;
  *
  * @author deive
  */
-public class CadastrarFuncionarioController implements Initializable { 
+public class CadastrarFuncionarioController implements Initializable {
+
     BatmanDeFerro BatFer = new BatmanDeFerro();
 
-    @FXML private Button btVoltar;
-    @FXML private Button btCadastrar;
-    @FXML private Button btFinalizarSessao;
-    @FXML private TextField tfCPF;
-    @FXML private TextField tfNome;
-    @FXML private TextField tfCargo;
-    @FXML private PasswordField pfSenha;
-    @FXML private PasswordField pfConfirm;
+    @FXML
+    private Button btVoltar;
+    @FXML
+    private Button btCadastrar;
+    @FXML
+    private Button btFinalizarSessao;
+    @FXML
+    private TextField tfCPF;
+    @FXML
+    private TextField tfNome;
+    @FXML
+    private TextField tfCargo;
+    @FXML
+    private PasswordField pfSenha;
+    @FXML
+    private PasswordField pfConfirm;
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        btCadastrar.setOnMouseClicked((MouseEvent e)->{
+        btCadastrar.setOnMouseClicked((MouseEvent e) -> {
             cadastraFunc();
-    
+
         });
-        btCadastrar.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode()==KeyCode.ENTER){
-                cadastraFunc();             
-            }        
-        });       
-        
-        btVoltar.setOnMouseClicked((MouseEvent e)->{
+        btCadastrar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                cadastraFunc();
+            }
+        });
+
+        btVoltar.setOnMouseClicked((MouseEvent e) -> {
             GerenciaUsuario geruser = new GerenciaUsuario();
-          
+
             try {
                 geruser.start(new Stage());
-                fechaJanela();  
-            } catch (Exception ex) {
+                fechaJanela();
+            }
+            catch (Exception ex) {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        btVoltar.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btVoltar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 GerenciaUsuario geruser = new GerenciaUsuario();
-          
+
                 try {
                     geruser.start(new Stage());
-                    fechaJanela();  
-                } catch (Exception ex) {
+                    fechaJanela();
+                }
+                catch (Exception ex) {
                     Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
-        
 
-        
-        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e) -> {
             BatFer.voltaTelaLogin();
             fechaJanela();
         });
-        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 BatFer.voltaTelaLogin();
                 fechaJanela();
             }
 
         });
     }
-    
-    private void cadastraFunc(){
+
+    private void cadastraFunc() {
         String idFuncionario = tfCPF.getText(),
-               nomeFuncionario = tfNome.getText(), 
-               cargo = tfCargo.getText(), 
-               senha = pfSenha.getText(), 
-               confirm = pfConfirm.getText();
-        
-        if(senha.equals(confirm)){
-            Funcionario func = new Funcionario(idFuncionario, nomeFuncionario, cargo, senha);  
+                nomeFuncionario = tfNome.getText(),
+                cargo = tfCargo.getText(),
+                senha = pfSenha.getText(),
+                confirm = pfConfirm.getText();
+
+        if (senha.equals(confirm)) {
+            Funcionario func = new Funcionario(idFuncionario, nomeFuncionario, cargo, senha);
             FuncionarioDAO funcDao = new FuncionarioDAO();
-            if(funcDao.insert(func)){
+            if (funcDao.insert(func)) {
                 Alert alert = new Alert(AlertType.CONFIRMATION);
                 alert.setHeaderText("Usuário cadastrado!");
-                alert.show();            
-            }else{
+                alert.show();
+            } else {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText("Erro ao cadastrar usuário!");
                 alert.show();
-            }            
-        }else{
+            }
+        } else {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText("Senhas não coincidem!");
             alert.show();
-        }    
+        }
     }
-    public void fechaJanela(){
+
+    public void fechaJanela() {
         CadastrarFuncionario.getStage().close();
     }
 }

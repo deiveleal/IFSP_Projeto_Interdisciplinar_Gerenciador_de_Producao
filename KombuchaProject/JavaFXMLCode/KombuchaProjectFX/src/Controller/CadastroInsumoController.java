@@ -31,87 +31,97 @@ import javafx.stage.Stage;
  * @author Deive
  */
 public class CadastroInsumoController implements Initializable {
-    BatmanDeFerro BatFer = new BatmanDeFerro();
-    
-    @FXML private TextField tfIdInsumo;
-    @FXML private TextField tfIdItemEstoque;
-    @FXML private TextField tfNome;
-    @FXML private TextField tfDescricao;
-    @FXML private Button btVoltar;
-    @FXML private Button btCadastrar;
-    @FXML private Button btFinalizarSessao;
 
+    BatmanDeFerro BatFer = new BatmanDeFerro();
+
+    @FXML
+    private TextField tfIdInsumo;
+    @FXML
+    private TextField tfIdItemEstoque;
+    @FXML
+    private TextField tfNome;
+    @FXML
+    private TextField tfDescricao;
+    @FXML
+    private Button btVoltar;
+    @FXML
+    private Button btCadastrar;
+    @FXML
+    private Button btFinalizarSessao;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         // TODO
-        btCadastrar.setOnMouseClicked((MouseEvent e)->{
+        btCadastrar.setOnMouseClicked((MouseEvent e) -> {
             InsereNovoInsumo();
         });
-        btCadastrar.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btCadastrar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 InsereNovoInsumo();
             }
         });
-        
-        btVoltar.setOnMouseClicked((MouseEvent e)->{
+
+        btVoltar.setOnMouseClicked((MouseEvent e) -> {
             GerenciaEstoque gerEstoque = new GerenciaEstoque();
-          
+
             try {
                 gerEstoque.start(new Stage());
-                fechaJanela();  
-            } catch (Exception ex) {
+                fechaJanela();
+            }
+            catch (Exception ex) {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        btVoltar.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btVoltar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 GerenciaEstoque gerEstoque = new GerenciaEstoque();
-          
+
                 try {
                     gerEstoque.start(new Stage());
-                    fechaJanela();  
-                } catch (Exception ex) {
+                    fechaJanela();
+                }
+                catch (Exception ex) {
                     Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
-        
-        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e) -> {
             BatFer.voltaTelaLogin();
-            fechaJanela();  
+            fechaJanela();
         });
-        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 BatFer.voltaTelaLogin();
-                fechaJanela();  
+                fechaJanela();
             }
         });
-    }   
-    
-    private void InsereNovoInsumo(){
-        int idInsumo = Integer.parseInt(tfIdInsumo.getText()), 
-            idItemEstoque = Integer.parseInt(tfIdItemEstoque.getText()); 
-        String nomeInsumo = tfNome.getText(), 
-               descInsumo = tfDescricao.getText(); 
-            Insumo insum = new Insumo(idInsumo,idItemEstoque,nomeInsumo,descInsumo);  
-            InsumoDAO dao = new InsumoDAO();
-            if(dao.insereInsumo(insum)){
-                Alert alert = new Alert(AlertType.CONFIRMATION);
-                alert.setHeaderText("Insumo cadastrado com sucesso!");
-                alert.show();            
-            }else{
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setHeaderText("Erro ao cadastrar insumo!");
-                alert.show(); 
-            }
     }
-    public void fechaJanela(){
+
+    private void InsereNovoInsumo() {
+        int idInsumo = Integer.parseInt(tfIdInsumo.getText()),
+                idItemEstoque = Integer.parseInt(tfIdItemEstoque.getText());
+        String nomeInsumo = tfNome.getText(),
+                descInsumo = tfDescricao.getText();
+        Insumo insum = new Insumo(idInsumo, idItemEstoque, nomeInsumo, descInsumo);
+        InsumoDAO dao = new InsumoDAO();
+        if (dao.insereInsumo(insum)) {
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setHeaderText("Insumo cadastrado com sucesso!");
+            alert.show();
+        } else {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setHeaderText("Erro ao cadastrar insumo!");
+            alert.show();
+        }
+    }
+
+    public void fechaJanela() {
         CadastroInsumo.getStage().close();
     }
-    
+
 }

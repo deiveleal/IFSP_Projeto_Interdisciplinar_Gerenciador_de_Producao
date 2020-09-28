@@ -39,21 +39,32 @@ import javafx.stage.Stage;
  * @author deive
  */
 public class GerenciaEstoqueController implements Initializable {
+
     private ObservableList<Estoque> estoqueList = FXCollections.observableArrayList();
     private Estoque itemSelecionado;
     BatmanDeFerro BatFer = new BatmanDeFerro();
-    
-    @FXML private Button btCadastrarItem;
-    @FXML private TableView<Estoque> tableEstoque;
-    @FXML private TableColumn<Estoque,Integer> colIdEstoque;
-    @FXML private TableColumn<Estoque, Integer> colItemEstoque;
-    @FXML private TableColumn<Estoque, String> colNome;
-    @FXML private TableColumn<Estoque, Double> colQuantidade;
-    @FXML private Button btVoltar;
-    @FXML private Button btFinalizarSessao;
-    @FXML private TextField tfBusca;
-    @FXML private Button btAlterarQtd;
-    
+
+    @FXML
+    private Button btCadastrarItem;
+    @FXML
+    private TableView<Estoque> tableEstoque;
+    @FXML
+    private TableColumn<Estoque, Integer> colIdEstoque;
+    @FXML
+    private TableColumn<Estoque, Integer> colItemEstoque;
+    @FXML
+    private TableColumn<Estoque, String> colNome;
+    @FXML
+    private TableColumn<Estoque, Double> colQuantidade;
+    @FXML
+    private Button btVoltar;
+    @FXML
+    private Button btFinalizarSessao;
+    @FXML
+    private TextField tfBusca;
+    @FXML
+    private Button btAlterarQtd;
+
     /**
      * Initializes the controller class.
      */
@@ -61,139 +72,143 @@ public class GerenciaEstoqueController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         initTable();
-        
-        tableEstoque.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
+
+        tableEstoque.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
-            public void changed(ObservableValue observable, Object oldValue, Object  newValue){
-                itemSelecionado = (Estoque) newValue;           
-            }       
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                itemSelecionado = (Estoque) newValue;
+            }
         });
-        
-        btCadastrarItem.setOnMouseClicked((MouseEvent e)->{
+
+        btCadastrarItem.setOnMouseClicked((MouseEvent e) -> {
             CadastroInsumo cadInsumo = new CadastroInsumo();
             try {
                 cadInsumo.start(new Stage());
-            } catch (Exception ex) {
+            }
+            catch (Exception ex) {
                 Logger.getLogger(GerenciaEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
             }
             fechaJanela();
         });
-        btCadastrarItem.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btCadastrarItem.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 CadastroInsumo cadInsumo = new CadastroInsumo();
                 try {
                     cadInsumo.start(new Stage());
-                } catch (Exception ex) {
+                }
+                catch (Exception ex) {
                     Logger.getLogger(GerenciaEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 fechaJanela();
             }
         });
-        
-        
-        btAlterarQtd.setOnMouseClicked((MouseEvent e)->{
-            if(itemSelecionado != null){
-            AlterarQuantidadeEstoque altEstoq = new AlterarQuantidadeEstoque(itemSelecionado);
-         
-            try {
-                altEstoq.start(new Stage());
-                fechaJanela();  
-            } catch (Exception ex) {
-                Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            }else{
+
+        btAlterarQtd.setOnMouseClicked((MouseEvent e) -> {
+            if (itemSelecionado != null) {
+                AlterarQuantidadeEstoque altEstoq = new AlterarQuantidadeEstoque(itemSelecionado);
+
+                try {
+                    altEstoq.start(new Stage());
+                    fechaJanela();
+                }
+                catch (Exception ex) {
+                    Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
                 Alert a = new Alert(Alert.AlertType.WARNING);
                 a.setHeaderText("Nenhum item selecionado!");
-                a.show();  
+                a.show();
             }
         });
-        btAlterarQtd.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
-                if(itemSelecionado != null){
+        btAlterarQtd.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                if (itemSelecionado != null) {
                     AlterarQuantidadeEstoque altEstoq = new AlterarQuantidadeEstoque(itemSelecionado);
 
                     try {
                         altEstoq.start(new Stage());
-                        fechaJanela();  
-                    } catch (Exception ex) {
+                        fechaJanela();
+                    }
+                    catch (Exception ex) {
                         Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }else{
+                } else {
                     Alert a = new Alert(Alert.AlertType.WARNING);
                     a.setHeaderText("Nenhum item selecionado!");
-                    a.show();   
+                    a.show();
                 }
             }
-        });        
-                
-                
-        
-        btVoltar.setOnMouseClicked((MouseEvent e)->{
+        });
+
+        btVoltar.setOnMouseClicked((MouseEvent e) -> {
             MenuPrincipal menu = new MenuPrincipal();
-         
+
             try {
                 menu.start(new Stage());
-                fechaJanela();  
-            } catch (Exception ex) {
+                fechaJanela();
+            }
+            catch (Exception ex) {
                 Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        btVoltar.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btVoltar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 MenuPrincipal menu = new MenuPrincipal();
-           
+
                 try {
                     menu.start(new Stage());
-                    fechaJanela();  
-                } catch (Exception ex) {
+                    fechaJanela();
+                }
+                catch (Exception ex) {
                     Logger.getLogger(GerenciaUsuarioController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
 
-        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e) -> {
             BatFer.voltaTelaLogin();
             fechaJanela();
         });
-        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 BatFer.voltaTelaLogin();
                 fechaJanela();
             }
 
         });
-        
-        tfBusca.setOnKeyReleased((KeyEvent e)->{
+
+        tfBusca.setOnKeyReleased((KeyEvent e) -> {
             tableEstoque.setItems(buscaEstoque());
         });
     }
 
-    public void fechaJanela(){
+    public void fechaJanela() {
         GerenciaEstoque.getStage().close();
     }
-    public void initTable(){
+
+    public void initTable() {
         colIdEstoque.setCellValueFactory(new PropertyValueFactory("idItem"));
         colItemEstoque.setCellValueFactory(new PropertyValueFactory("idItemEstoque"));
-        colNome.setCellValueFactory(new PropertyValueFactory("nomeItem")); 
-        colQuantidade.setCellValueFactory(new PropertyValueFactory("qtdItem")); 
-        
+        colNome.setCellValueFactory(new PropertyValueFactory("nomeItem"));
+        colQuantidade.setCellValueFactory(new PropertyValueFactory("qtdItem"));
+
         tableEstoque.setItems(atualizaTabela());
     }
-    
-    public ObservableList<Estoque> atualizaTabela(){
+
+    public ObservableList<Estoque> atualizaTabela() {
         EstoqueDAO dao = new EstoqueDAO();
         estoqueList = FXCollections.observableArrayList(dao.getList());
         return estoqueList;
     }
-        
-    private ObservableList<Estoque> buscaEstoque(){
+
+    private ObservableList<Estoque> buscaEstoque() {
         ObservableList<Estoque> pesquisaEstoque = FXCollections.observableArrayList();
-        for(int x = 0; x < estoqueList.size(); x++){
-            if(estoqueList.get(x).getNomeItem().toLowerCase().contains(tfBusca.getText().toLowerCase())){
+        for (int x = 0; x < estoqueList.size(); x++) {
+            if (estoqueList.get(x).getNomeItem().toLowerCase().contains(tfBusca.getText().toLowerCase())) {
                 pesquisaEstoque.add(estoqueList.get(x));
             }
         }
         return pesquisaEstoque;
-    } 
-        
+    }
+
 }
