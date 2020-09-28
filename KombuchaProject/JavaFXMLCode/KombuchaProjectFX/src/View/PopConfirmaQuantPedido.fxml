@@ -15,14 +15,14 @@
       <AnchorPane layoutY="107.0" prefHeight="342.0" prefWidth="401.0" style="-fx-background-color: #ffd966;" />
       <ImageView fitHeight="109.0" fitWidth="401.0" layoutY="-1.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../Design/backgroundImageMostraPedido.png" />
+            <Image url="@Design/backgroundImageMostraPedido.png" />
          </image>
       </ImageView>
       <Button fx:id="btOK" layoutX="31.0" layoutY="360.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="340.0" text="OK">
          <font>
             <Font name="BigNoodleTitling" size="24.0" />
          </font></Button>
-      <Label layoutX="26.0" layoutY="36.0" text="Resumo de Insumos Usados">
+      <Label layoutX="115.0" layoutY="11.0" text="Relatório">
          <font>
             <Font name="BigNoodleTitling" size="42.0" />
          </font>
@@ -43,11 +43,6 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label fx:id="lblSabor" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
             <Label text="Id Pedido">
                <font>
                   <Font size="14.0" />
@@ -93,6 +88,11 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Label fx:id="lblSabor" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="174.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             <Label fx:id="lblQtdProducao" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="174.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
@@ -127,8 +127,13 @@
       </GridPane>
       <ImageView fitHeight="29.0" fitWidth="66.0" layoutX="170.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Design/ApoenaLogo.png" />
+            <Image url="@Design/ApoenaLogo.png" />
          </image>
       </ImageView>
+      <Label layoutX="25.0" layoutY="53.0" text="Insumos Utilizados">
+         <font>
+            <Font name="BigNoodleTitling" size="42.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

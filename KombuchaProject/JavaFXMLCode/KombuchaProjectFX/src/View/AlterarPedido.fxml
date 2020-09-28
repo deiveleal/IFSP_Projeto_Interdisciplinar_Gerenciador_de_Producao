@@ -17,17 +17,24 @@
          <children>
             <ImageView fitHeight="169.0" fitWidth="800.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Design/backgroundImageMostraPedidoLarge.png" />
+                  <Image url="@Design/backgroundImageMostraPedidoLarge.png" />
                </image>
             </ImageView>
-            <AnchorPane layoutX="185.0" layoutY="-1.0" prefHeight="136.0" prefWidth="428.0" style="-fx-background-color: ffd966;" />
+            <AnchorPane layoutX="185.0" layoutY="-1.0" prefHeight="136.0" prefWidth="428.0" style="-fx-background-color: ffd966;">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="65.0" text="Alterar Pedido">
+                     <font>
+                        <Font name="BigNoodleTitling" size="48.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="168.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Design/ApoenaLogo.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="289.0" layoutY="74.0" text="Alterar Pedido">
-         <font>
-            <Font name="BigNoodleTitling" size="48.0" />
-         </font>
-      </Label>
       <GridPane layoutX="14.0" layoutY="14.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -143,10 +150,5 @@
             </Button>
          </children>
       </GridPane>
-      <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="362.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../Design/ApoenaLogo.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

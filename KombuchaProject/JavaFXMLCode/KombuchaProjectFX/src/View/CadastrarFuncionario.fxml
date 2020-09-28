@@ -18,13 +18,13 @@
          <children>
             <ImageView fitHeight="169.0" fitWidth="809.0" layoutX="-8.0" layoutY="-10.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../Design/backgroundImageMostraPedidoLarge.png" />
+                  <Image url="@Design/backgroundImageMostraPedidoLarge.png" />
                </image>
             </ImageView>
             <AnchorPane layoutX="185.0" layoutY="-9.0" prefHeight="136.0" prefWidth="428.0" style="-fx-background-color: ffd966;" />
             <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="353.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Design/ApoenaLogo.png" />
+                  <Image url="@Design/ApoenaLogo.png" />
                </image>
             </ImageView>
          </children>

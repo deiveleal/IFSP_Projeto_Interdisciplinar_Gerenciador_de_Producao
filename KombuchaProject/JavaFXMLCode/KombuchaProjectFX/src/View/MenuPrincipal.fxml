@@ -14,19 +14,19 @@
    <children>
       <ImageView fitHeight="608.0" fitWidth="800.0" layoutY="1.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../Design/backgroundImage800-600.png" />
+            <Image url="@Design/backgroundImage800-600.png" />
          </image>
       </ImageView>
       <AnchorPane layoutX="190.0" layoutY="113.0" prefHeight="497.0" prefWidth="427.0" style="-fx-background-color: #ffd966;">
          <children>
             <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="171.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Design/ApoenaLogo.png" />
+                  <Image url="@Design/ApoenaLogo.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="148.0" fitWidth="255.0" layoutX="89.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Design/LogoKombucha_edit.png" />
+                  <Image url="@Design/LogoKombucha_edit.png" />
                </image>
             </ImageView>
             <Button fx:id="btFinalizarSessao" layoutX="40.0" layoutY="341.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="340.0" text="Finalizar Sessão">

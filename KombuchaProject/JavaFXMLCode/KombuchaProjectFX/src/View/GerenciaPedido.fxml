@@ -20,16 +20,16 @@
          <children>
             <ImageView fitHeight="160.0" fitWidth="808.0" layoutX="-7.0" layoutY="-8.0" pickOnBounds="true">
                <image>
-                  <Image url="@../../../../Design/backgroundImageMostraPedidoLarge.png" />
+                  <Image url="@Design/backgroundImageMostraPedidoLarge.png" />
                </image>
             </ImageView>
             <AnchorPane layoutX="185.0" layoutY="-11.0" prefHeight="128.0" prefWidth="428.0" style="-fx-background-color: ffd966;" />
-            <Label layoutX="49.0" layoutY="116.0" text="Sabores Kombucha">
+            <Label layoutX="49.0" layoutY="109.0" text="Sabores Kombucha">
                <font>
                   <Font name="BigNoodleTitling" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="608.0" layoutY="116.0" text="Quantidade">
+            <Label layoutX="608.0" layoutY="109.0" text="Quantidade">
                <font>
                   <Font name="BigNoodleTitling" size="36.0" />
                </font>
@@ -89,7 +89,7 @@
       </GridPane>
       <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="362.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Design/ApoenaLogo.png" />
+            <Image url="@Design/ApoenaLogo.png" />
          </image>
       </ImageView>
    </children>

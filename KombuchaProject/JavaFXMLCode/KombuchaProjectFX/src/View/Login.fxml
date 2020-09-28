@@ -12,14 +12,14 @@
    <children>
       <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Design/backgroundImage800-600.png" />
+            <Image url="@Design/backgroundImage800-600.png" />
          </image>
       </ImageView>
       <AnchorPane layoutX="180.0" layoutY="103.0" prefHeight="497.0" prefWidth="427.0" style="-fx-background-color: #ffd966;">
          <children>
             <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="171.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Design/ApoenaLogo.png" />
+                  <Image url="@Design/ApoenaLogo.png" />
                </image>
             </ImageView>
          </children>
@@ -46,7 +46,7 @@
       </Button>
       <ImageView fitHeight="225.0" fitWidth="388.0" layoutX="206.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Design/LogoKombucha_edit.png" />
+            <Image url="@Design/LogoKombucha_edit.png" />
          </image>
       </ImageView>
    </children>

@@ -26,7 +26,7 @@
       </AnchorPane>
       <ImageView fitHeight="169.0" fitWidth="800.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Design/backgroundImageMostraPedidoLarge.png" />
+            <Image url="@Design/backgroundImageMostraPedidoLarge.png" />
          </image>
       </ImageView>
       <AnchorPane layoutX="184.0" prefHeight="136.0" prefWidth="428.0" style="-fx-background-color: ffd966;" />
@@ -131,7 +131,7 @@
       </GridPane>
       <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="357.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Design/ApoenaLogo.png" />
+            <Image url="@Design/ApoenaLogo.png" />
          </image>
       </ImageView>
    </children>
