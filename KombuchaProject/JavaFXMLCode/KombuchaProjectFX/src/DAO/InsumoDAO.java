@@ -17,10 +17,11 @@ import java.util.logging.Logger;
  *
  * @author Deive
  */
-public class InsumoDAO extends Insumo{
+public class InsumoDAO extends Insumo {
+
     private Connection con;
-    
-    public InsumoDAO(){
+
+    public InsumoDAO() {
         this.con = new ConnectionFactory().getConnection();
     }
 
@@ -30,17 +31,18 @@ public class InsumoDAO extends Insumo{
         PreparedStatement stmt;
         try {
             stmt = con.prepareStatement(sql);
-            
-                stmt.setInt(1, insum.getIdInsumo());            
-                stmt.setInt(2, insum.getIdItemEstoque());
-                stmt.setString(3, insum.getNomeInsumo());
-                stmt.setString(4, insum.getDescrInsumo());
 
-                stmt.execute();
-                stmt.close();
-                con.close();
-                return true;    
-        } catch (SQLException ex) {
+            stmt.setInt(1, insum.getIdInsumo());
+            stmt.setInt(2, insum.getIdItemEstoque());
+            stmt.setString(3, insum.getNomeInsumo());
+            stmt.setString(4, insum.getDescrInsumo());
+
+            stmt.execute();
+            stmt.close();
+            con.close();
+            return true;
+        }
+        catch (SQLException ex) {
             Logger.getLogger(InsumoDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }

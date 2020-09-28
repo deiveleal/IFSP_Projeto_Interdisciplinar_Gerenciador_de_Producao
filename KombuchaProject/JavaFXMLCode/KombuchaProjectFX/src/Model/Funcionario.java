@@ -61,11 +61,5 @@ public class Funcionario {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
-    }
-    
-    public void mostraFuncionario(){
-        System.out.println("CPF : "+getIdFuncionario());
-        System.out.println("Nome : "+getNomeFuncionario());
-        System.out.println("Cargo : "+getCargo());
-    }        
+    }    
 }

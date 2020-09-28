@@ -31,17 +31,26 @@ import javafx.stage.Stage;
  * @author Deive
  */
 public class AlterarQuantidadeEstoqueController implements Initializable {
+
     BatmanDeFerro BatFer = new BatmanDeFerro();
     private static Estoque estoqAlt;
-    
-    @FXML private Label lblIdFuncionarioAtivo;
-    @FXML private TextField tfQtdReposicao;
-    @FXML private Label lblIdItem;
-    @FXML private Label lblIdItemEstoque;
-    @FXML private Label lblNome;
-    @FXML private Button btVoltar;
-    @FXML private Button btInserirReposicao;
-    @FXML private Button btFinalizarSessao;
+
+    @FXML
+    private Label lblIdFuncionarioAtivo;
+    @FXML
+    private TextField tfQtdReposicao;
+    @FXML
+    private Label lblIdItem;
+    @FXML
+    private Label lblIdItemEstoque;
+    @FXML
+    private Label lblNome;
+    @FXML
+    private Button btVoltar;
+    @FXML
+    private Button btInserirReposicao;
+    @FXML
+    private Button btFinalizarSessao;
 
     public static Estoque getEstoqAlt() {
         return estoqAlt;
@@ -50,100 +59,99 @@ public class AlterarQuantidadeEstoqueController implements Initializable {
     public static void setEstoqAlt(Estoque estoqAlt) {
         AlterarQuantidadeEstoqueController.estoqAlt = estoqAlt;
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        initAlterQtdEstoque(); 
-        
-        
-        
+        initAlterQtdEstoque();
+
         // TODO
-        
-        btInserirReposicao.setOnMouseClicked((MouseEvent e)->{
+        btInserirReposicao.setOnMouseClicked((MouseEvent e) -> {
             try {
                 insereEstok();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex) {
                 Logger.getLogger(AlterarQuantidadeEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        btInserirReposicao.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btInserirReposicao.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 try {
                     insereEstok();
-                } catch (Exception ex) {
+                }
+                catch (Exception ex) {
                     Logger.getLogger(AlterarQuantidadeEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
         });
-        
-        
-        
-        btVoltar.setOnMouseClicked((MouseEvent e)->{
+
+        btVoltar.setOnMouseClicked((MouseEvent e) -> {
             GerenciaEstoque gerEstoque = new GerenciaEstoque();
-         
+
             try {
                 gerEstoque.start(new Stage());
-                fechaJanela();  
-            } catch (Exception ex) {
+                fechaJanela();
+            }
+            catch (Exception ex) {
                 Logger.getLogger(AlterarQuantidadeEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        btVoltar.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btVoltar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 GerenciaEstoque gerEstoque = new GerenciaEstoque();
-           
+
                 try {
                     gerEstoque.start(new Stage());
-                    fechaJanela();  
-                } catch (Exception ex) {
+                    fechaJanela();
+                }
+                catch (Exception ex) {
                     Logger.getLogger(AlterarQuantidadeEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
 
-        btFinalizarSessao.setOnMouseClicked((MouseEvent e)->{
+        btFinalizarSessao.setOnMouseClicked((MouseEvent e) -> {
             BatFer.voltaTelaLogin();
             fechaJanela();
         });
-        btFinalizarSessao.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btFinalizarSessao.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 BatFer.voltaTelaLogin();
                 fechaJanela();
             }
 
         });
-       
-    } 
-    
-    public void fechaJanela(){
+
+    }
+
+    public void fechaJanela() {
         AlterarQuantidadeEstoque.getStage().close();
     }
-        
-    public void initAlterQtdEstoque(){
-            lblIdFuncionarioAtivo.setText(BatFer.getIdFuncionarioAtivo());
-            lblIdItem.setText(Integer.toString(estoqAlt.getIdItem()));
-            lblIdItemEstoque.setText(Integer.toString(estoqAlt.getIdItemEstoque()));
-            lblNome.setText(estoqAlt.getNomeItem());
-            tfQtdReposicao.setText(Double.toString(estoqAlt.getQtdItem()));                    
+
+    public void initAlterQtdEstoque() {
+        lblIdFuncionarioAtivo.setText(BatFer.getIdFuncionarioAtivo());
+        lblIdItem.setText(Integer.toString(estoqAlt.getIdItem()));
+        lblIdItemEstoque.setText(Integer.toString(estoqAlt.getIdItemEstoque()));
+        lblNome.setText(estoqAlt.getNomeItem());
+        tfQtdReposicao.setText(Double.toString(estoqAlt.getQtdItem()));
     }
-    
-    public void insereEstok()throws Exception{
+
+    public void insereEstok() throws Exception {
         int idItem = Integer.parseInt(lblIdItem.getText());
         int idItemEstoque = Integer.parseInt(lblIdItemEstoque.getText());
         double quantItem = Double.parseDouble(tfQtdReposicao.getText());
-        
+
         EstoqueDAO dao = new EstoqueDAO();
         Estoque estoq = new Estoque(idItem, idItemEstoque, quantItem);
-        if(dao.updateEstoque(estoq)){
+        if (dao.updateEstoque(estoq)) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("Produto em estoque atualizado com sucesso!");
             alert.show();
-        }else{
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Erro ao atualizar produto em estoque!");                
+            alert.setHeaderText("Erro ao atualizar produto em estoque!");
             alert.show();
         }
     }
-    
+
 }

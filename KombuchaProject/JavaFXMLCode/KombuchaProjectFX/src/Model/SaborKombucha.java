@@ -4,9 +4,10 @@ package Model;
  *
  * @author carolina
  * @author deive
- * 
+ *
  */
 public class SaborKombucha {
+
     private int idKombucha;
     private String nomeKombucha;
     private String chaBase;
@@ -16,11 +17,11 @@ public class SaborKombucha {
     private double quantidadeAcucar;
     private int idEmbalagem;
 
-    public SaborKombucha(){
-    
+    public SaborKombucha() {
+
     }
-    
-    public SaborKombucha(int idkombucha, String nomekombucha, String chabase,  int idchabase,double qtdcha, double qtdagua, double qtdacucar,int idembalagem) {
+
+    public SaborKombucha(int idkombucha, String nomekombucha, String chabase, int idchabase, double qtdcha, double qtdagua, double qtdacucar, int idembalagem) {
         this.idKombucha = idkombucha;
         this.nomeKombucha = nomekombucha;
         this.chaBase = chabase;
@@ -54,7 +55,7 @@ public class SaborKombucha {
     public void setChaBase(String chaBase) {
         this.chaBase = chaBase;
     }
-    
+
     public int getIdChaBase() {
         return idChaBase;
     }
@@ -93,19 +94,11 @@ public class SaborKombucha {
 
     public void setIdEmbalagem(int idEmbalagem) {
         this.idEmbalagem = idEmbalagem;
-    }  
+    }
 
     @Override
     public String toString() {
         return getNomeKombucha();
     }
-    
-    
+
 }
-
-
-
-
-
-
-

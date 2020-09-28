@@ -28,15 +28,21 @@ import javafx.stage.Stage;
 
 /**
  * FXML Controller class
+ *
  * @author Carolina
  * @author Deive
  */
-public class LoginController implements Initializable {   
-    @FXML private TextField tfLogin;
-    @FXML private PasswordField pfSenha;
-    @FXML private Button btSair;
-    @FXML private Button btEntrar;
-    
+public class LoginController implements Initializable {
+
+    @FXML
+    private TextField tfLogin;
+    @FXML
+    private PasswordField pfSenha;
+    @FXML
+    private Button btSair;
+    @FXML
+    private Button btEntrar;
+
     Login login = new Login();
     LoginDAO dao = new LoginDAO();
     BatmanDeFerro BatFer = new BatmanDeFerro();
@@ -52,63 +58,63 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        btEntrar.setOnMouseClicked((MouseEvent e)->{
+        btEntrar.setOnMouseClicked((MouseEvent e) -> {
             logar();
-        });        
-        btEntrar.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
-                logar();
-            }
-        });  
-        
-        pfSenha.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        });
+        btEntrar.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 logar();
             }
         });
-        
-        btSair.setOnMouseClicked((MouseEvent e)->{
+
+        pfSenha.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                logar();
+            }
+        });
+
+        btSair.setOnMouseClicked((MouseEvent e) -> {
             fechaJanela();
         });
-        btSair.setOnKeyPressed((KeyEvent e)->{
-            if(e.getCode() == KeyCode.ENTER){
+        btSair.setOnKeyPressed((KeyEvent e) -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 fechaJanela();
             }
 
         });
     }
-    public void fechaJanela(){
+
+    public void fechaJanela() {
         Login.getStage().close();
     }
-    
-    public void logar(){        
-        try {
-            if(dao.login(tfLogin.getText(), pfSenha.getText())){
-                MenuPrincipal menu = new MenuPrincipal();
 
+    public void logar() {
+        try {
+            if (dao.login(tfLogin.getText(), pfSenha.getText())) {
+                MenuPrincipal menu = new MenuPrincipal();
 
                 try {
                     menu.start(new Stage());
                     BatFer.setIdFuncionarioAtivo(tfLogin.getText());
                     //setIdLoginAtivo(tfLogin.getText());
-                    System.out.println("Login: "+BatFer.getIdFuncionarioAtivo());
-                    fechaJanela();  
+                    System.out.println("Login: " + BatFer.getIdFuncionarioAtivo());
+                    fechaJanela();
                     BatFer.printaUsuario();
-                } catch (Exception ex) {
+                }
+                catch (Exception ex) {
                     Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }
-            else{
+            } else {
                 Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("Erro!");
                 alert.setHeaderText("Login Inválido!");
                 alert.setContentText("Erro de Login ou Senha!");
                 alert.show();
-            }                
-        } catch (SQLException ex) {
+            }
+        }
+        catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
 }
