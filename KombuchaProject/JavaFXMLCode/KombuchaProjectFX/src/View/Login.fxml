@@ -1,43 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
-      <TextField fx:id="tfLogin" alignment="CENTER" layoutX="296.0" layoutY="268.0" promptText="Login">
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Design/backgroundImage800-600.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="180.0" layoutY="103.0" prefHeight="497.0" prefWidth="427.0" style="-fx-background-color: #ffd966;">
+         <children>
+            <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="171.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Design/ApoenaLogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TextField fx:id="tfLogin" alignment="CENTER" layoutX="228.0" layoutY="343.0" prefHeight="37.0" prefWidth="346.0" promptText="Login">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="pfSenha" alignment="CENTER" layoutX="296.0" layoutY="340.0" promptText="Senha">
+      <PasswordField fx:id="pfSenha" alignment="CENTER" layoutX="229.0" layoutY="402.0" prefHeight="37.0" prefWidth="344.0" promptText="Senha">
          <font>
             <Font size="16.0" />
          </font>
       </PasswordField>
-      <Button fx:id="btSair" layoutX="259.0" layoutY="405.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Sair" AnchorPane.rightAnchor="466.0">
+      <Button fx:id="btSair" layoutX="230.0" layoutY="460.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="150.0" text="Sair" AnchorPane.rightAnchor="420.0">
          <font>
-            <Font size="16.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btEntrar" layoutX="469.0" layoutY="405.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="75.0" text="Entrar">
+      <Button fx:id="btEntrar" layoutX="421.0" layoutY="460.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="150.0" text="Entrar">
          <font>
-            <Font size="16.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="129.0" text="Tribos Kumbucha">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="359.0" layoutY="188.0" text="Login">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
+      <ImageView fitHeight="225.0" fitWidth="388.0" layoutX="206.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Design/LogoKombucha_edit.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

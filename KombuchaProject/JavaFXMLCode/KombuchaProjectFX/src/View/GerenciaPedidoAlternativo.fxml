@@ -6,6 +6,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,9 +16,19 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GerenciaPedidoController">
    <children>
-      <Label layoutX="209.0" layoutY="70.0" text="Gerenciamento de Pedidos">
+      <AnchorPane layoutX="-1.0" layoutY="-1.0" prefHeight="133.0" prefWidth="801.0">
+         <children>
+            <ImageView fitHeight="169.0" fitWidth="800.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Design/backgroundImageMostraPedidoLarge.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="185.0" layoutY="-1.0" prefHeight="136.0" prefWidth="428.0" style="-fx-background-color: ffd966;" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="208.0" layoutY="70.0" text="Gerenciamento de Pedidos">
          <font>
-            <Font size="30.0" />
+            <Font name="BigNoodleTitling" size="48.0" />
          </font>
       </Label>
       <GridPane layoutX="14.0" layoutY="14.0">
@@ -40,9 +52,9 @@
             </Label>
          </children>
       </GridPane>
-      <Label layoutX="54.0" layoutY="135.0" text="Novo Pedido">
+      <Label layoutX="54.0" layoutY="131.0" text="Novo Pedido">
          <font>
-            <Font size="21.0" />
+            <Font name="BigNoodleTitling" size="36.0" />
          </font>
       </Label>
       <GridPane layoutX="54.0" layoutY="168.0" prefHeight="30.0" prefWidth="300.0">
@@ -85,32 +97,38 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
          </columnConstraints>
          <rowConstraints>
+            <RowConstraints />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField fx:id="tfBusca" alignment="CENTER" prefHeight="30.0" prefWidth="171.0" promptText="Buscar Pedido" />
-            <Button fx:id="btInserirPedido" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Inserir Pedido" GridPane.columnIndex="1" />
-            <Button fx:id="btAlterarPedido" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Alterar Pedido" GridPane.columnIndex="2" />
-            <Button fx:id="btExcluiPedido" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Excluir Pedido" GridPane.columnIndex="3" />
+            <TextField fx:id="tfBusca" alignment="CENTER" prefHeight="30.0" prefWidth="171.0" promptText="Buscar Pedido" GridPane.rowIndex="1" />
+            <Button fx:id="btInserirPedido" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Inserir Pedido" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="btAlterarPedido" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Alterar Pedido" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="btExcluiPedido" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Excluir Pedido" GridPane.columnIndex="3" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <TableView fx:id="tablePedidos" layoutX="56.0" layoutY="286.0" prefHeight="251.0" prefWidth="688.0">
+      <TableView fx:id="tablePedidos" layoutX="56.0" layoutY="286.0" prefHeight="251.0" prefWidth="709.0">
         <columns>
           <TableColumn fx:id="colCodPedido" prefWidth="115.0" text="Cód.Pedido" />
           <TableColumn fx:id="colSabor" prefWidth="289.0" text="Sabor" />
             <TableColumn fx:id="colQtd" prefWidth="114.0" text="Quantidade" />
-            <TableColumn fx:id="colData" prefWidth="169.0" text="Data" />
+            <TableColumn fx:id="colData" prefWidth="189.0" text="Data" />
         </columns>
       </TableView>
-      <Button fx:id="btVoltar" layoutX="57.0" layoutY="551.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="214.0" text="Voltar">
+      <Button fx:id="btVoltar" layoutX="57.0" layoutY="546.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="340.0" text="Voltar">
          <font>
-            <Font size="21.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btFinalizarSessao" layoutX="530.0" layoutY="547.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="214.0" text="Finalizar Sessão">
+      <Button fx:id="btFinalizarSessao" layoutX="426.0" layoutY="546.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="340.0" text="Finalizar Sessão">
          <font>
-            <Font size="21.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
+      <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="352.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Design/ApoenaLogo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

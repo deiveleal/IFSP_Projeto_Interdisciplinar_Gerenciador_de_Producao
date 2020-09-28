@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -11,9 +13,19 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AlterarPedidoController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="294.0" layoutY="74.0" text="Alterar Pedido">
+      <AnchorPane layoutX="-1.0" prefHeight="133.0" prefWidth="801.0">
+         <children>
+            <ImageView fitHeight="169.0" fitWidth="800.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Design/backgroundImageMostraPedidoLarge.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="185.0" layoutY="-1.0" prefHeight="136.0" prefWidth="428.0" style="-fx-background-color: ffd966;" />
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="289.0" layoutY="74.0" text="Alterar Pedido">
          <font>
-            <Font size="30.0" />
+            <Font name="BigNoodleTitling" size="48.0" />
          </font>
       </Label>
       <GridPane layoutX="14.0" layoutY="14.0">
@@ -25,7 +37,7 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label prefHeight="16.0" prefWidth="124.0" text="Funcionário Registrado:">
+            <Label prefHeight="17.0" prefWidth="132.0" text="Funcionário Registrado:">
                <font>
                   <Font size="12.0" />
                </font>
@@ -114,22 +126,27 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="btVoltar" mnemonicParsing="false" prefHeight="34.0" prefWidth="214.0" text="Voltar">
+            <Button fx:id="btVoltar" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Voltar">
                <font>
-                  <Font size="21.0" />
+                  <Font name="BigNoodleTitling" size="24.0" />
                </font>
             </Button>
             <Button fx:id="btAtualizarPedido" mnemonicParsing="false" prefHeight="34.0" prefWidth="214.0" text="Atualizar Pedido" GridPane.columnIndex="1">
                <font>
-                  <Font size="21.0" />
+                  <Font name="BigNoodleTitling" size="24.0" />
                </font>
             </Button>
             <Button fx:id="btFinalizarSessao" mnemonicParsing="false" prefHeight="34.0" prefWidth="214.0" text="Finalizar Sessão" GridPane.columnIndex="2">
                <font>
-                  <Font size="21.0" />
+                  <Font name="BigNoodleTitling" size="24.0" />
                </font>
             </Button>
          </children>
       </GridPane>
+      <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="362.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Design/ApoenaLogo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

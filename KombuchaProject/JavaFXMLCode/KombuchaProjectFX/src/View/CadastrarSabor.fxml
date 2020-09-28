@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -12,9 +14,24 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CadastrarSaborController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="196.0" layoutY="82.0" text="Cadastrar Sabor Kombucha">
+      <AnchorPane layoutX="-2.0" prefHeight="133.0" prefWidth="801.0">
+         <children>
+            <ImageView fitHeight="161.0" fitWidth="800.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Design/backgroundImageMostraPedidoLarge.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="185.0" layoutY="-1.0" prefHeight="136.0" prefWidth="428.0" style="-fx-background-color: ffd966;" />
+            <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="362.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Design/ApoenaLogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="189.0" layoutY="80.0" text="Cadastrar Sabor Kombucha">
          <font>
-            <Font size="30.0" />
+            <Font name="BigNoodleTitling" size="48.0" />
          </font>
       </Label>
       <GridPane layoutX="90.0" layoutY="156.0" prefHeight="295.0" prefWidth="625.0">
@@ -83,21 +100,21 @@
             <TextField fx:id="tfIdEmbalagem" prefHeight="30.0" prefWidth="426.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
-      <ButtonBar layoutX="71.0" layoutY="492.0" prefHeight="40.0" prefWidth="646.0">
+      <ButtonBar layoutX="71.0" layoutY="492.0" prefHeight="45.0" prefWidth="646.0">
          <buttons>
-            <Button fx:id="btVoltar" mnemonicParsing="false" prefHeight="34.0" prefWidth="214.0" text="Voltar">
+            <Button fx:id="btVoltar" mnemonicParsing="false" prefHeight="45.0" prefWidth="214.0" text="Voltar">
                <font>
-                  <Font size="21.0" />
+                  <Font name="BigNoodleTitling" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="btCadastrar" mnemonicParsing="false" prefHeight="34.0" prefWidth="214.0" text="Cadastrar">
+            <Button fx:id="btCadastrar" mnemonicParsing="false" prefHeight="45.0" prefWidth="214.0" text="Cadastrar">
                <font>
-                  <Font size="21.0" />
+                  <Font name="BigNoodleTitling" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="btFinalizarSessao" mnemonicParsing="false" prefHeight="34.0" prefWidth="214.0" text="Finalizar Sessão">
+            <Button fx:id="btFinalizarSessao" mnemonicParsing="false" prefHeight="45.0" prefWidth="214.0" text="Finalizar Sessão">
                <font>
-                  <Font size="21.0" />
+                  <Font name="BigNoodleTitling" size="24.0" />
                </font>
             </Button>
          </buttons>

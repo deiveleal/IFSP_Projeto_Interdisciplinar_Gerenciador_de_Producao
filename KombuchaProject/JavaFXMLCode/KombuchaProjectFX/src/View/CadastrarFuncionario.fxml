@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -12,9 +14,24 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CadastrarFuncionarioController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="265.0" layoutY="79.0" text="Cadastrar Usuário">
+      <AnchorPane layoutX="9.0" layoutY="9.0" prefHeight="133.0" prefWidth="801.0">
+         <children>
+            <ImageView fitHeight="169.0" fitWidth="809.0" layoutX="-8.0" layoutY="-10.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../Design/backgroundImageMostraPedidoLarge.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="185.0" layoutY="-9.0" prefHeight="136.0" prefWidth="428.0" style="-fx-background-color: ffd966;" />
+            <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="353.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Design/ApoenaLogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="264.0" layoutY="79.0" text="Cadastrar Usuário">
          <font>
-            <Font size="30.0" />
+            <Font name="BigNoodleTitling" size="48.0" />
          </font>
       </Label>
       <GridPane alignment="TOP_RIGHT" layoutX="59.0" layoutY="184.0" prefHeight="229.0" prefWidth="135.0">
@@ -56,10 +73,13 @@
             </Label>
          </children>
       </GridPane>
-      <Button fx:id="btVoltar" layoutX="90.0" layoutY="496.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="111.0" text="Voltar" />
-      <Button fx:id="btCadastrar" layoutX="309.0" layoutY="496.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="111.0" text="Cadastrar">
+      <Button fx:id="btVoltar" layoutX="33.0" layoutY="496.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Voltar">
          <font>
-            <Font size="16.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
+         </font></Button>
+      <Button fx:id="btCadastrar" layoutX="284.0" layoutY="496.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Cadastrar">
+         <font>
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
       <GridPane layoutX="218.0" layoutY="179.0" prefHeight="229.0" prefWidth="426.0">
@@ -81,9 +101,9 @@
             <PasswordField fx:id="pfConfirm" prefHeight="30.0" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button fx:id="btFinalizarSessao" layoutX="523.0" layoutY="493.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" text="Finalizar Sessão">
+      <Button fx:id="btFinalizarSessao" layoutX="535.0" layoutY="496.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Finalizar Sessão">
          <font>
-            <Font size="21.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
       <GridPane layoutX="14.0" layoutY="14.0">

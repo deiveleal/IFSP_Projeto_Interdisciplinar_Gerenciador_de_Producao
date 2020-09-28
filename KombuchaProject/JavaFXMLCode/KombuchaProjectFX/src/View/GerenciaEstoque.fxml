@@ -5,6 +5,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -13,7 +15,24 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GerenciaEstoqueController">
    <children>
-      <Button fx:id="btCadastrarItem" layoutX="148.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="171.0" text="Cadastrar Item" />
+      <ImageView fitHeight="171.0" fitWidth="800.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../Design/backgroundImageMostraPedidoLarge.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="188.0" prefHeight="136.0" prefWidth="428.0" style="-fx-background-color: ffd966;">
+         <children>
+            <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="169.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Design/ApoenaLogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Button fx:id="btCadastrarItem" layoutX="224.0" layoutY="547.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="160.0" text="Cadastrar Item">
+         <font>
+            <Font name="BigNoodleTitling" size="24.0" />
+         </font></Button>
       <TableView fx:id="tableEstoque" layoutX="56.0" layoutY="173.0" prefHeight="364.0" prefWidth="688.0">
         <columns>
           <TableColumn fx:id="colIdEstoque" prefWidth="115.0" text="Id Item" />
@@ -22,21 +41,24 @@
             <TableColumn fx:id="colQuantidade" prefWidth="97.0" text="Quantidade" />
         </columns>
       </TableView>
-      <Label layoutX="195.0" layoutY="48.0" text="Gerenciamento de Estoque">
+      <Label layoutX="210.0" layoutY="69.0" text="Gerenciamento de Estoque">
          <font>
-            <Font size="30.0" />
+            <Font name="BigNoodleTitling" size="48.0" />
          </font>
       </Label>
-      <Button fx:id="btVoltar" layoutX="57.0" layoutY="551.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Voltar">
+      <Button fx:id="btVoltar" layoutX="57.0" layoutY="547.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="160.0" text="Voltar">
          <font>
-            <Font size="16.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
       <TextField fx:id="tfBusca" alignment="CENTER" layoutX="57.0" layoutY="143.0" prefHeight="30.0" prefWidth="171.0" promptText="Buscar Item" />
-      <Button fx:id="btAlterarQtd" layoutX="338.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="171.0" text="Alterar Quantidade" />
-      <Button fx:id="btFinalizarSessao" layoutX="530.0" layoutY="547.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" text="Finalizar Sessão">
+      <Button fx:id="btAlterarQtd" layoutX="392.0" layoutY="547.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="181.0" text="Alterar Quantidade">
          <font>
-            <Font size="21.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
+         </font></Button>
+      <Button fx:id="btFinalizarSessao" layoutX="580.0" layoutY="547.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="165.0" text="Finalizar Sessão">
+         <font>
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
       <GridPane layoutX="14.0" layoutY="14.0">

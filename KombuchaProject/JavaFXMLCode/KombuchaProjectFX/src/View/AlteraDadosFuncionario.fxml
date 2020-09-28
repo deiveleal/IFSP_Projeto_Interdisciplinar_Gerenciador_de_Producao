@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -12,9 +14,40 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AlteraDadosFuncionarioController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="265.0" layoutY="79.0" text="Alterar Dados">
+      <AnchorPane layoutX="-1.0" prefHeight="133.0" prefWidth="801.0">
+         <children>
+            <ImageView fitHeight="169.0" fitWidth="800.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Design/backgroundImageMostraPedidoLarge.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="185.0" layoutY="-1.0" prefHeight="136.0" prefWidth="428.0" style="-fx-background-color: ffd966;" />
+         </children>
+      </AnchorPane>
+      <GridPane layoutX="14.0" layoutY="14.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="Funcionário Registrado:">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblIdFuncionarioAtivo1" prefHeight="20.0" prefWidth="9.0" GridPane.rowIndex="1">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="287.0" layoutY="79.0" text="Alterar Dados">
          <font>
-            <Font size="30.0" />
+            <Font name="BigNoodleTitling" size="48.0" />
          </font>
       </Label>
       <GridPane alignment="TOP_RIGHT" layoutX="59.0" layoutY="184.0" prefHeight="229.0" prefWidth="135.0">
@@ -56,8 +89,8 @@
             </Label>
          </children>
       </GridPane>
-      <Button fx:id="btVoltar" layoutX="90.0" layoutY="496.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="111.0" text="Voltar" />
-      <Button fx:id="btAtualizarDados" layoutX="309.0" layoutY="496.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="172.0" text="Atualizar Dados">
+      <Button fx:id="btVoltar" layoutX="27.0" layoutY="496.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Voltar" />
+      <Button fx:id="btAtualizarDados" layoutX="280.0" layoutY="496.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Atualizar Dados">
          <font>
             <Font size="16.0" />
          </font>
@@ -85,7 +118,7 @@
             </Label>
          </children>
       </GridPane>
-      <Button fx:id="btFinalizarSessao" layoutX="523.0" layoutY="493.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" text="Finalizar Sessão">
+      <Button fx:id="btFinalizarSessao" layoutX="533.0" layoutY="496.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Finalizar Sessão">
          <font>
             <Font size="21.0" />
          </font>
@@ -106,26 +139,10 @@
             </Label>
          </children>
       </GridPane>
-      <GridPane layoutX="14.0" layoutY="14.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Label text="Funcionário Registrado:">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblIdFuncionarioAtivo1" prefHeight="20.0" prefWidth="9.0" GridPane.rowIndex="1">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Label>
-         </children>
-      </GridPane>
+      <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="355.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Design/ApoenaLogo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

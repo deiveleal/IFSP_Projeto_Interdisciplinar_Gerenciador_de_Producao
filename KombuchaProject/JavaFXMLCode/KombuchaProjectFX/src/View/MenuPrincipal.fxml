@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -10,36 +12,45 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuPrincipalController">
    <children>
-      <Button fx:id="btGerencUsuario" layoutX="231.0" layoutY="243.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="340.0" text="Gerenciamento de Usuários">
+      <ImageView fitHeight="608.0" fitWidth="800.0" layoutY="1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../Design/backgroundImage800-600.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="190.0" layoutY="113.0" prefHeight="497.0" prefWidth="427.0" style="-fx-background-color: #ffd966;">
+         <children>
+            <ImageView fitHeight="44.0" fitWidth="91.0" layoutX="171.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Design/ApoenaLogo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="148.0" fitWidth="255.0" layoutX="89.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Design/LogoKombucha_edit.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btFinalizarSessao" layoutX="40.0" layoutY="341.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="340.0" text="Finalizar Sessão">
+               <font>
+                  <Font name="BigNoodleTitling" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Button fx:id="btGerencUsuario" layoutX="231.0" layoutY="269.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="340.0" text="Gerenciamento de Usuários">
          <font>
-            <Font size="21.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btGerencPedido" layoutX="231.0" layoutY="331.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="340.0" text="Gerenciamento de Pedidos">
+      <Button fx:id="btGerencPedido" layoutX="231.0" layoutY="331.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="340.0" text="Gerenciamento de Pedidos">
          <font>
-            <Font size="21.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btGerencEstoq" layoutX="230.0" layoutY="419.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="340.0" text="Gerenciamento de Estoque">
+      <Button fx:id="btGerencEstoq" layoutX="230.0" layoutY="392.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="340.0" text="Gerenciamento de Estoque">
          <font>
-            <Font size="21.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btFinalizarSessao" layoutX="513.0" layoutY="495.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" text="Finalizar Sessão">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Button>
-      <Label layoutX="358.0" layoutY="164.0" text="Menu">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="271.0" layoutY="93.0" text="Tribos Kombucha">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
       <GridPane layoutX="14.0" layoutY="14.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
