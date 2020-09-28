@@ -264,17 +264,18 @@ public class GerenciaPedidoController implements Initializable {
         int quantidadeProducao = Integer.parseInt(tfQuantidade.getText()); 
         
         Pedido novoPedido = new Pedido(idFuncionarioAtivo, nomeSabor, quantidadeProducao);                                         
-        //PopConfirmaQuantPedido confped = new PopConfirmaQuantPedido();
+        PopConfirmaQuantPedido confped = new PopConfirmaQuantPedido();
         PedidoDAO dao = new PedidoDAO();
+        
         if(dao.inserePedido(novoPedido)){
             try {
-               // confped.start(new Stage());
+               confped.start(new Stage());
             } catch (Exception ex) {
                 Logger.getLogger(GerenciaPedidoController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setHeaderText("Pedido inserido com sucesso!");
-            alert.show();
+            //Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            //alert.setHeaderText("Pedido inserido com sucesso!");
+            //alert.show();
             tablePedidos.setItems(atualizaTabela());                     
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);

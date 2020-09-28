@@ -25,6 +25,12 @@ public class Estoque {
         this.nomeItem = nome_Item;
         this.qtdItem = qtd_Item;
     }
+
+    public Estoque(int idItem, int idItemEstoque, double quantItem) {
+        this.idItem = idItem;
+        this.idItemEstoque = idItemEstoque;
+        this.qtdItem = quantItem;
+    }
     
     public int getIdItem() {
         return idItem;

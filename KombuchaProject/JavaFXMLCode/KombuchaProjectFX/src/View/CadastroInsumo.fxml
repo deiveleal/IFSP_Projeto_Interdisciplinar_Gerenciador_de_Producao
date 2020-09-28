@@ -50,7 +50,7 @@
                </font>
             </Label>
             <TextField fx:id="tfIdInsumo" prefHeight="30.0" prefWidth="426.0" GridPane.columnIndex="1" />
-            <TextField fx:id="tfItemEstoque" prefHeight="30.0" prefWidth="426.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfIdItemEstoque" prefHeight="30.0" prefWidth="426.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="tfNome" prefHeight="30.0" prefWidth="426.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="tfDescricao" prefHeight="30.0" prefWidth="426.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>

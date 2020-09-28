@@ -6,7 +6,6 @@
 package DAO;
 
 import Connection.ConnectionFactory;
-import Model.BatmanDeFerro;
 import Model.Pedido;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,11 +21,9 @@ import java.util.logging.Logger;
  * @author carolina
  * @author deive
  */
-public class PedidoDAO extends Pedido{
+public class PedidoDAO{
     private Connection con;
     private Date dataPedido;
-    
-    BatmanDeFerro BatFer = new BatmanDeFerro();
     Pedido pedido = new Pedido();
     
     public PedidoDAO(){
@@ -42,8 +39,7 @@ public class PedidoDAO extends Pedido{
     }
       
     //Método que insere um novo pedido;
-    public boolean inserePedido(Pedido ped){
-        ped.setIdFuncionario(BatFer.getIdFuncionarioAtivo());
+    public boolean inserePedido(Pedido ped){  
         String sql = "CALL montaPedidoPreparo(?, ?, ?);";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -62,18 +58,16 @@ public class PedidoDAO extends Pedido{
         }    
     }
     
-    //Método que atualiza os dados de um usuário
+    //Método que atualiza os dados de um pedido
     public boolean updatePedido(Pedido ped){
-        ped.setIdFuncionario(BatFer.getIdFuncionarioAtivo());
-        String sql = "UPDATE Pedido SET  idFuncionario = ?, idSabor = ?, quantidadeProducao = ?  WHERE idPedido = ?;";
+        String sql = "UPDATE Pedido SET  idFuncionario = ?, quantidadeProducao = ?  WHERE idPedido = ?;";
         try { 
             PreparedStatement stmt = con.prepareStatement(sql);
             
             stmt.setString(1, ped.getIdFuncionario());
-            stmt.setString(2, ped.getNomeSabor());
-            stmt.setInt(3, ped.getQtdProducao());
+            stmt.setInt(2, ped.getQtdProducao());
 
-            stmt.setInt(4, ped.getIdPedido());
+            stmt.setInt(3, ped.getIdPedido());
             
             stmt.execute();
             stmt.close();
@@ -86,7 +80,7 @@ public class PedidoDAO extends Pedido{
         }    
     }
     
-    //Método que deleta um usuário
+    //Método que deleta um pedido
     public boolean deletaPedido(Pedido ped){
         String sql = "DELETE FROM Pedido WHERE idPedido = ?;";
         try { 
@@ -132,22 +126,36 @@ public class PedidoDAO extends Pedido{
         }        
         return ped;
     }
-        //Método que deleta um usuário
-    public boolean selectUltimoPedido(Pedido ped){
-        String sql = "SELECT * FROM Pedido WHERE idPedido = ?;";
+    //Método que seleciona a última inserção de pedido
+    public List<Pedido> selectUltimoPedido(){
+        List<Pedido> ped = new ArrayList<>();
+        String sql = "SELECT * FROM Pedido order by idPedido DESC LIMIT 1;";
         try { 
             PreparedStatement stmt = con.prepareStatement(sql);
-           
-            stmt.setInt(1, ped.getIdPedido());
-            
-            stmt.execute();
+            ResultSet ResSet = stmt.executeQuery();
+            while(ResSet.next()){
+                Pedido lastPed = new Pedido();
+                
+                lastPed.setIdPedido(ResSet.getInt("idPedido"));
+                lastPed.setNomeSabor(ResSet.getString("nomeSabor"));
+                lastPed.setQtdProducao(ResSet.getInt("quantidadeProducao"));
+                lastPed.setIdFermentador(ResSet.getInt("idFermentador"));
+                lastPed.setQuantidadeCha(ResSet.getDouble("quantidadeCha"));
+                lastPed.setQuantidadeAgua(ResSet.getDouble("quantidadeAgua"));
+                lastPed.setQuantidadeAcucar(ResSet.getDouble("quantidadeAcucar"));
+                lastPed.setQuantidadeEmbalagem(ResSet.getInt("quantidadeEmbalagem"));
+                
+                ped.add(lastPed);
+            }            
             stmt.close();
+            ResSet.close();
             con.close();
-            return true;
         } 
         catch (SQLException ex) { 
-            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            ex.printStackTrace();
+            System.out.println("Erro ao criar lista!");
+            return null;
         } 
+        return ped;
     }
 }

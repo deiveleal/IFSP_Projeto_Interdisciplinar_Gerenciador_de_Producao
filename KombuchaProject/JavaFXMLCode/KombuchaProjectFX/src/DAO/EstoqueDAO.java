@@ -7,7 +7,6 @@ package DAO;
 
 import Connection.ConnectionFactory;
 import Model.Estoque;
-import Model.Pedido;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,38 +27,15 @@ public class EstoqueDAO{
     public EstoqueDAO(){
         this.con = new ConnectionFactory().getConnection();
     }
-    
-    
-    /*
-    //Método que insere um novo pedido;
-    public boolean inserePedido(Pedido ped){
-        String sql = "CALL montaPedidoPreparo(?, ?, ?);";
-        try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, ped.getIdFuncionario());            
-            stmt.setString(2, ped.getNomeSabor());
-            stmt.setInt(3, ped.getQtdProducao());
-            
-            stmt.execute();
-            stmt.close();
-            con.close();
-            return true;
-        } 
-        catch (SQLException ex) { 
-            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }    
-    }*/
-    
-    //Método que atualiza os dados de um usuário
+       
     public boolean updateEstoque(Estoque estoq){
-        String sql = "UPDATE Estoque SET  quantItem = ?  WHERE idItem = ?;";
+        String sql = "CALL reposicaoEstoque( ?, ?, ?);";
         try { 
             PreparedStatement stmt = con.prepareStatement(sql);
             
-            stmt.setDouble(1, estoq.getQtdItem());
-
-            stmt.setInt(4, estoq.getIdItem());
+            stmt.setInt(1, estoq.getIdItem());
+            stmt.setInt(2, estoq.getIdItemEstoque());
+            stmt.setDouble(3, estoq.getQtdItem());
             
             stmt.execute();
             stmt.close();

@@ -5,17 +5,20 @@
  */
 package Controller;
 
+import DAO.InsumoDAO;
 import Model.BatmanDeFerro;
 import Model.CadastroInsumo;
 import Model.GerenciaEstoque;
+import Model.Insumo;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -31,7 +34,7 @@ public class CadastroInsumoController implements Initializable {
     BatmanDeFerro BatFer = new BatmanDeFerro();
     
     @FXML private TextField tfIdInsumo;
-    @FXML private TextField tfItemEstoque;
+    @FXML private TextField tfIdItemEstoque;
     @FXML private TextField tfNome;
     @FXML private TextField tfDescricao;
     @FXML private Button btVoltar;
@@ -46,7 +49,14 @@ public class CadastroInsumoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         // TODO
-        
+        btCadastrar.setOnMouseClicked((MouseEvent e)->{
+            InsereNovoInsumo();
+        });
+        btCadastrar.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                InsereNovoInsumo();
+            }
+        });
         
         btVoltar.setOnMouseClicked((MouseEvent e)->{
             GerenciaEstoque gerEstoque = new GerenciaEstoque();
@@ -83,32 +93,23 @@ public class CadastroInsumoController implements Initializable {
         });
     }   
     
-    /*private void cadastraInsumo(){//Falta adaptar
-        String idFuncionario = tfCPF.getText(),
-               nomeFuncionario = tfNome.getText(), 
-               cargo = tfCargo.getText(), 
-               senha = pfSenha.getText(), 
-               confirm = pfConfirm.getText();
-        
-        if(senha.equals(confirm)){
-            Funcionario func = new Funcionario(idFuncionario, nomeFuncionario, cargo, senha);  
-            FuncionarioDAO funcDao = new FuncionarioDAO();
-            if(funcDao.insert(func)){
+    private void InsereNovoInsumo(){
+        int idInsumo = Integer.parseInt(tfIdInsumo.getText()), 
+            idItemEstoque = Integer.parseInt(tfIdItemEstoque.getText()); 
+        String nomeInsumo = tfNome.getText(), 
+               descInsumo = tfDescricao.getText(); 
+            Insumo insum = new Insumo(idInsumo,idItemEstoque,nomeInsumo,descInsumo);  
+            InsumoDAO dao = new InsumoDAO();
+            if(dao.insereInsumo(insum)){
                 Alert alert = new Alert(AlertType.CONFIRMATION);
-                alert.setHeaderText("Usuário cadastrado!");
+                alert.setHeaderText("Insumo cadastrado com sucesso!");
                 alert.show();            
             }else{
                 Alert alert = new Alert(AlertType.ERROR);
-                alert.setHeaderText("Erro ao cadastrar usuário!");
-                alert.show();
-            }            
-        }else{
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setHeaderText("Senhas não coincidem!");
-            alert.show();
-        }    
-    }*/
-    
+                alert.setHeaderText("Erro ao cadastrar insumo!");
+                alert.show(); 
+            }
+    }
     public void fechaJanela(){
         CadastroInsumo.getStage().close();
     }

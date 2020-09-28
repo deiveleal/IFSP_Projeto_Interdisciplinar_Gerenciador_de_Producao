@@ -42,6 +42,12 @@ public class Pedido {
         this.qtdProducao = qtdProducao;
         this.idFuncionario = idFuncionario;
     }
+
+    public Pedido(int idPedido, String idFuncionario, int qtdProducao) {
+        this.idPedido = idPedido;
+        this.qtdProducao = qtdProducao;
+        this.idFuncionario = idFuncionario;
+    }
     
     public int getIdPedido() {
         return idPedido;
@@ -130,6 +136,7 @@ public class Pedido {
     public void setDataPedido(Date dataPedido) {
         this.dataPedido = dataPedido;
     } 
+    
 }
 
 

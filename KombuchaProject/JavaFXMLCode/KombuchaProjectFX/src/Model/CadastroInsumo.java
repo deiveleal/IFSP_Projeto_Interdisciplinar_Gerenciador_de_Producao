@@ -12,8 +12,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
- * @author Deive
+ * @author carolina
+ * @author deive
  */
 public class CadastroInsumo {
     

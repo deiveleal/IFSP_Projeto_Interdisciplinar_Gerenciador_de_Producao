@@ -5,50 +5,52 @@ package Model;
  * @author deive
  * 
  */
-public class Insumo extends ItemEstoque{
-    private int id_Insumo;
-    private int id_Item_Estoque;
-    private String nome_Insumo;
-    private String descr_Insumo;
+public class Insumo {
+    private int idInsumo;
+    private int idItemEstoque;
+    private String nomeInsumo;
+    private String descrInsumo;
 
-    public Insumo(int id_Insumo, int id_Item_Estoque, String nome_Insumo, String descr_Insumo, int id_Item, String tipo_Item) {
-        super(id_Item, tipo_Item);
-        this.id_Insumo = id_Insumo;
-        this.id_Item_Estoque = id_Item_Estoque;
-        this.nome_Insumo = nome_Insumo;
-        this.descr_Insumo = descr_Insumo;
+    public Insumo(int idInsumo, int idItemEstoque, String nomeInsumo, String descInsumo) {
+        this.idInsumo = idInsumo;
+        this.idItemEstoque = idItemEstoque;
+        this.nomeInsumo = nomeInsumo;
+        this.descrInsumo = descInsumo;
+    }
+    
+    public Insumo(){
     }
 
-    public int getId_Insumo() {
-        return id_Insumo;
+    public int getIdInsumo() {
+        return idInsumo;
     }
 
-    public void setId_Insumo(int id_Insumo) {
-        this.id_Insumo = id_Insumo;
+    public void setIdInsumo(int idInsumo) {
+        this.idInsumo = idInsumo;
     }
 
-    public int getId_Item_Estoque() {
-        return id_Item_Estoque;
+    public int getIdItemEstoque() {
+        return idItemEstoque;
     }
 
-    public void setId_Item_Estoque(int id_Item_Estoque) {
-        this.id_Item_Estoque = id_Item_Estoque;
+    public void setIdItemEstoque(int idItemEstoque) {
+        this.idItemEstoque = idItemEstoque;
     }
 
-    public String getNome_Insumo() {
-        return nome_Insumo;
+    public String getNomeInsumo() {
+        return nomeInsumo;
     }
 
-    public void setNome_Insumo(String nome_Insumo) {
-        this.nome_Insumo = nome_Insumo;
+    public void setNomeInsumo(String nomeInsumo) {
+        this.nomeInsumo = nomeInsumo;
     }
 
-    public String getDescr_Insumo() {
-        return descr_Insumo;
+    public String getDescrInsumo() {
+        return descrInsumo;
     }
 
-    public void setDescr_Insumo(String descr_Insumo) {
-        this.descr_Insumo = descr_Insumo;
+    public void setDescrInsumo(String descrInsumo) {
+        this.descrInsumo = descrInsumo;
     }
 
    

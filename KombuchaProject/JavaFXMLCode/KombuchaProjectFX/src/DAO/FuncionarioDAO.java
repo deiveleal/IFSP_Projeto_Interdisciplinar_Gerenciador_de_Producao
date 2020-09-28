@@ -29,7 +29,7 @@ public class FuncionarioDAO extends Funcionario{
     
     //Método que insere um novo usuário;
     public boolean insert(Funcionario func){
-        String sql = "INSERT INTO Funcionario(idFuncionario,nomeFuncionario,cargo,senha) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO Funcionario(idFuncionario,nomeFuncionario,cargo,senha) VALUES(?,?,?,?);";
         try { 
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, func.getIdFuncionario());            

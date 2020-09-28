@@ -5,17 +5,18 @@
  */
 package Controller;
 
+import DAO.EstoqueDAO;
 import Model.AlterarQuantidadeEstoque;
 import Model.BatmanDeFerro;
 import Model.Estoque;
 import Model.GerenciaEstoque;
-import Model.MenuPrincipal;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -50,10 +51,6 @@ public class AlterarQuantidadeEstoqueController implements Initializable {
         AlterarQuantidadeEstoqueController.estoqAlt = estoqAlt;
     }
     
-    
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initAlterQtdEstoque(); 
@@ -61,6 +58,24 @@ public class AlterarQuantidadeEstoqueController implements Initializable {
         
         
         // TODO
+        
+        btInserirReposicao.setOnMouseClicked((MouseEvent e)->{
+            try {
+                insereEstok();
+            } catch (Exception ex) {
+                Logger.getLogger(AlterarQuantidadeEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        btInserirReposicao.setOnKeyPressed((KeyEvent e)->{
+            if(e.getCode() == KeyCode.ENTER){
+                try {
+                    insereEstok();
+                } catch (Exception ex) {
+                    Logger.getLogger(AlterarQuantidadeEstoqueController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        });
         
         
         
@@ -113,8 +128,22 @@ public class AlterarQuantidadeEstoqueController implements Initializable {
             tfQtdReposicao.setText(Double.toString(estoqAlt.getQtdItem()));                    
     }
     
-    public void insereEstok(){
-    
-    }    
+    public void insereEstok()throws Exception{
+        int idItem = Integer.parseInt(lblIdItem.getText());
+        int idItemEstoque = Integer.parseInt(lblIdItemEstoque.getText());
+        double quantItem = Double.parseDouble(tfQtdReposicao.getText());
+        
+        EstoqueDAO dao = new EstoqueDAO();
+        Estoque estoq = new Estoque(idItem, idItemEstoque, quantItem);
+        if(dao.updateEstoque(estoq)){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setHeaderText("Produto em estoque atualizado com sucesso!");
+            alert.show();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Erro ao atualizar produto em estoque!");                
+            alert.show();
+        }
+    }
     
 }

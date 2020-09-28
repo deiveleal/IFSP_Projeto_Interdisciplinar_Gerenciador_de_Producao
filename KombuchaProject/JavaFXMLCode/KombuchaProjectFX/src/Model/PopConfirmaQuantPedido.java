@@ -5,7 +5,7 @@
  */
 package Model;
 
-import Controller.PopConfirmaQuantPedidoController;
+import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,10 +16,7 @@ import javafx.stage.Stage;
  *
  * @author Deive
  */
-public class PopConfirmaQuantPedido {
-    public PopConfirmaQuantPedido(Pedido ped){
-        PopConfirmaQuantPedidoController.setPed(ped);
-    }
+public class PopConfirmaQuantPedido extends Application{
     
     private static Stage stage;
     
@@ -27,10 +24,14 @@ public class PopConfirmaQuantPedido {
         launch(args);
     }
 
+    public PopConfirmaQuantPedido() {
+    }
+
+    @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/View/PopConfirmaQuantPedido.fxml"));//Carrega FXML
         Scene scene = new Scene(root);//Coloca o FXML em uma cena
-        stage.setTitle("Dados do Pedido");
+        stage.setTitle("Relatório do Pedido");
         stage.setScene(scene);//Coloca a cena em uma janela
         stage.show();//Abre a janela2
         setStage(stage);

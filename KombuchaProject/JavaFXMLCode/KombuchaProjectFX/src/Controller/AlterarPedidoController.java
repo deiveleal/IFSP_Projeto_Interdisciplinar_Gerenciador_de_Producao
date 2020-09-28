@@ -37,17 +37,16 @@ import javafx.stage.Stage;
  */
 public class AlterarPedidoController implements Initializable {
     BatmanDeFerro BatFer = new BatmanDeFerro();
-    private ObservableList<SaborKombucha> obsSaborKombucha;
     private static Pedido ped;
 
     @FXML private Label lblIdFuncionarioAtivo;
     @FXML private Label lblIdPedido;
     @FXML private Label lblIdFuncionario;
+    @FXML private Label lblSabor;
     @FXML private TextField tfQuantidade;
     @FXML private Button btVoltar;
     @FXML private Button btAtualizarPedido;
     @FXML private Button btFinalizarSessao;
-    @FXML private ComboBox<SaborKombucha> cbListSabores;
 
     public static Pedido getPed() {
         return ped;
@@ -126,19 +125,17 @@ public class AlterarPedidoController implements Initializable {
         lblIdFuncionarioAtivo.setText(BatFer.getIdFuncionarioAtivo());
         lblIdPedido.setText(Integer.toString(ped.getIdPedido()));
         lblIdFuncionario.setText(BatFer.getIdFuncionarioAtivo());
-        cbListSabores.setItems(saboresCombobox());
+        lblSabor.setText(ped.getNomeSabor());
         tfQuantidade.setText(Integer.toString(ped.getQtdProducao()));        
     }
     
-    public void atualizaPedido() throws Exception{
-        Pedido pedidoBase = new Pedido();
-        int idPedido = pedidoBase.getIdPedido();
-        String idFuncionario = BatFer.getIdFuncionarioAtivo();
-        String nomeSabor = cbListSabores.getValue().toString(); 
+    public void atualizaPedido() throws Exception{   
+        int idPedido = Integer.parseInt(lblIdPedido.getText());
+        String idFuncionario = lblIdFuncionario.getText();
         int qtdProducao = Integer.parseInt(tfQuantidade.getText());
        
         PedidoDAO dao = new PedidoDAO();
-        Pedido pedidoCorrigido = new Pedido(idPedido, idFuncionario, nomeSabor, qtdProducao);
+        Pedido pedidoCorrigido = new Pedido(idPedido, idFuncionario, qtdProducao);
         if(dao.updatePedido(pedidoCorrigido)){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setHeaderText("Pedido atualizado com sucesso!");
@@ -149,9 +146,4 @@ public class AlterarPedidoController implements Initializable {
             alert.show();
         }
     }
-    public ObservableList<SaborKombucha> saboresCombobox(){
-        SaborKombuchaDAO dao = new SaborKombuchaDAO();
-        obsSaborKombucha = FXCollections.observableArrayList(dao.saboresList());
-        return obsSaborKombucha;        
-    }    
 }

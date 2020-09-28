@@ -5,9 +5,12 @@
  */
 package Controller;
 
+import DAO.PedidoDAO;
 import Model.Pedido;
 import Model.PopConfirmaQuantPedido;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,8 +26,6 @@ import javafx.scene.input.MouseEvent;
  * @author Deive
  */
 public class PopConfirmaQuantPedidoController implements Initializable {
-    private static Pedido ped;
-
 
     @FXML private Label lblIdPedido;
     @FXML private Label lblSabor;
@@ -36,21 +37,9 @@ public class PopConfirmaQuantPedidoController implements Initializable {
     @FXML private Label lblQtdEmbalagem;
     @FXML private Button btOK;
 
-    public static Pedido getPed() {
-        return ped;
-    }
-
-    public static void setPed(Pedido ped) {
-        PopConfirmaQuantPedidoController.ped = ped;
-    }
-
-    
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        initRelatorioPedido();
         
         btOK.setOnMouseClicked((MouseEvent e)->{
             fechaJanela();  
@@ -62,7 +51,17 @@ public class PopConfirmaQuantPedidoController implements Initializable {
         });
     }    
     public void initRelatorioPedido(){
-    
+        DecimalFormat df = new DecimalFormat("#0.000#"); 
+        PedidoDAO dao = new PedidoDAO();
+        List<Pedido> ultimoPedido = dao.selectUltimoPedido();
+        lblIdPedido.setText(Integer.toString(ultimoPedido.get(0).getIdPedido()));
+        lblSabor.setText(ultimoPedido.get(0).getNomeSabor());
+        lblQtdProducao.setText(Integer.toString(ultimoPedido.get(0).getQtdProducao()));
+        lblIdFermentador.setText(Integer.toString(ultimoPedido.get(0).getIdFermentador()));
+        lblQtdExtrato.setText(df.format(ultimoPedido.get(0).getQuantidadeCha()));
+        lblQtdAgua.setText(df.format(ultimoPedido.get(0).getQuantidadeAgua()));
+        lblQtdAcucar.setText(df.format(ultimoPedido.get(0).getQuantidadeAcucar()));
+        lblQtdEmbalagem.setText(Integer.toString(ultimoPedido.get(0).getQuantidadeEmbalagem()));
     }
     public void fechaJanela(){
         PopConfirmaQuantPedido.getStage().close();
