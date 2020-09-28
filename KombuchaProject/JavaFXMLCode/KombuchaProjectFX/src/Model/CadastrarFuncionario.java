@@ -16,11 +16,11 @@ import javafx.stage.Stage;
  * @author Carolina
  * @author Deive
  */
-public class CadastrarFuncionario extends Application{
-    
+public class CadastrarFuncionario extends Application {
+
     private static Stage stage;//Uma janela1
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -42,5 +42,4 @@ public class CadastrarFuncionario extends Application{
         CadastrarFuncionario.stage = stage;
     }
 
-    
 }

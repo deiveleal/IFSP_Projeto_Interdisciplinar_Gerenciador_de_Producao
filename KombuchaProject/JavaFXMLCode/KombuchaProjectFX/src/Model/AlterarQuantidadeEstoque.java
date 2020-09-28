@@ -17,16 +17,17 @@ import javafx.stage.Stage;
  * @author Deive
  */
 public class AlterarQuantidadeEstoque {
-    
-    public AlterarQuantidadeEstoque(Estoque estoq){
+
+    public AlterarQuantidadeEstoque(Estoque estoq) {
         AlterarQuantidadeEstoqueController.setEstoqAlt(estoq);
-    }    
+    }
+
     public AlterarQuantidadeEstoque() {
     }
-    
+
     private static Stage stage;
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -46,5 +47,5 @@ public class AlterarQuantidadeEstoque {
     public static void setStage(Stage stage) {
         AlterarQuantidadeEstoque.stage = stage;
     }
-    
+
 }

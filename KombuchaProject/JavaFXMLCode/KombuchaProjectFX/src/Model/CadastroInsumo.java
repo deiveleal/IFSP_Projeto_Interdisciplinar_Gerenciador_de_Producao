@@ -16,10 +16,10 @@ import javafx.stage.Stage;
  * @author deive
  */
 public class CadastroInsumo {
-    
+
     private static Stage stage;
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -39,5 +39,5 @@ public class CadastroInsumo {
     public static void setStage(Stage stage) {
         CadastroInsumo.stage = stage;
     }
-    
+
 }

@@ -16,11 +16,11 @@ import javafx.stage.Stage;
  *
  * @author deive
  */
-public class AlterarExcluirUser extends Application{
-    
+public class AlterarExcluirUser extends Application {
+
     private static Stage stage;//Uma janela1
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -41,5 +41,5 @@ public class AlterarExcluirUser extends Application{
     public static void setStage(Stage stage) {
         AlterarExcluirUser.stage = stage;
     }
-    
+
 }

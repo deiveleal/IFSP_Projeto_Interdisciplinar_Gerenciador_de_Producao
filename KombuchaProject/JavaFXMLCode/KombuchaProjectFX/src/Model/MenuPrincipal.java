@@ -16,11 +16,11 @@ import javafx.stage.Stage;
  *
  * @author deive
  */
-public class MenuPrincipal extends Application{
-    
+public class MenuPrincipal extends Application {
+
     private static Stage stage;//Uma janela1
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -42,5 +42,4 @@ public class MenuPrincipal extends Application{
         MenuPrincipal.stage = stage;
     }
 
-    
 }

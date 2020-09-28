@@ -1,24 +1,24 @@
-
 package Model;
 
 /**
  *
  * @author carolina
  * @author deive
- * 
+ *
  */
 public class Estoque {
+
     private int idItem;
     private int idItemEstoque;
     private String nomeItem;
     private double qtdItem;
-    
+
     public Estoque() {
     }
-    
-    public Estoque(Estoque estoque){
+
+    public Estoque(Estoque estoque) {
     }
-    
+
     public Estoque(int id_Item, int id_Item_Estoque, String nome_Item, double qtd_Item) {
         this.idItem = id_Item;
         this.idItemEstoque = id_Item_Estoque;
@@ -31,7 +31,7 @@ public class Estoque {
         this.idItemEstoque = idItemEstoque;
         this.qtdItem = quantItem;
     }
-    
+
     public int getIdItem() {
         return idItem;
     }
@@ -63,9 +63,5 @@ public class Estoque {
     public void setQtdItem(double qtdItem) {
         this.qtdItem = qtdItem;
     }
-    
-    
+
 }
-
-
-

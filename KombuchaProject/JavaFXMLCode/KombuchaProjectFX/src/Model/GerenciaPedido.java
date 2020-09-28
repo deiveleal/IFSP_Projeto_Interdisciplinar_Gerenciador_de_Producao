@@ -16,10 +16,11 @@ import javafx.stage.Stage;
  *
  * @author deive
  */
-public class GerenciaPedido extends Application{
-        private static Stage stage;//Uma janela1
-    
-    public static void main(String[] args){
+public class GerenciaPedido extends Application {
+
+    private static Stage stage;//Uma janela1
+
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -40,5 +41,5 @@ public class GerenciaPedido extends Application{
     public static void setStage(Stage stage) {
         GerenciaPedido.stage = stage;
     }
-    
+
 }

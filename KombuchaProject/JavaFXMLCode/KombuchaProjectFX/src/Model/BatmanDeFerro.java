@@ -14,11 +14,9 @@ import javafx.stage.Stage;
  * @author Carolina
  * @author Deive
  */
-
-
 // Classe com atributos e métodos úteis para utilização geral
-
 public class BatmanDeFerro {
+
     private int idProduto;
     private String nomeProduto;
     private static String idFuncionarioAtivo;
@@ -39,28 +37,26 @@ public class BatmanDeFerro {
         this.nomeProduto = nomeProduto;
     }
 
-    
-    
     public String getIdFuncionarioAtivo() {
         return idFuncionarioAtivo;
     }
 
     public void setIdFuncionarioAtivo(String idFuncionarioAtivo) {
         this.idFuncionarioAtivo = idFuncionarioAtivo;
-    }  
-    
-    public void printaUsuario(){
-        System.out.println("Usuário Logado: "+getIdFuncionarioAtivo());    
     }
-    
-    public void voltaTelaLogin(){
+
+    public void printaUsuario() {
+        System.out.println("Usuário Logado: " + getIdFuncionarioAtivo());
+    }
+
+    public void voltaTelaLogin() {
         Login login = new Login();
         try {
             login.start(new Stage());
-        } catch (Exception ex) {
+        }
+        catch (Exception ex) {
             Logger.getLogger(MenuPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
 }

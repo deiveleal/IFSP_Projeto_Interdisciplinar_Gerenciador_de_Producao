@@ -17,15 +17,15 @@ import javafx.stage.Stage;
  * @author carolina
  * @author deive
  */
-public class AlterarPedido extends Application{
-    
-    public AlterarPedido(Pedido pedido){
+public class AlterarPedido extends Application {
+
+    public AlterarPedido(Pedido pedido) {
         AlterarPedidoController.setPed(pedido);
     }
-    
+
     private static Stage stage;
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -47,5 +47,4 @@ public class AlterarPedido extends Application{
         AlterarPedido.stage = stage;
     }
 
-    
 }

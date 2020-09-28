@@ -15,10 +15,11 @@ import javafx.stage.Stage;
  *
  * @author deive
  */
-public class Login extends Application{   
+public class Login extends Application {
+
     private static Stage stage;//Uma janela1
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 
