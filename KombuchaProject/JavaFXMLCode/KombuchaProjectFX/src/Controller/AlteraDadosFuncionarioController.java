@@ -54,8 +54,6 @@ public class AlteraDadosFuncionarioController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        AlterarExcluirUser altdeluser = new AlterarExcluirUser();
         initFuncionario();
         
         btAtualizarDados.setOnMouseClicked((MouseEvent e)->{                                          
@@ -119,7 +117,6 @@ public class AlteraDadosFuncionarioController implements Initializable {
     }
     
     public void atualizaDados() throws Exception{
-        //AlterarExcluirUser altExcUs = new AlterarExcluirUser();
         String idFuncionario = lblIdFuncionario.getText(),
                nomeFuncionario = tfNome.getText(),
                cargo = tfCargo.getText(),
