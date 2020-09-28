@@ -66,10 +66,13 @@
             </Label>
          </children>
       </GridPane>
-      <Button fx:id="btVoltar" layoutX="28.0" layoutY="496.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Voltar" />
+      <Button fx:id="btVoltar" layoutX="28.0" layoutY="496.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Voltar">
+         <font>
+            <Font name="BigNoodleTitling" size="24.0" />
+         </font></Button>
       <Button fx:id="btInserirReposicao" layoutX="279.0" layoutY="496.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Atualizar Dados">
          <font>
-            <Font size="16.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
       <GridPane layoutX="218.0" layoutY="179.0" prefHeight="229.0" prefWidth="426.0">
@@ -107,7 +110,7 @@
       </GridPane>
       <Button fx:id="btFinalizarSessao" layoutX="529.0" layoutY="496.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" text="Finalizar Sessão">
          <font>
-            <Font size="21.0" />
+            <Font name="BigNoodleTitling" size="24.0" />
          </font>
       </Button>
       <GridPane layoutX="52.0" layoutY="44.0">
