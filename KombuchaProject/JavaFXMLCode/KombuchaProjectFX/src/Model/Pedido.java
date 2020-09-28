@@ -1,4 +1,3 @@
-
 package Model;
 
 import java.util.Date;
@@ -7,29 +6,29 @@ import java.util.Date;
  *
  * @author carolina
  * @author deive
- * 
+ *
  */
-
 public class Pedido {
+
     private int idPedido;
     private int idSabor;
     private String nomeSabor;
     private int qtdProducao;
     private int idFermentador;
     private String idFuncionario;
-    private double quantidadeCha; 
-    private double quantidadeAgua; 
-    private double quantidadeAcucar; 
+    private double quantidadeCha;
+    private double quantidadeAgua;
+    private double quantidadeAcucar;
     private int quantidadeEmbalagem;
     private Date dataPedido;
 
-    public Pedido(){
+    public Pedido() {
     }
-    
-    public Pedido(Pedido pedido){
-    
+
+    public Pedido(Pedido pedido) {
+
     }
-    
+
     public Pedido(int idPedido, String idFuncionario, String nomeSabor, int qtdProducao) {
         this.idPedido = idPedido;
         this.nomeSabor = nomeSabor;
@@ -48,7 +47,7 @@ public class Pedido {
         this.qtdProducao = qtdProducao;
         this.idFuncionario = idFuncionario;
     }
-    
+
     public int getIdPedido() {
         return idPedido;
     }
@@ -112,7 +111,7 @@ public class Pedido {
     public void setQuantidadeEmbalagem(int quantidadeEmbalagem) {
         this.quantidadeEmbalagem = quantidadeEmbalagem;
     }
-    
+
     public int getQtdProducao() {
         return qtdProducao;
     }
@@ -135,12 +134,6 @@ public class Pedido {
 
     public void setDataPedido(Date dataPedido) {
         this.dataPedido = dataPedido;
-    } 
-    
+    }
+
 }
-
-
-
-
-
-

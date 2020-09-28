@@ -16,11 +16,11 @@ import javafx.stage.Stage;
  *
  * @author Deive
  */
-public class PopConfirmaQuantPedido extends Application{
-    
+public class PopConfirmaQuantPedido extends Application {
+
     private static Stage stage;
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -44,5 +44,5 @@ public class PopConfirmaQuantPedido extends Application{
     public static void setStage(Stage stage) {
         PopConfirmaQuantPedido.stage = stage;
     }
-    
+
 }

@@ -9,26 +9,24 @@ package Model;
  *
  * @author carolina
  * @author deive
- * 
+ *
  */
-
 public class Funcionario {
+
     private String idFuncionario;
     private String nomeFuncionario;
     private String cargo;
     private String senha;
 
-    
-    public Funcionario(){
+    public Funcionario() {
     }
-    
+
     public Funcionario(String idFuncionario, String nomeFuncionario, String cargo, String senha) {
         this.idFuncionario = idFuncionario;
         this.nomeFuncionario = nomeFuncionario;
         this.cargo = cargo;
         this.senha = senha;
     }
-
 
     public String getSenha() {
         return senha;
@@ -37,7 +35,6 @@ public class Funcionario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
 
     public String getIdFuncionario() {
         return idFuncionario;
@@ -61,5 +58,5 @@ public class Funcionario {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
-    }    
+    }
 }

@@ -1,11 +1,13 @@
 package Model;
+
 /**
  *
  * @author carolina
  * @author deive
- * 
+ *
  */
 public class Insumo {
+
     private int idInsumo;
     private int idItemEstoque;
     private String nomeInsumo;
@@ -17,8 +19,8 @@ public class Insumo {
         this.nomeInsumo = nomeInsumo;
         this.descrInsumo = descInsumo;
     }
-    
-    public Insumo(){
+
+    public Insumo() {
     }
 
     public int getIdInsumo() {
@@ -53,11 +55,4 @@ public class Insumo {
         this.descrInsumo = descrInsumo;
     }
 
-   
-    
-    
 }
-
-
-
-
