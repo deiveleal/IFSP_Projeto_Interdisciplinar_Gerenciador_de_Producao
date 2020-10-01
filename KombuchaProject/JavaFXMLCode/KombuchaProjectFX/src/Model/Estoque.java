@@ -10,7 +10,7 @@ public class Estoque {
 
     private int idItem;
     private int idItemEstoque;
-    private String nomeItem;
+    private String nomeProduto;
     private double qtdItem;
 
     public Estoque() {
@@ -22,7 +22,7 @@ public class Estoque {
     public Estoque(int id_Item, int id_Item_Estoque, String nome_Item, double qtd_Item) {
         this.idItem = id_Item;
         this.idItemEstoque = id_Item_Estoque;
-        this.nomeItem = nome_Item;
+        this.nomeProduto = nome_Item;
         this.qtdItem = qtd_Item;
     }
 
@@ -48,12 +48,12 @@ public class Estoque {
         this.idItemEstoque = idItemEstoque;
     }
 
-    public String getNomeItem() {
-        return nomeItem;
+    public String getNomeProduto() {
+        return nomeProduto;
     }
 
-    public void setNomeItem(String nomeItem) {
-        this.nomeItem = nomeItem;
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
     }
 
     public double getQtdItem() {

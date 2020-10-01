@@ -80,7 +80,7 @@ public class EstoqueDAO {
 
                 estoque.setIdItem(ResSet.getInt("idItem"));
                 estoque.setIdItemEstoque(ResSet.getInt("idItemEstoque"));
-                estoque.setNomeItem(ResSet.getString("nomeItem"));
+                estoque.setNomeProduto(ResSet.getString("nomeItem"));
                 estoque.setQtdItem(ResSet.getDouble("quantItem"));
 
                 estoq.add(estoque);

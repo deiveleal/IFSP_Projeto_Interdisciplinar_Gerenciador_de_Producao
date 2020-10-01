@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Deive
  */
-public class InsumoDAO extends Insumo {
+public class InsumoDAO {
 
     private Connection con;
 
@@ -34,7 +34,7 @@ public class InsumoDAO extends Insumo {
 
             stmt.setInt(1, insum.getIdInsumo());
             stmt.setInt(2, insum.getIdItemEstoque());
-            stmt.setString(3, insum.getNomeInsumo());
+            stmt.setString(3, insum.getNomeProduto());
             stmt.setString(4, insum.getDescrInsumo());
 
             stmt.execute();

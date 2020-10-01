@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author deive
  */
-public class SaborKombuchaDAO extends SaborKombucha {
+public class SaborKombuchaDAO {
 
     BatmanDeFerro BatFer = new BatmanDeFerro();
     SaborKombucha saborKombucha = new SaborKombucha();

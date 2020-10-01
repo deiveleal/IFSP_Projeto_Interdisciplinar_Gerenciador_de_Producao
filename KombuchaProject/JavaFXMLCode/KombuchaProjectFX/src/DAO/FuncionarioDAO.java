@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  * @author deive
  *
  */
-public class FuncionarioDAO extends Funcionario {
+public class FuncionarioDAO {
 
     private Connection con;
 

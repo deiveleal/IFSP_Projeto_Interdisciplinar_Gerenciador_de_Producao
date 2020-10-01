@@ -6,17 +6,15 @@ package Model;
  * @author deive
  *
  */
-public class Insumo {
+public class Insumo extends Estoque {
 
     private int idInsumo;
-    private int idItemEstoque;
-    private String nomeInsumo;
     private String descrInsumo;
 
-    public Insumo(int idInsumo, int idItemEstoque, String nomeInsumo, String descInsumo) {
+    public Insumo(int idInsumo, int idItemEstoque, String nomeProduto, String descInsumo) {
         this.idInsumo = idInsumo;
-        this.idItemEstoque = idItemEstoque;
-        this.nomeInsumo = nomeInsumo;
+        super.setIdItemEstoque(idItemEstoque);
+        super.setNomeProduto(nomeProduto);
         this.descrInsumo = descInsumo;
     }
 
@@ -31,20 +29,24 @@ public class Insumo {
         this.idInsumo = idInsumo;
     }
 
+    @Override
     public int getIdItemEstoque() {
-        return idItemEstoque;
+        return super.getIdItemEstoque();
     }
 
+    @Override
     public void setIdItemEstoque(int idItemEstoque) {
-        this.idItemEstoque = idItemEstoque;
+        super.setIdItemEstoque(idItemEstoque);
     }
 
-    public String getNomeInsumo() {
-        return nomeInsumo;
+    @Override
+    public String getNomeProduto() {
+        return super.getNomeProduto();
     }
 
-    public void setNomeInsumo(String nomeInsumo) {
-        this.nomeInsumo = nomeInsumo;
+    @Override
+    public void setNomeProduto(String nomeProduto) {
+        super.setNomeProduto(nomeProduto);
     }
 
     public String getDescrInsumo() {

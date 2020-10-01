@@ -132,7 +132,7 @@ public class AlterarQuantidadeEstoqueController implements Initializable {
         lblIdFuncionarioAtivo.setText(BatFer.getIdFuncionarioAtivo());
         lblIdItem.setText(Integer.toString(estoqAlt.getIdItem()));
         lblIdItemEstoque.setText(Integer.toString(estoqAlt.getIdItemEstoque()));
-        lblNome.setText(estoqAlt.getNomeItem());
+        lblNome.setText(estoqAlt.getNomeProduto());
         tfQtdReposicao.setText(Double.toString(estoqAlt.getQtdItem()));
     }
 

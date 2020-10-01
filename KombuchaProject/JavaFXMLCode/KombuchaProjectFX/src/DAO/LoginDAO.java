@@ -6,7 +6,6 @@
 package DAO;
 
 import Connection.ConnectionFactory;
-import Model.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +15,7 @@ import java.sql.SQLException;
  * @author Carolina
  * @author Deive
  */
-public class LoginDAO extends Funcionario {
+public class LoginDAO {
 
     private Connection con;
 

@@ -204,7 +204,7 @@ public class GerenciaEstoqueController implements Initializable {
     private ObservableList<Estoque> buscaEstoque() {
         ObservableList<Estoque> pesquisaEstoque = FXCollections.observableArrayList();
         for (int x = 0; x < estoqueList.size(); x++) {
-            if (estoqueList.get(x).getNomeItem().toLowerCase().contains(tfBusca.getText().toLowerCase())) {
+            if (estoqueList.get(x).getNomeProduto().toLowerCase().contains(tfBusca.getText().toLowerCase())) {
                 pesquisaEstoque.add(estoqueList.get(x));
             }
         }
